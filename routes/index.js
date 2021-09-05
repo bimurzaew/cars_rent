@@ -1,7 +1,5 @@
-const {Router} = require('mongoose')
+const { Router } = require("mongoose");
 
-const router = Router()
+const router = Router();
 
-router.use(require('./categories.route'))
 
-module.exports = router;
