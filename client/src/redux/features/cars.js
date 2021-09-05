@@ -1,7 +1,7 @@
 const initialState = {
-  cars:[],
-  loading:false
-}
+  cars: [],
+  loading: false,
+};
 
 export default function cars(state = initialState, action) {
   switch (action.type) {
@@ -11,15 +11,7 @@ export default function cars(state = initialState, action) {
         cars: action.payload
       }
     default:
-      return state
+      return state;
   }
 }
 
-export const loadCars = () => {
-  return async (dispatch) => {
-    const response = await fetch("/cars");
-    const json = await response.json();
-
-    dispatch({type:"load/cars/fulfilled",payload:json})
-  }
-}

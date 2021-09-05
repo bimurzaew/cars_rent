@@ -1,6 +1,6 @@
-const {Router} = require('mongoose')
+const { Router } = require("mongoose");
 
 const router = Router();
 
 
-module.exports = router;
+
