@@ -1,5 +1,6 @@
 const {Router} = require('mongoose')
 
-const router = Router()
+const router = Router();
+
 
 module.exports = router;

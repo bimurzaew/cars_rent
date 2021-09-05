@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
 app.use(fileUpload());
-// app.use(require('./routes/index'))
+app.use(require('./routes/index'))
 
 mongoose
   .connect(process.env.MONGO_SERVER)
