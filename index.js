@@ -14,6 +14,8 @@ app.use(morgan())
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
 app.use(fileUpload());
+app.use(cors())
+app.use(morgan())
 
 app.use(require('./routes/index'))
 

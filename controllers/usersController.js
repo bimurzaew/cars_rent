@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.model");
-// const Car = require('../models/')
+const Car = require('../models/Car.model')
 
 module.exports.usersController = {
   registerUser: async (req, res) => {
@@ -74,6 +74,7 @@ module.exports.usersController = {
   // rentCar: async (req,res) => {
   //   try {
   //     const user = await User.findById(req.params.id)
+  //     const car = await Car.findById(req.params.id)
   //     await User.findByIdAndUpdate(user, {
   //       carRent:
   //     })
