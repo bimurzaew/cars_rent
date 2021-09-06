@@ -1,5 +1,10 @@
+import SignUpPage from './auth/SignUpPage';
+
 function App() {
-  return <div>some</div>;
+  return (
+    <SignUpPage/>
+  )
+
 }
 
 export default App;
