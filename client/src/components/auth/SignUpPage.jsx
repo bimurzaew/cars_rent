@@ -9,7 +9,7 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-import { registerUser } from '../../redux/features/users';
+import { auth, registerUser } from '../../redux/features/users';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,11 +40,16 @@ function SignUpPage(props) {
   const [password, setPassword] = useState('')
   const [lastName, setLastName] = useState('')
 
-  const loading = useSelector(state => state.loading)
-  const error = useSelector(state => state.error)
-  const message = useSelector(state => state.message)
+  const loading = useSelector(state => state.users.loading)
+  const error = useSelector(state => state.users.error)
+  const message = useSelector(state => state.users.message)
 
-
+  const handleChangeLastName = ((e) => {
+    setLastName(e.target.value)
+  })
+  const handleChangeName = ((e) => {
+    setName(e.target.value)
+  })
   const handleChangeLogin = ((e) => {
     setLogin(e.target.value)
   })
@@ -53,7 +58,7 @@ function SignUpPage(props) {
   })
 
   const handleSubmit = () => {
-    dispatch(registerUser({password,login,name, lastName}))
+    dispatch(registerUser({password,login,name,lastName}))
   }
 
   return (
@@ -73,6 +78,25 @@ function SignUpPage(props) {
             {error}
           </Typography>
           <form className={classes.form} noValidate>
+            <TextField
+              onChange={handleChangeLastName}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Фамилия"
+              id="password"
+            /><TextField
+            onChange={handleChangeName}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Имя"
+            id="password"
+          />
             <TextField
               onChange={handleChangeLogin}
               variant="outlined"
@@ -106,7 +130,6 @@ function SignUpPage(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              disabled={loading}
             >
               Зарегистрироваться
             </Button>
