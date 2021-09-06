@@ -3,6 +3,7 @@ header{
     box-shadow: 0 0 10px 0;
     background-color: white;
     width: 100%;
+    z-index: 1;
 }
 .social{
     width: 40px;
