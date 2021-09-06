@@ -2,12 +2,12 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.model");
-const Car = require('../models/Car.model')
+const Car = require("../models/Car.model");
 
 module.exports.usersController = {
   registerUser: async (req, res) => {
     try {
-      const { name, login, password, carRent } = req.body;
+      const { name, login, password, carRent, lastName } = req.body;
 
       const hash = await bcrypt.hash(password, Number(process.env.HASH));
 
@@ -24,25 +24,14 @@ module.exports.usersController = {
         });
       }
 
-      const { image } = req.files;
-      const newFileName = `/images${Math.floor(
-        Math.random() * 1000
-      )}${path.extname(image.name)}`;
-
-      await image.mv(`./public${newFileName}`, async (err) => {
-        if (err) {
-          res.json({ error: err });
-        } else {
-          await User.create({
-            name,
-            login,
-            password: hash,
-            image: newFileName,
-            carRent,
-          });
-        }
-        res.status(200).json({ message: "вы успешно зарегистрировались" });
+      const user = await User.create({
+        lastName,
+        name,
+        login,
+        password: hash,
+        carRent,
       });
+      res.status(200).json({ message: "вы успешно зарегистрировались" });
     } catch (e) {
       res.status(400).json(e);
     }
@@ -64,9 +53,9 @@ module.exports.usersController = {
         id: candidate._id,
       };
       const token = await jwt.sign(payload, process.env.JWT_KEY, {
-        expiresIn: "24h"
+        expiresIn: "24h",
       });
-     res.json({token})
+      res.json({ token });
     } catch (e) {
       res.status(400).json({ error: e });
     }
