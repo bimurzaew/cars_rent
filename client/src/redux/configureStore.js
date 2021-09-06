@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import {carsReducer} from "./features/cars";
 import {categoriesReducer} from "./features/categories";
 
+
 export const store = createStore(
   combineReducers({
         cars: carsReducer,

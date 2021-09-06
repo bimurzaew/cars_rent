@@ -2,16 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const fileUpload = require("express-fileupload");
-const chalk = require("chalk");
-require('dotenv').config();
 const cors = require("cors");
+const morgan = require("morgan");
+const chalk = require("chalk");
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors())
+app.use(morgan())
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
 app.use(fileUpload());
+
 app.use(require('./routes/index'))
 
 mongoose
@@ -24,7 +27,6 @@ mongoose
         )
       );
       console.log(chalk.bgBlue.yellow.bold("DataBase has been connected"));
-
     });
   })
   .catch(() => {
