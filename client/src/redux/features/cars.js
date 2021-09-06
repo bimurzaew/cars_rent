@@ -5,7 +5,7 @@ const initialState = {
 
 export default function cars(state = initialState, action) {
   switch (action.type) {
-    default:
+    default:x 
       return state
   }
 }
