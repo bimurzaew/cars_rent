@@ -1,16 +1,23 @@
-
 import {BrowserRouter} from "react-router-dom";
 import Cars from "./cars";
 import Header from "./Header";
-import FooterCars from './Footer/FooterCars';
+
+import SignUpPage from './auth/SignUpPage';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
 
   return (
     <BrowserRouter>
-        <Header/>
-        <Cars/>
-        <FooterCars/>
+      <Switch>
+        <Route exact path='/'>
+          <Header/>
+          <Cars/>
+        </Route>
+        <Route path='/signup'>
+          <SignUpPage />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 

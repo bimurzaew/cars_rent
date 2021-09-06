@@ -8,7 +8,7 @@ module.exports.usersController = {
   registerUser: async (req, res) => {
     try {
       const { name, login, password, carRent, lastName } = req.body;
-
+      console.log(name, lastName)
       const hash = await bcrypt.hash(password, Number(process.env.HASH));
 
       if (!login) {

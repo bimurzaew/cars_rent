@@ -13,12 +13,15 @@ export const carsReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
 
+};
 export const loadCars = () => {
   return async (dispatch) => {
-    const response = await fetch("/cars")
-    const json = await response.json()
-    dispatch({type: "load/cars/fulfilled", payload: json})
+    const response = await fetch("/cars");
+
+    const json = await response.json();
+
+    dispatch({type:"load/cars/fulfilled",payload:json});
   }
 }
+
