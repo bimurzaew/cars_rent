@@ -13,6 +13,7 @@ export const carsReducer = (state = initialState, action) => {
     default:
       return state;
   }
+
 };
 export const loadCars = () => {
   return async (dispatch) => {
