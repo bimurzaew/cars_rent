@@ -1,0 +1,39 @@
+header{
+    position: fixed;
+    box-shadow: 0 0 10px 0;
+    background-color: white;
+    width: 100%;
+}
+.social{
+    width: 40px;
+}
+.person{
+    justify-content: space-between;
+    display: flex;
+    width: 150px;
+}
+.head-tel, .social, .person{
+    padding: 20px 0;
+}
+.head-top{
+    border-bottom: 1px solid grey;
+}
+.head-nav{
+    padding: 15px;
+    font-size: 20px;
+    color: grey;
+}
+.head-nav:hover{
+    color: #9B3C51;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+.tel{
+    text-decoration: none;
+    color: #3A3A3A;
+    font-size: 22px;
+}
+.tel:hover{
+    color: #3A3A3A;
+    text-decoration: underline;
+}
