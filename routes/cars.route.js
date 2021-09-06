@@ -5,6 +5,6 @@ const router = Router();
 
 router.post("/cars", carsController.createCars);
 router.get("/cars", carsController.getCars);
-router.get("/cars/:id", carsController.getCarsByCategories);
+router.get("/cars/category/:id", carsController.getCarsByCategories);
 
 module.exports = router;
