@@ -1,5 +1,7 @@
-const {Router} = require('mongoose')
+const {Router} = require('express')
 
-const router = Router()
+const router = Router();
+
+router.use(require("./cars.route"))
 
 module.exports = router;
