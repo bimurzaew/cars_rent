@@ -2,7 +2,7 @@ const initialState = {
   loading: false,
   error: null,
   message: null,
-  token: null,
+  token: localStorage.getItem("token"),
 };
 
 export default function users(state = initialState, action) {
@@ -25,6 +25,24 @@ export default function users(state = initialState, action) {
         ...state,
         error: action.error,
         message: false,
+      };
+    case "user/signIn/pending":
+      return {
+        ...state,
+        loading: true
+      }
+    case "user/signIn/rejected":
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case "user/signIn/fulfilled":
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        token:action.payload.token
       };
     default:
       return state;
