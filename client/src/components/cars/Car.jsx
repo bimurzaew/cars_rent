@@ -50,10 +50,6 @@ function Car({item}) {
                 <Button size="small" color="primary">
                     Арендовать
                 </Button>
-                <Fab variant="extended" size="small" color="primary" aria-label="add">
-                    <NavigationIcon sx={{ mr: 1 }} />
-                    Подробнее
-                </Fab>
             </CardActions>
         </Card>
 

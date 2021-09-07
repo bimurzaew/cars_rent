@@ -15,6 +15,8 @@ export const carsReducer = (state = initialState, action) => {
   }
 
 };
+
+
 export const loadCars = () => {
   return async (dispatch) => {
     const response = await fetch("/cars");
@@ -25,3 +27,10 @@ export const loadCars = () => {
   }
 }
 
+export const getCarsByID = (id) => {
+  return async (dispatch) => {
+    const response = await fetch(`/cars/${id}`);
+    const json  = await response.json();
+    dispatch({type: "cars/receive/fulfilled", payload: json})
+  }
+}
