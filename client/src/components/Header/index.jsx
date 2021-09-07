@@ -36,7 +36,7 @@ function Header(props) {
                         <div className="col">
                             <div className="person">
                                 <div className="person-text">
-                                    <Link variant="body2" color="secondary" href="signup">Личный кабинет</Link>
+                                    <Link variant="body2" color="secondary" href="signIn">Личный кабинет</Link>
                                 </div>
                                 <div className="logo">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

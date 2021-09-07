@@ -6,6 +6,7 @@ import SignUpPage from './auth/SignUpPage';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInPage from './auth/SignInPage';
 import { useSelector } from 'react-redux';
+import FooterCars from './Footer/FooterCars';
 
 function App() {
   const token = useSelector(state => state.users.token)
@@ -17,8 +18,9 @@ function App() {
                 <SignUpPage />
               </Route>
               <Route exact path='/'>
-                <Header token='token'/>
-                <Cars token='token'/>
+                <Header />
+                <Cars />
+                <FooterCars />
               </Route>
               <Route path='/signIn'>
                 <SignInPage />
