@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCars } from "../../redux/features/cars";
 import Car from "./Car";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+
 import { Route, Switch, useParams } from "react-router-dom";
 import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
+
+import { loadCars } from '../../redux/features/cars';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {

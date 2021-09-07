@@ -24,6 +24,7 @@ export const carsReducer = (state = initialState, action) => {
     default:
       return state;
   }
+
 };
 
 export const loadCars = () => {
@@ -36,6 +37,7 @@ export const loadCars = () => {
   }
 }
 
+
 export const getByCategories = (id) =>{
   return async (dispatch) => {
     dispatch({type:"load/carsByCategories/pending",payload:id})
@@ -46,4 +48,5 @@ export const getByCategories = (id) =>{
     dispatch({type:"load/carsByCategories/fulfilled",payload:json})
   }
 }
+
 
