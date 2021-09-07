@@ -23,3 +23,4 @@ export const loadCategories = () => {
         dispatch({type:"load/categories/fulfilled",payload:json})
     }
 }
+

@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {loadCategories} from "../../redux/features/categories";
-import "./header_styles.css"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCategories } from "../../redux/features/categories";
+import "./header_styles.css";
+import HeaderBottom from "./HeaderBottom";
+import {Route} from "react-router-dom";
+import { Link } from '@material-ui/core';
 
 function Header(props) {
-    const {categories} = useSelector(state => state.categories);
-    console.log(categories)
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(loadCategories())
-    },[])
+  useEffect(() => {
+    dispatch(loadCategories());
+  }, []);
 
     return (
         <header>
@@ -35,7 +36,7 @@ function Header(props) {
                         <div className="col">
                             <div className="person">
                                 <div className="person-text">
-                                    Личный кабинет
+                                    <Link variant="body2" color="secondary" href="signup">Личный кабинет</Link>
                                 </div>
                                 <div className="logo">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -51,9 +52,9 @@ function Header(props) {
                     </div>
                 </div>
                 <div className="head-bottom">
-
-
-                    {categories.map(item => item.name)}
+                    <div className="row text-center">
+                            <HeaderBottom/>
+                    </div>
                 </div>
             </div>
         </header>

@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Container,
   CssBaseline,
   Grid,
-  Link, makeStyles,
+  Link,
+  makeStyles,
   TextField,
-  Typography
-} from '@material-ui/core';
-import { auth, registerUser } from '../../redux/features/users';
+  Typography,
+} from "@material-ui/core";
+import { auth } from "../../redux/features/users";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,34 +34,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUpPage(props) {
-  const classes = useStyles()
-  const dispatch = useDispatch()
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState('')
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
-  const loading = useSelector(state => state.users.loading)
-  const error = useSelector(state => state.users.error)
-  const message = useSelector(state => state.users.message)
+  const loading = useSelector((state) => state.users.loading);
+  const error = useSelector((state) => state.users.error);
+  const token = useSelector((state) => state.users.token);
+  const history = useHistory();
 
-  const handleChangeLastName = ((e) => {
-    setLastName(e.target.value)
-  })
-  const handleChangeName = ((e) => {
-    setName(e.target.value)
-  })
-  const handleChangeLogin = ((e) => {
-    setLogin(e.target.value)
-  })
-  const handleChangePassword = ((e) => {
-    setPassword(e.target.value)
-  })
+  const handleChangeLogin = (e) => {
+    setLogin(e.target.value);
+  };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = () => {
-    dispatch(registerUser({password,login,name,lastName}))
-  }
+    dispatch(auth({ password, login }));
+    history.push("/");
+  };
 
   return (
     <div>
@@ -67,36 +63,16 @@ function SignUpPage(props) {
         <CssBaseline />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-            Регистрация
+            Вход
           </Typography>
           <Typography
             component="h1"
             variant="body2"
-            color={message ? 'primary' : 'error'}
+            color={error ? "primary" : "error"}
           >
-            {message ? <div><span>аккаунт успешно создан</span> <Link variant='body2' color='secondary' href='signIn'>войти</Link></div> : ''}
             {error}
           </Typography>
           <form className={classes.form} noValidate>
-            <TextField
-              onChange={handleChangeLastName}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Фамилия"
-              id="password"
-            /><TextField
-            onChange={handleChangeName}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Имя"
-            id="password"
-          />
             <TextField
               onChange={handleChangeLogin}
               variant="outlined"
@@ -120,7 +96,7 @@ function SignUpPage(props) {
             <Grid container>
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  У вас уже есть аккаунт?
+                  У вас нет аккаунта? Зарегистрироваться
                 </Link>
               </Grid>
             </Grid>
@@ -131,7 +107,7 @@ function SignUpPage(props) {
               color="primary"
               className={classes.submit}
             >
-              Зарегистрироваться
+              войти
             </Button>
           </form>
         </div>
