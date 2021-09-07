@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Container,
   CssBaseline,
-  Link, makeStyles,
+  Grid,
+  Link,
+  makeStyles,
   TextField,
-  Typography
-} from '@material-ui/core';
-import { auth } from '../../redux/features/users';
+  Typography,
+} from "@material-ui/core";
+import { auth } from "../../redux/features/users";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,26 +34,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUpPage(props) {
-  const classes = useStyles()
-  const dispatch = useDispatch()
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
-  const loading = useSelector(state => state.users.loading)
-  const error = useSelector(state => state.users.error)
-  const token = useSelector(state => state.users.token)
+  const loading = useSelector((state) => state.users.loading);
+  const error = useSelector((state) => state.users.error);
+  const token = useSelector((state) => state.users.token);
+  const history = useHistory();
 
-  const handleChangeLogin = ((e) => {
-    setLogin(e.target.value)
-  })
-  const handleChangePassword = ((e) => {
-    setPassword(e.target.value)
-  })
+  const handleChangeLogin = (e) => {
+    setLogin(e.target.value);
+  };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = () => {
-    dispatch(auth({password,login}))
-  }
+    dispatch(auth({ password, login }));
+    history.push("/");
+  };
 
   return (
     <div>
@@ -63,7 +68,7 @@ function SignUpPage(props) {
           <Typography
             component="h1"
             variant="body2"
-            color={error ? 'primary' : 'error'}
+            color={error ? "primary" : "error"}
           >
             {error}
           </Typography>
@@ -88,6 +93,13 @@ function SignUpPage(props) {
               type="password"
               id="password"
             />
+            <Grid container>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  У вас нет аккаунта? Зарегистрироваться
+                </Link>
+              </Grid>
+            </Grid>
             <Button
               onClick={handleSubmit}
               fullWidth
