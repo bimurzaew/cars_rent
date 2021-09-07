@@ -59,7 +59,7 @@ function Car({ item }) {
               className={classes.margin}
           >
               <NavigationIcon className={classes.extendedIcon} />
-              Extended
+              подробнее
           </Fab>
       </CardActions>
     </Card>
