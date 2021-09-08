@@ -42,7 +42,7 @@ export const getByCategories = (id) =>{
   return async (dispatch) => {
     dispatch({type:"load/carsByCategories/pending",payload:id})
 
-    const response = await fetch(`/cars/${id}`);
+    const response = await fetch(`/cars/category/${id}`);
     const json = await response.json();
 
     dispatch({type:"load/carsByCategories/fulfilled",payload:json})

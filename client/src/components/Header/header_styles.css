@@ -1,40 +1,82 @@
 header{
     position: fixed;
-    box-shadow: 0 0 10px 0;
-    background-color: white;
     width: 100%;
     z-index: 1;
+
 }
+.logo-company{
+    width: 100px;
+    height: 70px;
+}
+
 .social{
     width: 40px;
 }
 .person{
     justify-content: space-between;
     display: flex;
-    width: 150px;
+    width: 200px;
+    align-items: center;
+}
+.person-text a{
+    width: 200px;
+    color: #e7e7e7;
+    font-size: 20px;
+}
+.bi{
+    color: red;
+    width: 30px;
+    height: 50px;
 }
 .head-tel, .social, .person{
     padding: 20px 0;
 }
 .head-top{
+    width: 1280px;
+    margin: auto;
     border-bottom: 1px solid grey;
+    background-color: #11314f;
+    box-shadow: inset  0 -10px 20px -10px lightcyan;
+
+}
+.head-bottom{
+    width: 1280px;
+    margin: auto;
+    border-radius:0 0 20px 20px;
+    box-shadow: inset  0 -10px 20px -10px #e7e7e7;
 }
 .head-nav{
+    margin-top: 10px;
     padding: 15px;
     font-size: 20px;
-    color: grey;
+    color: white;
 }
 .head-nav:hover{
+    transition: .3s;
+    border-radius: 5px;
     color: #9B3C51;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.43);
+    padding: 15px;
     cursor: pointer;
 }
 .tel{
     text-decoration: none;
-    color: #3A3A3A;
-    font-size: 22px;
+    color: white;
+    font-size: 25px;
+    border: 2px solid  transparent;
+    border-radius: 5px;
+    padding: 6px;
 }
 .tel:hover{
-    color: #3A3A3A;
-    text-decoration: underline;
+    color: #be0810;
+    /*border: 2px solid rgba(182, 32, 32, 0.61);*/
+    box-shadow: inset 0 0 50px -10px white;
+    transition: .5s;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: inherit;
 }
