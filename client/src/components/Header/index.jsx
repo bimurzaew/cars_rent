@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
@@ -80,7 +81,9 @@ function Header(props) {
             </div>
           </div>
         </div>
+
       </div>
+              </div>
     </header>
   );
 }

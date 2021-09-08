@@ -12,61 +12,56 @@ import Slider from '@material-ui/core/Slider';
 import {NavLink} from "react-router-dom";
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     marginTop: theme.spacing(15),
-      borderRadius:10
+    borderRadius: 10,
   },
-    price:{
-      width:200
-    },
+  price: {
+    width: 200,
+  },
   media: {
     height: 100,
     backgroundSize: 200,
   },
-    index:{
-      width:250,
+  index: {
+    width: 250,
+  },
+  extendedIcon: {
+    width: "fit-content",
+    marginRight: theme.spacing(1),
+  },
+  margin: {
+    display: "block",
+    margin: "auto",
+  },
 
-    },
-    extendedIcon: {
-      width:"fit-content",
-        marginRight: theme.spacing(1),
-    },
-    margin: {
-      display:"block",
-        margin:"auto",
-    },
-
-    content:{
-      width:335,
-        margin:"20px auto 0",
-        borderRadius:5,
-        backgroundColor:"#11314F",
-        color:"white"
-    },
-    day:{
-      width:310,
-        display: "flex",
-        justifyContent: "space-between",
-    }
-
+  content: {
+    width: 335,
+    margin: "20px auto 0",
+    borderRadius: 5,
+    backgroundColor: "#11314F",
+    color: "white",
+  },
+  day: {
+    width: 310,
+    display: "flex",
+    justifyContent: "space-between",
+  },
 }));
 
 function Car({ item }) {
   const classes = useStyles();
   const [value, setValue] = useState(item.price);
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
 
 
-
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-
-
-
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
@@ -81,35 +76,31 @@ function Car({ item }) {
           <span>Двигатель:</span> {item.desc}
         </Typography>
         <Typography variant="body2" color="initial" component="p">
-           цена: {value} ₽
+          цена: {value} ₽
         </Typography>
-         <span className={classes.day}>
-              <span>Сутки :</span>
-               <Slider
-                   className={classes.index}
-                   step={item.price}
-                   marks
-                   min={item.price}
-                   max={item.price*10}
-                   onChange={handleChange}
-               />
-         </span>
+        <span className={classes.day}>
+          <span>Сутки :</span>
+          <Slider
+            className={classes.index}
+            step={item.price}
+            marks
+            min={item.price}
+            max={item.price * 10}
+            onChange={handleChange}
+          />
+        </span>
       </CardContent>
 
       <CardActions>
-
-          <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              aria-label="add"
-              className={classes.margin}
-
-          >
-              <NavLink to={`/cars/${item._id}`}>
-                подробнее
-              </NavLink>
-          </Fab>
+        <Fab
+          variant="extended"
+          size="small"
+          color="primary"
+          aria-label="add"
+          className={classes.margin}
+        >
+          <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
+        </Fab>
       </CardActions>
     </Card>
   );

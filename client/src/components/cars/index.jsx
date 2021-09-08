@@ -11,6 +11,7 @@ import { loadCars } from '../../redux/features/cars';
 import MoreCars from "./MoreCars";
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     background:"fixed",
     height:1715,
   }
+
 }));
 
 function Cars(props) {
@@ -33,7 +35,7 @@ function Cars(props) {
   const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
 
-  const {id} = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(loadCars());
@@ -54,6 +56,7 @@ function Cars(props) {
             return (
               <Grid item xs={4}>
                 <Car item={item} key={item.id} />
+
               </Grid>
             );
           })}
