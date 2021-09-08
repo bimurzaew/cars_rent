@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Slider from '@material-ui/core/Slider';
+import {NavLink} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,8 +56,6 @@ const useStyles = makeStyles((theme) => ({
 function Car({ item }) {
   const classes = useStyles();
   const [value, setValue] = useState(item.price);
-
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -65,7 +64,6 @@ function Car({ item }) {
 
 
   return (
-
 
 
 

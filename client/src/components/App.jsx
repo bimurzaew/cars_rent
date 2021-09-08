@@ -9,65 +9,48 @@ import SignInPage from "./auth/SignInPage";
 import { useSelector } from "react-redux";
 import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
+import MoreCars from "./cars/MoreCars";
+import CarsByCategory from "./cars/CarsByCategory";
+import {More} from "@material-ui/icons";
+import Car from "./cars/Car";
 
 function App() {
   const token = useSelector((state) => state.users.token);
 
   return (
-             <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Header />
-          <Cars />
-          <FooterCars />
-        </Route>
-        <Route path="/signup">
-          <SignUpPage />
-        </Route>
-          <Route path="/signIn">
-            <SignInPage />
-          </Route>
-          <Route path="/personal">
-            <Header />
-            <PersonalPage />
-          </Route>
-       <Route path={`/cars/:id`}>
-                <MoreCars />
+      <BrowserRouter>
+          <Switch>
+
+
+              <Route exact path="/">
+                  <Header/>
+                  <Cars/>
+                  <FooterCars/>
               </Route>
-        <Redirect to='/' />
-      </Switch>
-    </BrowserRouter>
-        )
+              <Route path="/cars/category/:id">
+                  <Header/>
+                  <CarsByCategory/>
+                  <FooterCars/>
+              </Route>
+              <Route path="/cars/:id">
+                  <MoreCars/>
+              </Route>
+              {/*<Route path="/personal">*/}
+              {/*    <PersonalPage/>*/}
+              {/*</Route>*/}
 
- 
 
-  //     if (!token) {
-  //       return (
-  //         <BrowserRouter>
-  //           <Switch>
-  //             <Route path='/signup'>
-  //               <SignUpPage />
-  //             </Route>
-  //             <Route path='/signIn'>
-  //               <SignInPage />
-  //             </Route>
-  //             <Redirect to='/signIn'/>
-  //           </Switch>
-  //         </BrowserRouter>
-  //       )
-  //     }else {
-  //       return (
-  //         <BrowserRouter>
-  //           <Switch>
-  //             <Route exact path='/'>
-  //               <Header token='token'/>
-  //               <Cars token='token'/>
-  //             </Route>
-  //             <Redirect to='/'/>
-  //           </Switch>
-  //         </BrowserRouter>
-  //       )
-  //     }
+
+          </Switch>
+          <Route path='/signIn'>
+              <SignInPage/>
+          </Route>
+          <Route path='/signup'>
+              <SignUpPage/>
+          </Route>
+
+      </BrowserRouter>
+  )
 }
 
 export default App;

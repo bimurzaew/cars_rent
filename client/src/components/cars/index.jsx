@@ -4,13 +4,11 @@ import Car from "./Car";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
 import { Route, Switch, useParams } from "react-router-dom";
 import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
-
 import { loadCars } from '../../redux/features/cars';
-import MoreCars from './MoreCars';
+import MoreCars from "./MoreCars";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,12 +24,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize:"cover",
     background:"fixed",
     height:1715,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
+  }
 }));
 
 function Cars(props) {
@@ -60,15 +53,7 @@ function Cars(props) {
           {cars.map((item) => {
             return (
               <Grid item xs={4}>
-                <Switch>
-                  <Route exact path={`/`}>
-                    <Car item={item} key={item.id} />
-                  </Route>
-
-                  <Route path={`/cars/category/:id`}>
-                    <CarsByCategory item={item} key={item.id} />
-                  </Route>
-                </Switch>
+                <Car item={item} key={item.id} />
               </Grid>
             );
           })}
