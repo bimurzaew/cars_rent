@@ -1,15 +1,13 @@
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import {  Link, useHistory } from "react-router-dom";
 import {
   Button,
   Container,
   CssBaseline,
   Grid,
-  Link,
   makeStyles,
-  TextField,
+  TextField, Toolbar,
   Typography,
 } from "@material-ui/core";
 import { auth } from "../../redux/features/users";
@@ -34,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUpPage(props) {
+function SignInPage(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -55,11 +53,12 @@ function SignUpPage(props) {
 
   const handleSubmit = () => {
     dispatch(auth({ password, login }));
-    history.push('/personal');
+    history.push("/personal");
   };
 
   return (
     <div>
+      <Toolbar/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -96,7 +95,7 @@ function SignUpPage(props) {
             />
             <Grid container>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link to="/signup" variant="body2">
                   У вас нет аккаунта? Зарегистрироваться
                 </Link>
               </Grid>
@@ -117,4 +116,4 @@ function SignUpPage(props) {
   );
 }
 
-export default SignUpPage;
+export default SignInPage;

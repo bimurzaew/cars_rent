@@ -37,17 +37,12 @@ function App() {
               <Route path="/cars/:id">
                   <MoreCars/>
               </Route>
-              {/*<Route path="/personal">*/}
-              {/*    <PersonalPage/>*/}
-              {/*</Route>*/}
-
-
-        {/*<Redirect to='/' />*/}
-      </Switch>
-    </BrowserRouter>
-        )
-
-          </Switch>
+              <Route path="/personal">
+                  <Header />
+                  <PersonalPage/>
+                  <FooterCars />
+              </Route>
+         </Switch>
           <Route path='/signIn'>
               <SignInPage/>
           </Route>
