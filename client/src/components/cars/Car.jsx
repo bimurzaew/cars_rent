@@ -1,46 +1,66 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Fab } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import React, { useEffect } from 'react';
+
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getCarsByID } from '../../redux/features/cars';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import Slider from '@material-ui/core/Slider';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     marginTop: theme.spacing(15),
+      borderRadius:10
   },
+    price:{
+      width:200
+    },
   media: {
     height: 100,
     backgroundSize: 200,
   },
+    index:{
+      width:250,
+
+    },
     extendedIcon: {
+      width:"fit-content",
         marginRight: theme.spacing(1),
     },
     margin: {
-        margin: theme.spacing(1),
+      display:"block",
+        margin:"auto",
     },
-    cardBottom: {
+
+    content:{
+      width:335,
+        margin:"20px auto 0",
+        borderRadius:5,
+        backgroundColor:"#11314F",
+        color:"white"
+    },
+    day:{
+      width:310,
         display: "flex",
-        justifyContent: "space-between"
-    },
- link: {
-    textDecoration: "none",
-    color: "white"
- }
+        justifyContent: "space-between",
+    }
 
-}))
-
-
-
-
-
-
+}));
 
 function Car({ item }) {
   const classes = useStyles();
+  const [value, setValue] = useState(item.price);
+
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
 
 
 
@@ -55,21 +75,31 @@ function Car({ item }) {
         image={item.image}
         title="Contemplative Reptile"
       />
-      <CardContent>
+      <CardContent className={classes.content}>
         <Typography gutterBottom variant="h6" component="h2">
           {item.name}
         </Typography>
-        <Typography variant="body2" color="textPrimary" component="p">
-          {item.desc}
+        <Typography variant="body2" color="inherit" component="p">
+          <span>Двигатель:</span> {item.desc}
         </Typography>
-        <Typography variant="body2" color="secondary" component="p">
-          {item.price} ₽ / в сутки
+        <Typography variant="body2" color="initial" component="p">
+           цена: {value} ₽
         </Typography>
+         <span className={classes.day}>
+              <span>Сутки :</span>
+               <Slider
+                   className={classes.index}
+                   step={item.price}
+                   marks
+                   min={item.price}
+                   max={item.price*10}
+                   onChange={handleChange}
+               />
+         </span>
       </CardContent>
-      <CardActions className={classes.cardBottom}>
-        <Button size="small" color="primary">
-          Арендовать
-        </Button>
+
+      <CardActions>
+
           <Fab
               variant="extended"
               size="small"

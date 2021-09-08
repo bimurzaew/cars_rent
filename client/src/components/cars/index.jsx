@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
   cont: {
     marginTop: theme.spacing(10),
   },
+  main:{
+    backgroundImage:"URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    background:"fixed",
+    height:1715,
+  },
   paper: {
     padding: theme.spacing(1),
     textAlign: "center",
@@ -42,7 +49,7 @@ function Cars(props) {
   return (
     <>
       <Toolbar />
-      <Container>
+      <Container className={classes.main}>
         <Grid
           classes={classes.cont}
           container
