@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CarsByCategory({ item }) {
+  console.log(item)
   const classes = useStyles();
   return (
     <Card className={classes.root}>

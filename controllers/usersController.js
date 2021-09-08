@@ -69,16 +69,27 @@ module.exports.usersController = {
       return res.status(404).json({ error: e });
     }
   },
-  // rentCar: async (req,res) => {
-  //   try {
-  //     const user = await User.findById(req.params.id)
-  //     const car = await Car.findById(req.params.id)
-  //     await User.findByIdAndUpdate(user, {
-  //       carRent:
-  //     })
-  //
-  //   }catch (e) {
-  //     res.status(400).json({error:e})
-  //   }
-  // }
+  rentCar: async (req,res) => {
+    try {
+      const user = await User.findById(req.params.id)
+      const car = await Car.findById(req.params.carId)
+      if (user.carRent < 1) {
+        await User.findByIdAndUpdate(user, {
+          $push:{carRent:car},
+        })
+        if (car.user) {
+          await Car.findByIdAndUpdate(car, {
+            $push:{user}
+          })
+        }else {
+          return res.json({error: 'машина занята'})
+        }
+      }else {
+        res.json({error: 'зачем вам больше одной машины?'})
+      }
+      res.json({message:'машина арендована'})
+    }catch (e) {
+      res.status(400).json({error:e})
+    }
+  }
 };

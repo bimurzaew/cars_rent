@@ -31,7 +31,7 @@ function HeaderBottom() {
 
                     <div className="col">
                         <p className="head-nav" onClick={ () => handleGetByCategories(item._id)}>
-                            <NavLink to={`/cars/${item._id}`}>
+                            <NavLink to={`/cars/category/${item._id}`}>
                                 {item.name}
                             </NavLink>
                         </p>

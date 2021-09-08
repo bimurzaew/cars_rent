@@ -8,10 +8,10 @@ const userSchema = mongoose.Schema({
     unique: true,
   },
   password: String,
-  carRent:{
+  carRent:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Car"
-  }
+  }]
 });
 
 const User = mongoose.model("User", userSchema);

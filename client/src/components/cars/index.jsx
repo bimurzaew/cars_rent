@@ -9,9 +9,8 @@ import { Route, Switch, useParams } from "react-router-dom";
 import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
 
-import { loadCars } from '../../redux/features/cars';
-import MoreCars from './MoreCars';
-
+import { loadCars } from "../../redux/features/cars";
+import MoreCars from "./MoreCars";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,12 +19,13 @@ const useStyles = makeStyles((theme) => ({
   cont: {
     marginTop: theme.spacing(10),
   },
-  main:{
-    backgroundImage:"URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
-    backgroundRepeat:"no-repeat",
-    backgroundSize:"cover",
-    background:"fixed",
-    height:1715,
+  main: {
+    backgroundImage:
+      "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    background: "fixed",
+    height: 1715,
   },
   paper: {
     padding: theme.spacing(1),
@@ -40,7 +40,7 @@ function Cars(props) {
   const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
 
-  const {id} = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(loadCars());
@@ -61,13 +61,13 @@ function Cars(props) {
             return (
               <Grid item xs={4}>
                 <Switch>
-                  <Route exact path={`/`}>
+                  {/*<Route exact path={`/`}>*/}
                     <Car item={item} key={item.id} />
-                  </Route>
+                  {/*</Route>*/}
 
-                  <Route path={`/cars/category/:id`}>
+                  {/*<Route path={`/cars/category/:id`}>*/}
                     <CarsByCategory item={item} key={item.id} />
-                  </Route>
+                  {/*</Route>*/}
                 </Switch>
               </Grid>
             );
