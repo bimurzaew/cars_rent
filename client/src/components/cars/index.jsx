@@ -4,13 +4,13 @@ import Car from "./Car";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
 import { Route, Switch, useParams } from "react-router-dom";
 import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
-
-import { loadCars } from "../../redux/features/cars";
+import { loadCars } from '../../redux/features/cars';
 import MoreCars from "./MoreCars";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,19 +19,14 @@ const useStyles = makeStyles((theme) => ({
   cont: {
     marginTop: theme.spacing(10),
   },
-  main: {
-    backgroundImage:
-      "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    background: "fixed",
-    height: 1715,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
+  main:{
+    backgroundImage:"URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    background:"fixed",
+    height:1715,
+  }
+
 }));
 
 function Cars(props) {
@@ -60,15 +55,8 @@ function Cars(props) {
           {cars.map((item) => {
             return (
               <Grid item xs={4}>
-                <Switch>
-                  {/*<Route exact path={`/`}>*/}
-                    <Car item={item} key={item.id} />
-                  {/*</Route>*/}
+                <Car item={item} key={item.id} />
 
-                  {/*<Route path={`/cars/category/:id`}>*/}
-                    <CarsByCategory item={item} key={item.id} />
-                  {/*</Route>*/}
-                </Switch>
               </Grid>
             );
           })}
