@@ -6,7 +6,7 @@ import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
 
 import logo from "../../logo.svg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -48,9 +48,15 @@ function Header(props) {
               <div className="col">
                 <div className="person">
                   <div className="person-text">
-                    {token ? <Link variant="body2" color="secondary" to="/personal">Личный кабинет</Link> :
-                        <Link variant="body2" color="secondary" to="/signIn">Авторизоваться</Link>
-                    }
+                    {token ? (
+                      <Link variant="body2" color="secondary" to="/personal">
+                        Личный кабинет
+                      </Link>
+                    ) : (
+                      <Link variant="body2" color="secondary" to="/signIn">
+                        Авторизоваться
+                      </Link>
+                    )}
                   </div>
                   <div className="logo">
                     <svg
@@ -81,9 +87,7 @@ function Header(props) {
             </div>
           </div>
         </div>
-
       </div>
-              </div>
     </header>
   );
 }
