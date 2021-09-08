@@ -10,6 +10,7 @@ import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
 
 import { loadCars } from '../../redux/features/cars';
+import MoreCars from './MoreCars';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +57,8 @@ function Cars(props) {
                   <Route exact path={`/`}>
                     <Car item={item} key={item.id} />
                   </Route>
-                  <Route path={`/cars/:id`}>
+
+                  <Route path={`/cars/category/:id`}>
                     <CarsByCategory item={item} key={item.id} />
                   </Route>
                 </Switch>

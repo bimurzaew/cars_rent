@@ -1,6 +1,7 @@
 const initialState = {
   cars: [],
   loading: false,
+  oneCar: []
 };
 
 export const carsReducer = (state = initialState, action) => {
@@ -21,6 +22,18 @@ export const carsReducer = (state = initialState, action) => {
         cars: action.payload,
         loading: false
       }
+
+
+    case "cars/receive/pending":
+      return {
+        ...state,
+        loading: true
+      }
+    case "cars/receive/fulfilled":
+      return  {
+        ...state,
+        cars: [action.payload]
+      }
     default:
       return state;
   }
@@ -37,16 +50,24 @@ export const loadCars = () => {
   }
 }
 
+export const getCarsByID = (id) => {
+  return async (dispatch) => {
+    const response = await fetch(`/cars/${id}`);
+    const json = await response.json();
+    dispatch({type:"cars/receive/fulfilled",payload:json})
+  }
+}
 
 export const getByCategories = (id) =>{
   return async (dispatch) => {
     dispatch({type:"load/carsByCategories/pending",payload:id})
 
-    const response = await fetch(`/cars/${id}`);
+    const response = await fetch(`/cars/category/${id}`);
     const json = await response.json();
 
     dispatch({type:"load/carsByCategories/fulfilled",payload:json})
   }
 }
+
 
 

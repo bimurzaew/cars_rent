@@ -10,6 +10,7 @@ module.exports.categoriesController = {
       console.log(e)
     }
   },
+
   getCategories: async (req, res) => {
     try {
       const categories = await Category.find()

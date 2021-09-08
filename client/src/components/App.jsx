@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import Cars from "./cars";
 import Header from "./Header";
 
+
 import SignUpPage from "./auth/SignUpPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import SignInPage from "./auth/SignInPage";
@@ -13,7 +14,7 @@ function App() {
   const token = useSelector((state) => state.users.token);
 
   return (
-    <BrowserRouter>
+             <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Header />
@@ -30,10 +31,16 @@ function App() {
             <Header />
             <PersonalPage />
           </Route>
+       <Route path={`/cars/:id`}>
+                <MoreCars />
+              </Route>
         <Redirect to='/' />
       </Switch>
     </BrowserRouter>
-  );
+        )
+
+ 
+
   //     if (!token) {
   //       return (
   //         <BrowserRouter>

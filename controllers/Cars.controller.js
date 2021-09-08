@@ -37,7 +37,12 @@ module.exports.carsController = {
     }
   },
   getCarsById:async (req, res) => {
-    const car = await Car.findById(req.params.id);
-    res.json(car)
+    try {
+      const car = await Car.findById(req.params.id);
+      res.json(car)
+    } catch (e) {
+      res.json(e)
+    }
+
   }
 };
