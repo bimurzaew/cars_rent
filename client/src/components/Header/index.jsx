@@ -3,14 +3,21 @@ import { useDispatch } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-import { Link } from '@material-ui/core';
+
+
 import logo from "../../logo.svg"
+import { Route } from "react-router-dom";
+import { Link } from "@material-ui/core";
+
+
 function Header(props) {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.users.token);
 
   useEffect(() => {
     dispatch(loadCategories());
   }, []);
+
 
     return (
         <header>
@@ -56,10 +63,9 @@ function Header(props) {
                             <HeaderBottom/>
                         </div>
                     </div>
-                </div>
-            </div>
-        </header>
-    );
+      </div>
+    </header>
+  );
 }
 
 export default Header;

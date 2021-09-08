@@ -8,7 +8,6 @@ module.exports.usersController = {
   registerUser: async (req, res) => {
     try {
       const { name, login, password, carRent, lastName } = req.body;
-      console.log(name, lastName)
       const hash = await bcrypt.hash(password, Number(process.env.HASH));
 
       if (!login) {
@@ -50,14 +49,24 @@ module.exports.usersController = {
       }
 
       const payload = {
-        id: candidate._id,
+        id: candidate.id,
       };
       const token = await jwt.sign(payload, process.env.JWT_KEY, {
         expiresIn: "24h",
       });
-      res.json({ token });
+      res.json({ token, candidate });
     } catch (e) {
       res.status(400).json({ error: e });
+    }
+  },
+  getUserById: async (req, res) => {
+    try {
+
+      const user = await User.findById(req.user.id);
+
+      return res.json(user);
+    } catch (e) {
+      return res.status(404).json({ error: e });
     }
   },
   // rentCar: async (req,res) => {

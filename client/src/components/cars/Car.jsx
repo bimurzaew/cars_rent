@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Slider from '@material-ui/core/Slider';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
       display:"block",
         margin:"auto",
     },
+
     content:{
       width:335,
         margin:"20px auto 0",
@@ -60,7 +63,12 @@ function Car({ item }) {
 
 
 
+
   return (
+
+
+
+
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
@@ -89,16 +97,20 @@ function Car({ item }) {
                />
          </span>
       </CardContent>
+
       <CardActions>
+
           <Fab
               variant="extended"
               size="small"
               color="primary"
               aria-label="add"
               className={classes.margin}
+
           >
-              <NavigationIcon className={classes.extendedIcon} />
-              подробнее
+              <NavLink to={`/cars/${item._id}`}>
+                подробнее
+              </NavLink>
           </Fab>
       </CardActions>
     </Card>
