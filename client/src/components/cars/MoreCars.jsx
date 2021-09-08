@@ -4,21 +4,38 @@ import { NavLink, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { getCarsByID } from '../../redux/features/cars';
 import {
-  Button, Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Container,
-  Fab,
-  Grid
+    Box,
+    Button, Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Container,
+    Fab,
+    Grid, TextField
 } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-
+card: {
+    width: "300px",
+    height: "350px"
+},
   medImg: {
-    height:"100px"
-  }
+    height:"150px"
+  },
+
+    equipment: {
+    fontFamily: "Georgia, sans-serif",
+    fontSize: "21px",
+    lineHeight: "25px"
+    },
+    detailedDescription: {
+        fontFamily: 'PT Root UI, sans-serif',
+        lineHeight: "25px"
+    },
+    boxDesc: {
+    marginTop: "50px"
+    }
 })
 
 
@@ -36,13 +53,20 @@ function MoreCars() {
 
   return (
     <>
-      <Container>
-        <Grid container xs={12}>
 
-       <Grid item>
+
+
+
          {cars.map(item => {
              return (
-               <Card>
+                 <Container>
+
+
+                 <Grid container xs={12}>
+
+
+                     <Grid item>
+               <Card className={classes.card}>
                  <CardMedia
                    className={classes.medImg}
                    image={item.image}
@@ -52,31 +76,58 @@ function MoreCars() {
                    <Typography gutterBottom variant="h6" component="h2">
                      {item.name}
                    </Typography>
-                   <Typography variant="body2" color="textPrimary" component="p">
+                     <Typography variant="body1" color="textPrimary" component="p">
+                       Год выпуска: {item.year}
+                     </Typography>
+                   <Typography variant="body1" color="textPrimary" component="p">
                      {item.desc}
                    </Typography>
-                   <Typography variant="body2" color="secondary" component="p">
+                   <Typography variant="body1" color="secondary" component="p">
                      {item.price} ₽ / в сутки
                    </Typography>
                  </CardContent>
                  <CardActions>
-                   <Button size="small" color="primary">
+                   <Button size="medium" color="primary">
                      Арендовать
                    </Button>
                  </CardActions>
                </Card>
+
+                 </Grid>
+               </Grid>
+
+              <Box className={classes.boxDesc}>
+                  <Grid item className={classes.equipment}>
+                      <Typography gutterBottom variant="h6" component="h2">
+                          Комплектация:
+                      </Typography>
+                      {item.equipment}
+                  </Grid>
+
+
+              </Box>
+                     <Box className={classes.boxDesc}>
+                         <Typography gutterBottom variant="h6" component="h2">
+                             Детальное  описание:
+                         </Typography>
+                         <Container className={classes.detailedDescription}>
+                             {item.detailedDescription}
+                         </Container>
+
+                     </Box>
+             </Container>
              )
 
            }
          )}
-       </Grid>
 
 
 
 
-        </Grid>
 
-      </Container>
+
+
+
 
     </>
   );
