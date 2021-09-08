@@ -54,7 +54,7 @@ function SignUpPage(props) {
 
   const handleSubmit = () => {
     dispatch(auth({ password, login }));
-    history.push("/");
+    history.push("/personal");
   };
 
   return (

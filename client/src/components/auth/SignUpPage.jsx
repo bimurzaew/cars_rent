@@ -94,9 +94,8 @@ function SignUpPage(props) {
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="lastName"
               label="Фамилия"
-              id="password"
             />
             <TextField
               onChange={handleChangeName}
@@ -104,9 +103,8 @@ function SignUpPage(props) {
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="name"
               label="Имя"
-              id="password"
             />
             <TextField
               onChange={handleChangeLogin}
