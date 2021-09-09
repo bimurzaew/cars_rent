@@ -109,7 +109,7 @@ export const auth = ({ login, password }) => {
 //   return async (dispatch) => {
 //     dispatch({ type: "user/load/pending" });
 //
-//     const response = await fetch(`user/profile`, {
+//     const response = await fetch(user/profile, {
 //     headers: {
 //       "Authorization":json.token
 //     }
