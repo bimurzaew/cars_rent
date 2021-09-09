@@ -10,7 +10,6 @@ import { Toolbar } from "@material-ui/core";
 import CarsByCategory from "./CarsByCategory";
 
 import { loadCars } from '../../redux/features/cars';
-import MoreCars from './MoreCars';
 
 
 const useStyles = makeStyles((theme) => ({
