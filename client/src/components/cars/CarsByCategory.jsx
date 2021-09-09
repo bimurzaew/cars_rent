@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CarsByCategory(props) {
+
   const classes = useStyles();
 
   const { cars } = useSelector((state) => state.cars);

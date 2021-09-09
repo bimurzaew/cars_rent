@@ -32,7 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+<<<<<<< HEAD
 function SignUpPage(props) {
+=======
+function SignInPage(props) {
+>>>>>>> main
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -116,4 +120,8 @@ function SignUpPage(props) {
   );
 }
 
+<<<<<<< HEAD
 export default SignUpPage;
+=======
+export default SignInPage;
+>>>>>>> main

@@ -9,10 +9,12 @@ import SignInPage from "./auth/SignInPage";
 import { useSelector } from "react-redux";
 import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
+
 import MoreCars from "./cars/MoreCars";
 import CarsByCategory from "./cars/CarsByCategory";
 import {More} from "@material-ui/icons";
 import Car from "./cars/Car";
+
 
 function App() {
   const token = useSelector((state) => state.users.token);
@@ -35,13 +37,12 @@ function App() {
               <Route path="/cars/:id">
                   <MoreCars/>
               </Route>
-              {/*<Route path="/personal">*/}
-              {/*    <PersonalPage/>*/}
-              {/*</Route>*/}
-
-
-
-          </Switch>
+              <Route path="/personal">
+                  <Header />
+                  <PersonalPage/>
+                  <FooterCars />
+              </Route>
+         </Switch>
           <Route path='/signIn'>
               <SignInPage/>
           </Route>
