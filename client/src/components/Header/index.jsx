@@ -3,18 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-import {TextField} from '@material-ui/core';
+import { Icon, makeStyles, TextField } from "@material-ui/core";
 import logo from "../../logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { registerUser } from "../../redux/features/users";
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 function Header(props) {
+  const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const token = useSelector((state) => state.users.token);
-
 
   useEffect(() => {
     dispatch(loadCategories());
   }, []);
+
+  const handleLogOut = () => {
+    localStorage.clear();
+  };
 
   return (
     <header>
@@ -26,8 +38,7 @@ function Header(props) {
                 <img className="logo-company" src={logo} />
               </div>
               <div className="col">
-                <div className="head-tel">
-                </div>
+                <div className="head-tel"></div>
               </div>
               <div className="col">
                 <a href="https://api.whatsapp.com/send/?phone=%2B79284781016&text&app_absent=0">
@@ -52,24 +63,21 @@ function Header(props) {
                     )}
                   </div>
                   <div className="logo">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-box-arrow-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
-                      ></path>
-                      <path
-                        fill-rule="evenodd"
-                        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                      ></path>
-                    </svg>
-
+                    {token ? (
+                      <Link to='/'>
+                      <Button
+                        onClick={handleLogOut}
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        endIcon={<Icon>send</Icon>}
+                      >
+                        выход
+                      </Button>
+                        </Link>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>
@@ -77,7 +85,6 @@ function Header(props) {
           </div>
           <div className="head-bottom">
             <div className="row text-center">
-
               <HeaderBottom />
             </div>
           </div>
