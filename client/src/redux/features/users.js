@@ -46,6 +46,18 @@ export default function users(state = initialState, action) {
         token: action.payload.token,
         candidate: action.payload.candidate,
       };
+    case 'user/rent/pending':
+      return {
+        ...state,
+        loading:true
+      }
+    case 'user/rent/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        error:action.payload.error,
+        message:action.payload.message
+      }
     // case "user/load/pending":
     //   return {
     //     ...state,
@@ -122,3 +134,16 @@ export const auth = ({ login, password }) => {
 //     }
 //   };
 // };
+
+export const rentCar = (id) => {
+  return async (dispatch, getState) => {
+    const state = getState()
+    dispatch({type:"user/rent/pending"})
+    const response = await fetch(`/cars/${id}`, {
+      method:"PATCH",
+      headers: { Authorization: `Bearer ${state.users.token}` }
+    })
+    const json = await response.json()
+    dispatch({type:'user/rent/fulfilled', payload:json})
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { getCarsByID } from "../../redux/features/cars";
 import {
@@ -10,10 +10,10 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Fab,
   Grid,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import { rentCar } from '../../redux/features/users';
 
 const useStyles = makeStyles({
   medImg: {
@@ -24,18 +24,21 @@ const useStyles = makeStyles({
 function MoreCars() {
   const classes = useStyles();
   const { cars } = useSelector((state) => state.cars);
+  const error = useSelector(state => state.users.error)
   const { id } = useParams();
 
   const dispatch = useDispatch();
   useEffect(() => dispatch(getCarsByID(id)), []);
 
-  console.log(cars);
-
+  const handleRentCar = (id) => {
+    dispatch(rentCar(id))
+  }
   return (
     <>
       <Container>
         <Grid container xs={12}>
           <Grid item>
+            {error}
             {cars.map((item) => {
               return (
                 <Card>
@@ -60,7 +63,10 @@ function MoreCars() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button
+                      onClick={() => {handleRentCar(id)}}
+                      size="small"
+                      color="primary">
                       Арендовать
                     </Button>
                   </CardActions>
