@@ -8,13 +8,16 @@ import SignInPage from "./auth/SignInPage";
 import { useSelector } from "react-redux";
 import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
-
 import MoreCars from "./cars/MoreCars";
 import CarsByCategory from "./cars/CarsByCategory";
+
 import CarsById from "./cars/CarById";
 
+import { More } from "@material-ui/icons";
+import Car from "./cars/Car";
+
+
 function App() {
-  const token = useSelector((state) => state.users.token);
 
   return (
     <BrowserRouter>
@@ -40,6 +43,7 @@ function App() {
         <FooterCars />
 
         <Route path="/signIn">
+
         <SignInPage />
       </Route>
       <Route path="/signup">

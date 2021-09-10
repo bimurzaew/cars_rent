@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,6 +10,7 @@ import Car from "./Car";
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -17,49 +18,83 @@ const useStyles = makeStyles((theme) => ({
   cont: {
     marginTop: theme.spacing(10),
   },
-  main:{
+  main: {
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    background: "fixed",
+    height: 1715,
+  },
+  boxSearch: {
+    marginBottom: "100px"
+  },
+  search: {
+    width: "250px",
+    position: "absolute",
+    top: "200px",
+    right: "600px",
+    borderRadius: "4px",
+    backgroundColor: "white",
+  },
+  mainImg: {
     backgroundImage:"URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
-    backgroundRepeat:"no-repeat",
-    backgroundSize:"cover",
-    background:"fixed",
-    height:1715,
-  }
-
+}
 }));
 
-function Cars(props) {
+function Cars() {
   const classes = useStyles();
-
   const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
-
+  const [text, setText] = useState("");
   const { id } = useParams();
+
+
+
 
   useEffect(() => {
     dispatch(loadCars());
   }, [id]);
 
+  const searchText = cars.filter((car) => {
+    return car.name.toLowerCase().includes(text.toLowerCase());
+  });
+
+
+
   return (
-    <>
+    <Box className={classes.mainImg}>
+
       <Toolbar />
       <Container className={classes.main}>
+        <Box className={classes.boxSearch}>
+          <TextField
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+              className={classes.search}
+              label="Поиск"
+              type="search"
+              variant="filled"
+          />
+        </Box>
+
         <Grid
           classes={classes.cont}
           container
           direction="row"
-          justifyContent="space-around"
+          justifyContent="space-evenly"
           alignItems="center"
         >
-          {cars.map((item) => {
+
+          {searchText.map((item) => {
             return (
               <Grid item xs={4}>
                 <Car item={item} key={item.id} />
               </Grid>
             );
           })}
+
         </Grid>
       </Container>
-    </>
+    </Box>
   );
 }
 

@@ -7,7 +7,8 @@ import {
   Grid,
   Link,
   makeStyles,
-  TextField, Toolbar,
+  TextField,
+  Toolbar,
   Typography,
 } from "@material-ui/core";
 import { auth, registerUser } from "../../redux/features/users";
@@ -151,5 +152,6 @@ function SignUpPage(props) {
 
 
 export default SignUpPage;
+
 
 
