@@ -10,6 +10,7 @@ import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Slider from '@material-ui/core/Slider';
 import {NavLink} from "react-router-dom";
+import {Container, TextField} from "@material-ui/core";
 
 
 
@@ -62,6 +63,7 @@ function Car({ item }) {
   };
 
   return (
+      <Container>
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
@@ -103,6 +105,7 @@ function Car({ item }) {
         </Fab>
       </CardActions>
     </Card>
+      </Container>
   );
 }
 

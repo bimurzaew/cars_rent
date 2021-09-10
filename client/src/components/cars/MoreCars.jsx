@@ -17,7 +17,9 @@ import {
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-
+container: {
+  marginTop: "100px"
+},
   card: {
     marginTop: "40px",
     width: "300px",
@@ -55,7 +57,7 @@ function MoreCars() {
     <>
       {cars.map(item => {
           return (
-            <Container className={classes}>
+            <Container className={classes.container}>
 
 
               <Grid container xs={12}>
