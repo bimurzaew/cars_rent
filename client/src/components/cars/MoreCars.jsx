@@ -42,6 +42,7 @@ const useStyles = makeStyles({
   boxDesc: {
     marginTop: "50px",
   },
+  
 });
 
 function MoreCars() {
@@ -51,7 +52,8 @@ function MoreCars() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getCarsByID(id)), []);
+
+
 
   const handleRentCar = (id) => {
     dispatch(rentCar(id))
@@ -93,6 +95,7 @@ function MoreCars() {
                       {item.price} ₽ / в сутки
                     </Typography>
                   </CardContent>
+
                   <CardActions>
                     <Button
                       onClick={() => {handleRentCar(id)}}

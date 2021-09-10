@@ -8,10 +8,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import "./style.css";
-import {Container, Grid, Toolbar} from "@material-ui/core";
-import Slider from "@material-ui/core/Slider";
+import { Container, Grid, Toolbar } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
-import { NavLink } from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,85 +63,69 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CarsByCategory(props) {
-
   const classes = useStyles();
+  const history = useHistory();
+  function handleClick (id){
+    history.push(`/cars/${id}`)
+  }
 
   const { cars } = useSelector((state) => state.cars);
 
-  // const [value, setValue] = useState(item.price);
-  //
-  //
-  // const handleChange = (event, newValue) => {
-  //     setValue(newValue);
-  // };
-
-  return(
-      <>
-        <Toolbar/>
+  return (
+    <>
+      <Toolbar />
       <Container className={classes.main}>
-          <Grid
-              classes={classes.cont}
-              container
-              direction="row"
-              justifyContent="space-around"
-              alignItems="center"
-          >
-              {
-                  cars.map((item) => {
-                      return (
+        <Grid
+          classes={classes.cont}
+          container
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          {cars.map((item) => {
+            return (
+              <Grid item xs={4}>
+                <Card className={classes.root}>
+                  <CardMedia
+                    className={classes.media}
+                    image={item.image}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent className={classes.content}>
+                    <Typography gutterBottom variant="h6" component="h2">
+                      {item.name}
+                    </Typography>
+                    <Typography variant="body2" color="inherit" component="p">
+                      <span>Двигатель:</span> {item.desc}
+                    </Typography>
+                    <Typography variant="body2" color="initial" component="p">
+                      цена: {item.price} ₽
+                    </Typography>
+                  </CardContent>
 
-                          <Grid item xs={4}>
-                              <Card className={classes.root}>
-                                  <CardMedia
-                                      className={classes.media}
-                                      image={item.image}
-                                      title="Contemplative Reptile"
-                                  />
-                                  <CardContent className={classes.content}>
-                                      <Typography gutterBottom variant="h6" component="h2">
-                                          {item.name}
-                                      </Typography>
-                                      <Typography variant="body2" color="inherit" component="p">
-                                          <span>Двигатель:</span> {item.desc}
-                                      </Typography>
-                                      <Typography variant="body2" color="initial" component="p">
-                                          {/*цена: {value} ₽*/}
-                                      </Typography>
-                                      <span className={classes.day}>
-                  <span>Сутки :</span>
-                                          {/*<Slider*/}
-                                          {/*    className={classes.index}*/}
-                                          {/*    step={item.price}*/}
-                                          {/*    marks*/}
-                                          {/*    min={item.price}*/}
-                                          {/*    max={item.price*10}*/}
-                                          {/*    onChange={handleChange}*/}
-                                          {/*/>*/}
-                </span>
-                                  </CardContent>
-
-                                  <CardActions>
-                                      <Fab
-                                          variant="extended"
-                                          size="small"
-                                          color="primary"
-                                          aria-label="add"
-                                          className={classes.margin}
-                                      >
-                                          <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
-                                      </Fab>
-                                  </CardActions>
-                              </Card>
-                          </Grid>
-
-                      );
-                  })
-              }
-          </Grid>
+                  <CardActions>
+                    <Fab
+                      variant="extended"
+                      size="small"
+                      color="primary"
+                      aria-label="add"
+                      className={classes.margin}
+                    >
+                      {/*<NavLink to={`/cars/${item._id}`}>*/}
+                        <button onClick={()=>handleClick(item._id)}>
+                          подробнее
+                        </button>
+                      {/*</NavLink>*/}
+                    </Fab>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
       </Container>
-      </>
-  )
-
+    </>
+  );
 }
 
 export default CarsByCategory;

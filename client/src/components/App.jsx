@@ -11,40 +11,45 @@ import PersonalPage from "./personal/PersonalPage";
 import MoreCars from "./cars/MoreCars";
 import CarsByCategory from "./cars/CarsByCategory";
 
+import CarsById from "./cars/CarById";
+
 import { More } from "@material-ui/icons";
 import Car from "./cars/Car";
+
 
 function App() {
 
   return (
-
     <BrowserRouter>
-      <Switch>
+        <Header />
+
+        <Switch>
         <Route exact path="/">
-          <Header />
           <Cars />
-          <FooterCars />
         </Route>
         <Route path="/cars/category/:id">
-          <Header />
-          <CarsByCategory />
-          <FooterCars />
+            <CarsByCategory />
+
         </Route>
         <Route path="/cars/:id">
-          <MoreCars />
+            <CarsById/>
+
         </Route>
         <Route path="/personal">
-          <Header />
-          <PersonalPage />
-          <FooterCars />
+            <PersonalPage />
+
         </Route>
       </Switch>
-      <Route path="/signIn">
+        <FooterCars />
+
+        <Route path="/signIn">
+
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
+
     </BrowserRouter>
   );
 }
