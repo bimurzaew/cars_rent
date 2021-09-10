@@ -1,5 +1,5 @@
 const initialState = {
-  candidate: localStorage.getItem("candidate"),
+  user: null,
   loading: false,
   error: null,
   message: null,
@@ -44,37 +44,36 @@ export default function users(state = initialState, action) {
         loading: false,
         error: null,
         token: action.payload.token,
-        candidate: action.payload.candidate,
       };
-    case 'user/rent/pending':
+    case "user/rent/pending":
       return {
         ...state,
-        loading:true
-      }
-    case 'user/rent/fulfilled':
+        loading: true,
+      };
+    case "user/rent/fulfilled":
       return {
         ...state,
         loading: false,
-        error:action.payload.error,
-        message:action.payload.message
-      }
-    // case "user/load/pending":
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
-    // case "user/load/rejected":
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     error: action.error,
-    //   };
-    // case "user/load/fulfilled":
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     user: action.payload.candidate,
-    //   };
+        error: action.payload.error,
+        message: action.payload.message,
+      };
+    case "user/load/pending":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "user/load/rejected":
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case "user/load/fulfilled":
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
     default:
       return state;
   }
@@ -112,38 +111,39 @@ export const auth = ({ login, password }) => {
       dispatch({ type: "user/signIn/fulfilled", payload: [json] });
 
       localStorage.setItem("token", json.token);
-      localStorage.setItem("candidate", JSON.stringify(json.candidate));
+      // localStorage.setItem("candidate", JSON.stringify(json.candidate));
     }
   };
 };
 
-// export const getUser = () => {
-//   return async (dispatch) => {
-//     dispatch({ type: "user/load/pending" });
-//
-//     const response = await fetch(user/profile, {
-//     headers: {
-//       "Authorization":json.token
-//     }
-//     });
-//     const json = await response.json();
-//     if (json.error) {
-//       dispatch({ type: "user/load/rejected", error: json.error });
-//     } else {
-//       dispatch({ type: "user/load/fulfilled", payload: json });
-//     }
-//   };
-// };
+export const getUser = () => {
+  return async (dispatch, getState) => {
+    dispatch({ type: "user/load/pending" });
+    const state = getState();
+    const response = await fetch("/user/profile", {
+      headers: {
+        method: "GET",
+        Authorization: `Bearer ${state.users.token}`,
+      },
+    });
+    const json = await response.json();
+    if (json.error) {
+      dispatch({ type: "user/load/rejected", error: json.error });
+    } else {
+      dispatch({ type: "user/load/fulfilled", payload: json });
+    }
+  };
+};
 
 export const rentCar = (id) => {
   return async (dispatch, getState) => {
-    const state = getState()
-    dispatch({type:"user/rent/pending"})
+    const state = getState();
+    dispatch({ type: "user/rent/pending" });
     const response = await fetch(`/cars/${id}`, {
-      method:"PATCH",
-      headers: { Authorization: `Bearer ${state.users.token}` }
-    })
-    const json = await response.json()
-    dispatch({type:'user/rent/fulfilled', payload:json})
-  }
-}
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${state.users.token}` },
+    });
+    const json = await response.json();
+    dispatch({ type: "user/rent/fulfilled", payload: json });
+  };
+};
