@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import {
   Button,
   Container,
@@ -53,7 +53,7 @@ function SignInPage(props) {
 
   const handleSubmit = () => {
     dispatch(auth({ password, login }));
-    history.push("/personal");
+    // history.push("/personal");
   };
 
   return (
@@ -100,15 +100,17 @@ function SignInPage(props) {
                 </Link>
               </Grid>
             </Grid>
-            <Button
-              onClick={handleSubmit}
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              войти
-            </Button>
+            <Link to='/personal'>
+              <Button
+                onClick={handleSubmit}
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                войти
+              </Button>
+            </Link>
           </form>
         </div>
       </Container>

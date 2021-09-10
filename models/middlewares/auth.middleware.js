@@ -6,7 +6,6 @@ module.exports.authMiddleware = async (req, res, next) => {
   if (!authorization) {
     res.status(401).json({ error: "ошибка авторизации" });
   }
-
   const [type, token] = authorization.split(" ");
 
   if (type !== "Bearer") {
@@ -17,6 +16,8 @@ module.exports.authMiddleware = async (req, res, next) => {
 
     next();
   } catch (e) {
-    return res.status(404).json({ error:'Ошибка авторизации: ' + e.toString()});
+    return res
+      .status(404)
+      .json({ error: "Ошибка авторизации: " + e.toString() });
   }
 };
