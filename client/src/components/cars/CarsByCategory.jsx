@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import "./style.css";
 import { Container, Grid, Toolbar } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
-import {NavLink, useHistory} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     background: "fixed",
-    height: 1715,
+    height: "100vh",
   },
   cont: {
     marginTop: theme.spacing(10),
@@ -64,10 +63,6 @@ const useStyles = makeStyles((theme) => ({
 
 function CarsByCategory(props) {
   const classes = useStyles();
-  const history = useHistory();
-  function handleClick (id){
-    history.push(`/cars/${id}`)
-  }
 
   const { cars } = useSelector((state) => state.cars);
 
@@ -111,11 +106,7 @@ function CarsByCategory(props) {
                       aria-label="add"
                       className={classes.margin}
                     >
-                      {/*<NavLink to={`/cars/${item._id}`}>*/}
-                        <button onClick={()=>handleClick(item._id)}>
-                          подробнее
-                        </button>
-                      {/*</NavLink>*/}
+                      <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
                     </Fab>
                   </CardActions>
                 </Card>
