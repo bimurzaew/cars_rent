@@ -100,7 +100,7 @@ function SignInPage(props) {
                 </Link>
               </Grid>
             </Grid>
-            <Link to='/personal'>
+            <Link to='/'>
               <Button
                 onClick={handleSubmit}
                 fullWidth

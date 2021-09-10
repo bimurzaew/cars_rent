@@ -54,7 +54,7 @@ module.exports.usersController = {
       const token = await jwt.sign(payload, process.env.JWT_KEY, {
         expiresIn: "24h",
       });
-      res.json({ token, candidate });
+      res.json({ candidate, token });
     } catch (e) {
       res.status(400).json({ error: e });
     }
@@ -70,10 +70,10 @@ module.exports.usersController = {
   },
   rentCar: async (req, res) => {
     try {
-      const user = await User.findById(req.user.id)
+      const user = await User.findById(req.user.id);
       const car = await Car.findById(req.params.carsId);
       if (user.carRent.length >= 1) {
-        console.log(user)
+        console.log(user);
         res.json({ error: "зачем вам больше одной машины?" });
       } else if (car.user) {
         res.json({ error: "машина уже арендована" });
