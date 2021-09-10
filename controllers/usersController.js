@@ -61,7 +61,6 @@ module.exports.usersController = {
   },
   getUserById: async (req, res) => {
     try {
-
       const user = await User.findById(req.user.id);
 
       return res.json(user);
@@ -69,27 +68,26 @@ module.exports.usersController = {
       return res.status(404).json({ error: e });
     }
   },
-  rentCar: async (req,res) => {
+  rentCar: async (req, res) => {
     try {
-      const user = await User.findById(req.params.id)
-      const car = await Car.findById(req.params.carId)
-      if (user.carRent < 1) {
+      const user = await User.findById(req.user.id)
+      const car = await Car.findById(req.params.carsId);
+      if (user.carRent.length >= 1) {
+        console.log(user)
+        res.json({ error: "зачем вам больше одной машины?" });
+      } else if (car.user) {
+        res.json({ error: "машина уже арендована" });
+      } else {
         await User.findByIdAndUpdate(user, {
-          $push:{carRent:car},
-        })
-        if (car.user) {
-          await Car.findByIdAndUpdate(car, {
-            $push:{user}
-          })
-        }else {
-          return res.json({error: 'машина занята'})
-        }
-      }else {
-        res.json({error: 'зачем вам больше одной машины?'})
+          $push: { carRent: car },
+        });
+        await Car.findByIdAndUpdate(car, {
+          user: car,
+        });
       }
-      res.json({message:'машина арендована'})
-    }catch (e) {
-      res.status(400).json({error:e})
+      res.json({ message: "ровных вам дорог!!" });
+    } catch (e) {
+      res.status(400).json({ error: toString(e) });
     }
-  }
+  },
 };

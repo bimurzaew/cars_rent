@@ -1,7 +1,8 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+
+import {  useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { getCarsByID } from "../../redux/features/cars";
 import {
@@ -12,9 +13,10 @@ import {
   CardMedia,
   Container,
   Grid,
-  Box
-} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+
+} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { rentCar } from '../../redux/features/users';
 
 const useStyles = makeStyles({
 container: {
@@ -46,6 +48,7 @@ container: {
 function MoreCars() {
   const classes = useStyles();
   const { cars } = useSelector((state) => state.cars);
+  const error = useSelector(state => state.users.error)
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -117,6 +120,7 @@ function MoreCars() {
 
         }
       )}
+
 
 
     </>
