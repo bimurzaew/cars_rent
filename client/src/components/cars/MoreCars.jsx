@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { getCarsByID } from "../../redux/features/cars";
 import {
@@ -10,7 +10,6 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Fab,
   Grid,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -19,6 +18,7 @@ const useStyles = makeStyles({
   medImg: {
     height: "100px",
   },
+  
 });
 
 function MoreCars() {
@@ -27,7 +27,8 @@ function MoreCars() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getCarsByID(id)), []);
+
+
 
   console.log(cars);
 
@@ -59,11 +60,7 @@ function MoreCars() {
                       {item.price} ₽ / в сутки
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      Арендовать
-                    </Button>
-                  </CardActions>
+
                 </Card>
               );
             })}

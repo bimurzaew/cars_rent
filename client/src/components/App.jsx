@@ -2,7 +2,6 @@ import { BrowserRouter } from "react-router-dom";
 import Cars from "./cars";
 import Header from "./Header";
 
-
 import SignUpPage from "./auth/SignUpPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import SignInPage from "./auth/SignInPage";
@@ -12,46 +11,43 @@ import PersonalPage from "./personal/PersonalPage";
 
 import MoreCars from "./cars/MoreCars";
 import CarsByCategory from "./cars/CarsByCategory";
-import {More} from "@material-ui/icons";
-import Car from "./cars/Car";
-
+import CarsById from "./cars/CarById";
 
 function App() {
   const token = useSelector((state) => state.users.token);
 
   return (
-      <BrowserRouter>
-          <Switch>
+    <BrowserRouter>
+        <Header />
 
+        <Switch>
+        <Route exact path="/">
+          <Cars />
+        </Route>
+        <Route path="/cars/category/:id">
+            <CarsByCategory />
 
-              <Route exact path="/">
-                  <Header/>
-                  <Cars/>
-                  <FooterCars/>
-              </Route>
-              <Route path="/cars/category/:id">
-                  <Header/>
-                  <CarsByCategory/>
-                  <FooterCars/>
-              </Route>
-              <Route path="/cars/:id">
-                  <MoreCars/>
-              </Route>
-              <Route path="/personal">
-                  <Header />
-                  <PersonalPage/>
-                  <FooterCars />
-              </Route>
-         </Switch>
-          <Route path='/signIn'>
-              <SignInPage/>
-          </Route>
-          <Route path='/signup'>
-              <SignUpPage/>
-          </Route>
+        </Route>
+        <Route path="/cars/:id">
+            <CarsById/>
 
-      </BrowserRouter>
-  )
+        </Route>
+        <Route path="/personal">
+            <PersonalPage />
+
+        </Route>
+      </Switch>
+        <FooterCars />
+
+        <Route path="/signIn">
+        <SignInPage />
+      </Route>
+      <Route path="/signup">
+        <SignUpPage />
+      </Route>
+
+    </BrowserRouter>
+  );
 }
 
 export default App;

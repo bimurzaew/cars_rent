@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-
 import logo from "../../logo.svg";
 import { Link } from "react-router-dom";
 

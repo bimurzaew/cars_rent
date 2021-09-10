@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Car from "./Car";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { Route, Switch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Toolbar } from "@material-ui/core";
-import CarsByCategory from "./CarsByCategory";
 import { loadCars } from '../../redux/features/cars';
-import MoreCars from "./MoreCars";
+import Car from "./Car";
 
 
 
@@ -56,7 +54,6 @@ function Cars(props) {
             return (
               <Grid item xs={4}>
                 <Car item={item} key={item.id} />
-
               </Grid>
             );
           })}

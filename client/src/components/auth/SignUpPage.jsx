@@ -149,8 +149,7 @@ function SignUpPage(props) {
   );
 }
 
-<<<<<<< HEAD
+
 export default SignUpPage;
-=======
-export default SignUpPage;
->>>>>>> main
+
+
