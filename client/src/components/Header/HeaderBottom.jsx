@@ -43,3 +43,7 @@ function HeaderBottom() {
 }
 
 export default HeaderBottom;
+<<<<<<< HEAD
+=======
+
+>>>>>>> main

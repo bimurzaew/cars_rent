@@ -1,7 +1,7 @@
 const initialState = {
   cars: [],
-  loading: false,
-  oneCar: [],
+  loading: false
+
 };
 
 export const carsReducer = (state = initialState, action) => {

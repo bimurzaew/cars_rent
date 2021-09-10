@@ -150,4 +150,8 @@ function SignUpPage(props) {
   );
 }
 
+
 export default SignUpPage;
+
+
+

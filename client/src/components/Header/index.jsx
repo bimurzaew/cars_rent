@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
+
 import { Icon, makeStyles, TextField } from "@material-ui/core";
+
 import logo from "../../logo.svg";
 import { Link, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";

@@ -42,7 +42,6 @@ module.exports.usersController = {
       if (!candidate) {
         return res.status(401).json({ error: "неверный логин" });
       }
-
       const valid = await bcrypt.compare(password, candidate.password);
       if (!valid) {
         return res.status(401).json({ error: "неверный пароль" });
@@ -56,7 +55,7 @@ module.exports.usersController = {
       });
       res.json({ candidate, token });
     } catch (e) {
-      res.status(400).json({ error: e });
+      res.status(400).json({ error: toString(e) });
     }
   },
   getUserById: async (req, res) => {
