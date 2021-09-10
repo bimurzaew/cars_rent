@@ -80,3 +80,14 @@ a{
 a:hover{
     color: inherit;
 }
+
+.search {
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+}
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
