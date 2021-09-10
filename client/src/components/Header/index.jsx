@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-
+import {TextField} from '@material-ui/core';
 import logo from "../../logo.svg";
 import { Link } from "react-router-dom";
 
 function Header(props) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.users.token);
+
 
   useEffect(() => {
     dispatch(loadCategories());
@@ -27,13 +27,6 @@ function Header(props) {
               </div>
               <div className="col">
                 <div className="head-tel">
-                  <a
-                    href="tel:+79284781016"
-                    target="whatsapp"
-                    className={"tel"}
-                  >
-                    +7(928) 478-10-16
-                  </a>
                 </div>
               </div>
               <div className="col">
@@ -76,6 +69,7 @@ function Header(props) {
                         d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
                       ></path>
                     </svg>
+
                   </div>
                 </div>
               </div>
@@ -83,6 +77,7 @@ function Header(props) {
           </div>
           <div className="head-bottom">
             <div className="row text-center">
+
               <HeaderBottom />
             </div>
           </div>
