@@ -88,7 +88,7 @@ function Header(props) {
             </div>
           </div>
           <div className="head-bottom">
-            <div className="row text-center">
+            <div className="row justify-content-around text-center">
               <HeaderBottom />
             </div>
           </div>
