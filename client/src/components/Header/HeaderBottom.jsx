@@ -20,7 +20,11 @@ function HeaderBottom() {
       <div className="main-nav">
         <div className="col">
           <p onClick={handleLoadCars} className="head-nav">
-            <NavLink exact to="/">
+            <NavLink
+                exact to="/"
+                className="nav-link"
+                activeClassName="nav-active"
+            >
               Главная
             </NavLink>
           </p>
@@ -32,7 +36,13 @@ function HeaderBottom() {
                 className="head-nav"
                 onClick={() => handleGetByCategories(item._id)}
               >
-                <NavLink to={`/cars/category/${item._id}`}>{item.name}</NavLink>
+                <NavLink
+                  className="nav-link"
+                  to={`/cars/category/${item._id}`}
+                  activeClassName="nav-active"
+                >
+                  {item.name}
+                </NavLink>
               </p>
             </div>
           );
@@ -43,4 +53,3 @@ function HeaderBottom() {
 }
 
 export default HeaderBottom;
-

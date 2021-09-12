@@ -1,54 +1,42 @@
 import { BrowserRouter } from "react-router-dom";
 import Cars from "./cars";
 import Header from "./Header";
-
 import SignUpPage from "./auth/SignUpPage";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import SignInPage from "./auth/SignInPage";
-import { useSelector } from "react-redux";
 import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
-import MoreCars from "./cars/MoreCars";
 import CarsByCategory from "./cars/CarsByCategory";
-
 import CarsById from "./cars/CarById";
-
-import { More } from "@material-ui/icons";
-import Car from "./cars/Car";
-
+import "bootstrap/dist/css/bootstrap-grid.min.css";
 
 function App() {
-
   return (
     <BrowserRouter>
-        <Header />
+      <Header />
 
-        <Switch>
+      <Switch>
         <Route exact path="/">
           <Cars />
         </Route>
         <Route path="/cars/category/:id">
-            <CarsByCategory />
-
+          <CarsByCategory />
         </Route>
         <Route path="/cars/:id">
-            <CarsById/>
-
+          <CarsById />
         </Route>
         <Route path="/personal">
-            <PersonalPage />
-
+          <PersonalPage />
         </Route>
       </Switch>
-        <FooterCars />
 
-        <Route path="/signIn">
-
+      <Route path="/signIn">
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
+        {/*<FooterCars />*/}
 
     </BrowserRouter>
   );
