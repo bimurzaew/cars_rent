@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import {Box, Toolbar} from "@material-ui/core";
 import Car from "./Car";
 import { getCarsByID } from "../../../redux/features/cars";
+import { getUser } from "../../../redux/features/users";
+import PersonalPage from "../../personal/PersonalPage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +35,9 @@ function CarsById(props) {
 
   const { id } = useParams();
 
-  useEffect(() => dispatch(getCarsByID(id)), [id]);
+  useEffect(() => {
+    dispatch(getCarsByID(id));
+  }, [id]);
 
   return (
     <Box className={classes.mainImg}>

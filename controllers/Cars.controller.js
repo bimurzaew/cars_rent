@@ -43,6 +43,5 @@ module.exports.carsController = {
     } catch (e) {
       res.json(e)
     }
-
   }
 };

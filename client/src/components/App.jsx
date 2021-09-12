@@ -10,33 +10,37 @@ import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 
+import { More } from "@material-ui/icons";
+import Car from "./cars/Car";
+
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-
       <Switch>
         <Route exact path="/">
+          <Header />
           <Cars />
         </Route>
         <Route path="/cars/category/:id">
+          <Header />
           <CarsByCategory />
         </Route>
         <Route path="/cars/:id">
+          <Header />
           <CarsById />
         </Route>
         <Route path="/personal">
+          <Header />
           <PersonalPage />
         </Route>
       </Switch>
-
+      {/*<FooterCars />*/}
       <Route path="/signIn">
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
-        {/*<FooterCars />*/}
 
     </BrowserRouter>
   );
