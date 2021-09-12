@@ -16,40 +16,35 @@ import CarsById from "./cars/CarById";
 import { More } from "@material-ui/icons";
 import Car from "./cars/Car";
 
-
 function App() {
-
   return (
     <BrowserRouter>
-        <Header />
-
-        <Switch>
+      <Switch>
         <Route exact path="/">
+          <Header />
           <Cars />
         </Route>
         <Route path="/cars/category/:id">
-            <CarsByCategory />
-
+          <Header />
+          <CarsByCategory />
         </Route>
         <Route path="/cars/:id">
-            <CarsById/>
-
+          <Header />
+          <CarsById />
         </Route>
         <Route path="/personal">
-            <PersonalPage />
-
+          <Header />
+          <PersonalPage />
         </Route>
       </Switch>
-        <FooterCars />
+      {/*<FooterCars />*/}
 
-        <Route path="/signIn">
-
+      <Route path="/signIn">
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
-
     </BrowserRouter>
   );
 }

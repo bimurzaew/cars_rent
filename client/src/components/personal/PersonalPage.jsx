@@ -14,14 +14,13 @@ const useStyles = makeStyles({
     height: 360,
   },
 });
-function PersonalPage(props) {
+function PersonalPage() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
+  const { user } = useSelector((state) => state.users);
   const classes = useStyles();
-
   return (
     <Container>
       <Toolbar />
@@ -37,10 +36,10 @@ function PersonalPage(props) {
           <Grid item xs={1} />
           <Grid item xs={3}>
             <Typography gutterBottom variant="h5" component="p">
-              <b>Фамилия</b>: {user.lastName}
+              <b>Фамилия</b>: {user?.lastName}
             </Typography>
             <Typography gutterBottom variant="h5" component="p">
-              <b>Имя</b>: {user.name}
+              <b>Имя</b>: {user?.name}
             </Typography>
             <Typography gutterBottom variant="h5" component="p">
               <b>Почта</b>:

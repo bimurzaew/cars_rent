@@ -1,8 +1,10 @@
 const initialState = {
   user: null,
   loading: false,
-  error: null,
+  regError: null,
+  authError: null,
   message: null,
+  car: null,
   token: localStorage.getItem("token"),
 };
 
@@ -12,19 +14,19 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        error: null,
+        regError: null,
       };
     case "user/signup/fulfilled":
       return {
         ...state,
         loading: false,
-        error: null,
-        message: action.message,
+        regError: null,
+        message: action.payload.message,
       };
     case "user/signup/rejected":
       return {
         ...state,
-        error: action.error,
+        regError: action.regError,
         message: false,
       };
     case "user/signIn/pending":
@@ -36,26 +38,27 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.error,
+        authError: action.authError,
       };
     case "user/signIn/fulfilled":
       return {
         ...state,
         loading: false,
-        error: null,
+        authError: null,
         token: action.payload.token,
       };
     case "user/rent/pending":
       return {
         ...state,
         loading: true,
+        error: false,
       };
     case "user/rent/fulfilled":
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        message: action.payload.message,
+        message: action.message,
       };
     case "user/load/pending":
       return {
@@ -74,6 +77,28 @@ export default function users(state = initialState, action) {
         loading: false,
         user: action.payload,
       };
+    case "user/logout/fulfilled":
+      return {
+        ...state,
+        token: null,
+      };
+    case "user/put/pending":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+    case "user/put/rejected":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case "user/put/fulfilled":
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
@@ -88,10 +113,10 @@ export const registerUser = ({ login, password, lastName, name }) => {
       headers: { "Content-type": "application/json" },
     });
     const json = await response.json();
-    if (json.error) {
-      dispatch({ type: "user/signup/rejected", error: json.error });
+    if (json.regError) {
+      dispatch({ type: "user/signup/rejected", regError: json.regError });
     } else {
-      dispatch({ type: "user/signup/fulfilled", message: json.message });
+      dispatch({ type: "user/signup/fulfilled", payload: json });
     }
   };
 };
@@ -105,13 +130,12 @@ export const auth = ({ login, password }) => {
       headers: { "Content-type": "application/json" },
     });
     const json = await response.json();
-    if (json.error) {
-      dispatch({ type: "user/signIn/rejected", error: json.error });
+    if (json.authError) {
+      dispatch({ type: "user/signIn/rejected", authError: json.authError });
     } else {
-      dispatch({ type: "user/signIn/fulfilled", payload: [json] });
+      dispatch({ type: "user/signIn/fulfilled", payload: json });
 
       localStorage.setItem("token", json.token);
-      // localStorage.setItem("candidate", JSON.stringify(json.candidate));
     }
   };
 };
@@ -145,5 +169,29 @@ export const rentCar = (id) => {
     });
     const json = await response.json();
     dispatch({ type: "user/rent/fulfilled", payload: json });
+  };
+};
+
+export const putCar = (id) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: "user/put/pending" });
+    const state = getState();
+    const response = await fetch(`/car/${id}`, {
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${state.users.token}` },
+    });
+    const json = await response.json();
+    if (json.error) {
+      dispatch({ type: "user/put/rejected", error: json.error });
+    } else {
+      dispatch({ type: "user/put/fulfilled" });
+    }
+  };
+};
+
+export const logOut = () => {
+  return async (dispatch) => {
+    dispatch({ type: "user/logout/fulfilled" });
+    localStorage.clear();
   };
 };

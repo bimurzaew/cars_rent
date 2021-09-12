@@ -8,5 +8,6 @@ router.post("/user", usersController.registerUser);
 router.post("/login", usersController.logIn);
 router.get("/user/profile", authMiddleware, usersController.getUserById);
 router.patch("/cars/:carsId", authMiddleware, usersController.rentCar);
+router.patch("/car/:id", authMiddleware, usersController.putCar);
 
 module.exports = router;
