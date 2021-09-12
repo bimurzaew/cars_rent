@@ -36,6 +36,7 @@ function Header(props) {
               <div className="col">
                 <img className="logo-company" src={logo} />
               </div>
+
               <div className="col-6">
                   <div className="head-tel">
                     Аренда
@@ -49,7 +50,7 @@ function Header(props) {
                           1000,
                           "бизнес",
                           1000,
-                          "и VIP-класса автомобилей по все РОССИИ!!",
+                          "и VIP-класса автомобилей по всей РОССИИ!!",
                           1000,
                         ]}
                     />

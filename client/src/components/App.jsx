@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap-grid.min.css";
 
 import { More } from "@material-ui/icons";
 import Car from "./cars/Car";
+import AboutUs from "./Header/AboutUs";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           <Header />
           <Cars />
         </Route>
+          <Route  path="/about-us">
+              <AboutUs/>
+          </Route>
         <Route path="/cars/category/:id">
           <Header />
           <CarsByCategory />
