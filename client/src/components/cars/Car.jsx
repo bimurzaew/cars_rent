@@ -7,7 +7,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +57,6 @@ function Car({ item }) {
   return (
 
           <Card className={classes.root}>
-
               <CardMedia
                   className={classes.media}
                   image={item.image}

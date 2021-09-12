@@ -6,13 +6,8 @@ import HeaderBottom from "./HeaderBottom";
 import logo from "../../logo.svg";
 import { Link } from "react-router-dom";
 import { logOut } from "../../redux/features/users";
-import logoExit from "./exit.png"
-import Typical from "react-typical"
-
-
-
-
-
+import logoExit from "./exit.png";
+import Typical from "react-typical";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -22,10 +17,9 @@ function Header(props) {
     dispatch(loadCategories());
   }, []);
 
-  const handleLogOut =() => {
-    dispatch(logOut())
-  }
-
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
 
   return (
     <header>
@@ -38,24 +32,23 @@ function Header(props) {
               </div>
 
               <div className="col-6">
-                  <div className="head-tel">
-                    Аренда
-                    <Typical
-                        loop={Infinity}
-                        wrapper="p"
-                        steps={[
-                          "эконом",
-                          1000,
-                          "среднего",
-                          1000,
-                          "бизнес",
-                          1000,
-                          "и VIP-класса автомобилей по всей РОССИИ!!",
-                          1000,
-                        ]}
-                    />
-                  </div>
-
+                <div className="head-tel">
+                  Аренда
+                  <Typical
+                    loop={Infinity}
+                    wrapper="p"
+                    steps={[
+                      "эконом",
+                      1000,
+                      "среднего",
+                      1000,
+                      "бизнес",
+                      1000,
+                      "и VIP-класса автомобилей по всей РОССИИ!!",
+                      1000,
+                    ]}
+                  />
+                </div>
               </div>
 
               <div className="col">
@@ -73,14 +66,11 @@ function Header(props) {
                   </div>
                   <div className="logo">
                     {token ? (
-                      <Link to='/'>
-                      <div
-                          className="exitPage"
-                          onClick={handleLogOut}
-                      >
-                        <img className={"logoExit"} src={logoExit} alt=""/>
-                      </div>
-                        </Link>
+                      <Link to="/">
+                        <div className="exitPage" onClick={handleLogOut}>
+                          <img className={"logoExit"} src={logoExit} alt="" />
+                        </div>
+                      </Link>
                     ) : (
                       ""
                     )}
