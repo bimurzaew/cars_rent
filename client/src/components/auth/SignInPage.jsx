@@ -96,7 +96,7 @@ function SignInPage(props) {
             <Grid container>
               <Grid item>
                 <Link to="/signup" variant="body2">
-                  У вас нет аккаунта? Зарегистрироваться
+                  У вас нет аккаунта? <Typography variant='' color='secondary'>Зарегистрироваться</Typography>
                 </Link>
               </Grid>
             </Grid>

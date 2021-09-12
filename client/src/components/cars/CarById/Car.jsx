@@ -130,7 +130,10 @@ function Car({ item }) {
               <span>Двигатель:</span> {item.desc}
             </Typography>
             <Typography variant="body2" color="initial" component="p">
-              цена: {item.price} ₽ / в сутки
+              Цена: {item.price} ₽ / в сутки
+            </Typography>
+            <Typography variant="body2" color="initial" component="p">
+              Количество: {item.amount}
             </Typography>
           </CardContent>
           <Typography
