@@ -98,6 +98,7 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        error: action.payload,
       };
     default:
       return state;
@@ -168,7 +169,11 @@ export const rentCar = (id) => {
       headers: { Authorization: `Bearer ${state.users.token}` },
     });
     const json = await response.json();
-    dispatch({ type: "user/rent/fulfilled", payload: json });
+    if (json.error) {
+      dispatch({ type: "user/rent/rejected" });
+    } else {
+      dispatch({ type: "user/rent/fulfilled", payload: json });
+    }
   };
 };
 
