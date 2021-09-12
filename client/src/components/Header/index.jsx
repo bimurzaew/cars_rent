@@ -4,7 +4,7 @@ import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
 import logo from "../../logo.svg";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logOut } from "../../redux/features/users";
 import logoExit from "./exit.png"
 import Typical from "react-typical"
@@ -16,7 +16,6 @@ import Typical from "react-typical"
 
 function Header(props) {
   const dispatch = useDispatch();
-  const history = useHistory();
   const token = useSelector((state) => state.users.token);
 
   useEffect(() => {
