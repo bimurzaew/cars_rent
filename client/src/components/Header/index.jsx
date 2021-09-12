@@ -4,11 +4,12 @@ import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
 
-import { Icon, makeStyles, TextField } from "@material-ui/core";
+import { Icon, makeStyles } from "@material-ui/core";
 
 import logo from "../../logo.svg";
 import { Link, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+
 import { logOut, registerUser } from "../../redux/features/users";
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -34,7 +35,7 @@ function Header(props) {
   return (
     <header>
       <div className="header-blog">
-        <div className="container">
+        <div className="container-fluid">
           <div className="head-top">
             <div className="row text-center">
               <div className="col">

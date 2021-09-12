@@ -7,15 +7,16 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import "./style.css";
-import { Container, Grid, Toolbar } from "@material-ui/core";
+import {Box, Container, Grid, Toolbar} from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
     marginTop: theme.spacing(15),
+    width:350,
     borderRadius: 10,
+    margin:"auto"
   },
   price: {
     width: 200,
@@ -48,17 +49,20 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-  main: {
+  mainImg: {
     backgroundImage:
-      "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    background: "fixed",
-    height: "100vh",
+        "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundSize:"cover",
+    background:"fixed",
+    backgroundRepeat:"no-repeat",
+    height:"100vh"
   },
   cont: {
     marginTop: theme.spacing(10),
   },
+  wid:{
+    width:"100%"
+  }
 }));
 
 function CarsByCategory(props) {
@@ -67,9 +71,9 @@ function CarsByCategory(props) {
   const { cars } = useSelector((state) => state.cars);
 
   return (
-    <>
+    <Box className={classes.mainImg}>
       <Toolbar />
-      <Container className={classes.main}>
+      <Container maxWidth={classes.wid} className={classes.main}>
         <Grid
           classes={classes.cont}
           container
@@ -115,7 +119,7 @@ function CarsByCategory(props) {
           })}
         </Grid>
       </Container>
-    </>
+    </Box>
   );
 }
 

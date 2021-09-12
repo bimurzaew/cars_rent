@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useParams } from "react-router-dom";
-import { Toolbar } from "@material-ui/core";
+import {Box, Toolbar} from "@material-ui/core";
 import Car from "./Car";
 import { getCarsByID } from "../../../redux/features/cars";
 import { getUser } from "../../../redux/features/users";
@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
   cont: {
     marginTop: theme.spacing(10),
   },
-  main: {
+  mainImg: {
     backgroundImage:
-      "URL(https://propowerpoint.ru/wp-content/uploads/2013/12/Serebristaya_Dymka_Mini.jpg)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    background: "fixed",
-    height: "100vh",
+        "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundSize:"cover",
+    background:"fixed",
+    backgroundRepeat:"no-repeat",
+    height:"100vh"
   },
 }));
 
@@ -40,7 +40,7 @@ function CarsById(props) {
   }, [id]);
 
   return (
-    <>
+    <Box className={classes.mainImg}>
       <Toolbar />
       <Container className={classes.main}>
         <Grid
@@ -55,7 +55,7 @@ function CarsById(props) {
           })}
         </Grid>
       </Container>
-    </>
+    </Box>
   );
 }
 
