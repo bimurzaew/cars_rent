@@ -42,7 +42,7 @@ function Header(props) {
                 <img className="logo-company" src={logo} />
               </div>
               <div className="col">
-             <Link to="/about-us">О нас</Link>
+             {/*<Link to="/about-us">О нас</Link>*/}
               </div>
 
               <div className="col">
