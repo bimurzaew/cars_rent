@@ -8,7 +8,6 @@ import { Box, TextField, Toolbar } from "@material-ui/core";
 import { loadCars } from "../../redux/features/cars";
 
 import Car from "./Car";
-import Spinner from "react-bootstrap/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
