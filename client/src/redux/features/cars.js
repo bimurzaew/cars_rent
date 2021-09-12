@@ -1,15 +1,21 @@
 const initialState = {
   cars: [],
-  loading: false,
-  oneCar: [],
+  loading: false
+
 };
 
 export const carsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "load/cars/pending":
+      return {
+        ...state,
+        loading: true
+      }
     case "load/cars/fulfilled":
       return {
         ...state,
         cars: action.payload,
+        loading: false
       };
     case "load/carsByCategories/pending":
       return {
@@ -58,6 +64,7 @@ export const carsReducer = (state = initialState, action) => {
 
 export const loadCars = () => {
   return async (dispatch) => {
+    dispatch({type:"load/cars/pending"})
     const response = await fetch("/cars");
 
     const json = await response.json();

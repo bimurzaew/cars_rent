@@ -43,7 +43,7 @@ function SignUpPage(props) {
   const [lastName, setLastName] = useState("");
 
   const loading = useSelector((state) => state.users.loading);
-  const error = useSelector((state) => state.users.error);
+  const error = useSelector((state) => state.users.regError);
   const message = useSelector((state) => state.users.message);
 
   const handleChangeLastName = (e) => {
@@ -79,7 +79,7 @@ function SignUpPage(props) {
             {message ? (
               <div>
                 <span>аккаунт успешно создан</span>{" "}
-                <Link variant="body2" color="secondary" href="signIn">
+                <Link variant="body2" color="secondary" href="/signIn">
                   войти
                 </Link>
               </div>
@@ -150,4 +150,8 @@ function SignUpPage(props) {
   );
 }
 
+
 export default SignUpPage;
+
+
+

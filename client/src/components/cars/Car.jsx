@@ -1,23 +1,21 @@
-
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
-import NavigationIcon from '@material-ui/icons/Navigation';
-import Slider from '@material-ui/core/Slider';
-import {NavLink} from "react-router-dom";
-import {Container, TextField} from "@material-ui/core";
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import Fab from "@material-ui/core/Fab";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     marginTop: theme.spacing(15),
+    width: 350,
+    margin: "auto",
     borderRadius: 10,
   },
   price: {
@@ -55,57 +53,41 @@ const useStyles = makeStyles((theme) => ({
 
 function Car({ item }) {
   const classes = useStyles();
-  const [value, setValue] = useState(item.price);
 
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
-      <Container>
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={item.image}
-        title="Contemplative Reptile"
-      />
-      <CardContent className={classes.content}>
-        <Typography gutterBottom variant="h6" component="h2">
-          {item.name}
-        </Typography>
-        <Typography variant="body2" color="inherit" component="p">
-          <span>Двигатель:</span> {item.desc}
-        </Typography>
-        <Typography variant="body2" color="initial" component="p">
-          цена: {value} ₽
-        </Typography>
-        <span className={classes.day}>
-          <span>Сутки :</span>
-          <Slider
-            className={classes.index}
-            step={item.price}
-            marks
-            min={item.price}
-            max={item.price * 10}
-            onChange={handleChange}
-          />
-        </span>
-      </CardContent>
 
-      <CardActions>
-        <Fab
-          variant="extended"
-          size="small"
-          color="primary"
-          aria-label="add"
-          className={classes.margin}
-        >
-          <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
-        </Fab>
-      </CardActions>
-    </Card>
-      </Container>
+          <Card className={classes.root}>
+
+              <CardMedia
+                  className={classes.media}
+                  image={item.image}
+                  title="Contemplative Reptile"
+              />
+              <CardContent className={classes.content}>
+                  <Typography gutterBottom variant="h6" component="h2">
+                      {item.name}
+                  </Typography>
+                  <Typography variant="body2" color="inherit" component="p">
+                      <span>Двигатель:</span> {item.desc}
+                  </Typography>
+                  <Typography variant="body2" color="initial" component="p">
+                      цена: {item.price} ₽
+                  </Typography>
+              </CardContent>
+
+              <CardActions>
+                  <Fab
+                      variant="extended"
+                      size="small"
+                      color="primary"
+                      aria-label="add"
+                      className={classes.margin}
+                  >
+                      <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
+                  </Fab>
+              </CardActions>
+          </Card>
   );
 }
 

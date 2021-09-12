@@ -7,7 +7,8 @@ import {
   CssBaseline,
   Grid,
   makeStyles,
-  TextField, Toolbar,
+  TextField,
+  Toolbar,
   Typography,
 } from "@material-ui/core";
 import { auth } from "../../redux/features/users";
@@ -40,10 +41,10 @@ function SignInPage(props) {
   const [password, setPassword] = useState("");
 
   const loading = useSelector((state) => state.users.loading);
-  const error = useSelector((state) => state.users.error);
+  const error = useSelector((state) => state.users.authError);
   const token = useSelector((state) => state.users.token);
   const history = useHistory();
-
+  console.log(token);
   const handleChangeLogin = (e) => {
     setLogin(e.target.value);
   };
@@ -53,12 +54,11 @@ function SignInPage(props) {
 
   const handleSubmit = () => {
     dispatch(auth({ password, login }));
-    // history.push("/personal");
+    error ? history.push("/") : history.push("/signIn");
   };
-
   return (
     <div>
-      <Toolbar/>
+      <Toolbar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -68,7 +68,7 @@ function SignInPage(props) {
           <Typography
             component="h1"
             variant="body2"
-            color={error ? "primary" : "error"}
+            color={error ? "error" : "primary"}
           >
             {error}
           </Typography>
@@ -100,17 +100,31 @@ function SignInPage(props) {
                 </Link>
               </Grid>
             </Grid>
-            <Link to='/personal'>
-              <Button
-                onClick={handleSubmit}
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                войти
-              </Button>
-            </Link>
+            {error ? (
+              <Link to="/signIn">
+                <Button
+                  onClick={handleSubmit}
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  войти
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/">
+                <Button
+                  onClick={handleSubmit}
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  войти
+                </Button>
+              </Link>
+            )}
           </form>
         </div>
       </Container>
