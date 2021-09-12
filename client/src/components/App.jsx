@@ -21,13 +21,15 @@ function App() {
         <Route exact path="/">
           <Header />
           <Cars />
+          <FooterCars />
         </Route>
-          <Route  path="/about-us">
-              <AboutUs/>
-          </Route>
+        <Route path="/about-us">
+          <AboutUs />
+        </Route>
         <Route path="/cars/category/:id">
           <Header />
           <CarsByCategory />
+          <FooterCars />
         </Route>
         <Route path="/cars/:id">
           <Header />
@@ -38,14 +40,12 @@ function App() {
           <PersonalPage />
         </Route>
       </Switch>
-      {/*<FooterCars />*/}
       <Route path="/signIn">
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
-
     </BrowserRouter>
   );
 }
