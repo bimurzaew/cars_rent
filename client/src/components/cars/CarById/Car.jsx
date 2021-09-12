@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,6 +8,9 @@ import Slider from "@material-ui/core/Slider";
 import Grid from "@material-ui/core/Grid";
 import "./carsById-style.css";
 import { Button } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, putCar, rentCar } from "../../../redux/features/users";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,10 +65,22 @@ const useStyles = makeStyles((theme) => ({
 function Car({ item }) {
   const classes = useStyles();
   const [value, setValue] = useState(item.price);
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
+  const handleRentCar = (id) => {
+    dispatch(rentCar(id));
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const handlePutCar = (id) => {
+    dispatch(putCar(id));
+  };
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
+  const { user } = useSelector((state) => state.users);
 
   const percent = item.price / 10; // скидка если брать авто в аренду от двух суток
 
@@ -115,14 +130,36 @@ function Car({ item }) {
           >
             Итого: {value} ₽
           </Typography>
-
-          <Button
-            className={classes.btmRent}
-            variant="contained"
-            color="secondary"
-          >
-            Арендовать
-          </Button>
+          {user?.carRent?._id === id ? (
+            <Button
+              onClick={() => {
+                handlePutCar(id);
+              }}
+              className={classes.btmRent}
+              variant="contained"
+              color="secondary"
+            >
+              вернуть
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                handleRentCar(id);
+              }}
+              className={classes.btmRent}
+              variant="contained"
+              color="secondary"
+              disabled={item.amount === 0 || user?.carRent || !user}
+            >
+              {item.amount === 0
+                ? "нет свободных машин"
+                : user?.carRent
+                ? "у вас есть машина"
+                : !user
+                ? "авторизируйтесь"
+                : "арендовать"}
+            </Button>
+          )}
         </Card>
       </Grid>
     </>

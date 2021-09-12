@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  lastName:String,
+  lastName: String,
   name: String,
   login: {
     type: String,
     unique: true,
   },
   password: String,
-  carRent:[{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Car"
-  }]
+  carRent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Car",
+  },
+  amount: Number,
 });
 
 const User = mongoose.model("User", userSchema);
