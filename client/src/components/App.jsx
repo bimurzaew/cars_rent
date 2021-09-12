@@ -23,6 +23,7 @@ function App() {
           <Cars />
         </Route>
           <Route  path="/about-us">
+              <Header />
               <AboutUs/>
           </Route>
         <Route path="/cars/category/:id">
