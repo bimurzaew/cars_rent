@@ -104,8 +104,8 @@ const Contacts = () => {
                     </Grid>
                     <Grid item={6}>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.3952221025797!2d45.6900036154872!3d43.326918179133834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4051d161eaa51e15%3A0xcb7a1a0b45c1b6c8!2z0YPQuy4g0JMg0J0g0KLRgNC-0YjQtdCy0LAsIDI4LzcsINCT0YDQvtC30L3Ri9C5LCDQp9C10YfQtdC90YHQutCw0Y8g0KDQtdGB0L8uLCAzNjQwNjg!5e0!3m2!1sru!2sru!4v1631520794259!5m2!1sru!2sru"
-                            width="800" height="600"  allowFullScreen="" loading="lazy"></iframe>
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.3952221025797!2d45.6900036154872!3d43.326918179133834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4051d161eaa51e15%3A0xcb7a1a0b45c1b6c8!2z0YPQuy4g0JMg0J0g0KLRgNC-0YjQtdCy0LAsIDI4LzcsINCT0YDQvtC30L3Ri9C5LCDQp9C10YfQtdC90YHQutCw0Y8g0KDQtdGB0L8uLCAzNjQwNjg!5e0!3m2!1sru!2sru!4v1631520794259!5m2!1sru!2sru"
+    width="800" height="600"  allowFullScreen="" loading="lazy"/>
                     </Grid>
                 </Grid>
             </Box>
