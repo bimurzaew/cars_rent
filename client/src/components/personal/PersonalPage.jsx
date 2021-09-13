@@ -5,10 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Grid, Toolbar } from "@material-ui/core";
 import { getUser } from "../../redux/features/users";
+import CarByPerson from './CarByPerson';
 
 const useStyles = makeStyles({
   root: {
     marginTop: 150,
+    justifyContent:'space-evenly'
   },
   media: {
     height: 360,
@@ -22,10 +24,11 @@ function PersonalPage() {
   const { user } = useSelector((state) => state.users);
   const classes = useStyles();
   return (
+
     <Container>
       <Toolbar />
       <Box>
-        <Grid container className={classes.root}>
+        <Grid container xs={20} className={classes.root}>
           <Grid item xs={3}>
             <CardMedia
               className={classes.media}
@@ -33,7 +36,7 @@ function PersonalPage() {
               title="Contemplative Reptile"
             />
           </Grid>
-          <Grid item xs={1} />
+          <Grid />
           <Grid item xs={3}>
             <Typography gutterBottom variant="h5" component="p">
               <b>Фамилия</b>: {user?.lastName}
@@ -42,12 +45,15 @@ function PersonalPage() {
               <b>Имя</b>: {user?.name}
             </Typography>
             <Typography gutterBottom variant="h5" component="p">
-              <b>Почта</b>:
+              <b>Почта</b>:{user?.mail}
             </Typography>
             <Typography gutterBottom variant="h5" component="p">
-              <b>Контакты</b>:
+              <b>Контакты</b>:{user?.number}
             </Typography>
           </Grid>
+          {user?.carRent? <Grid item xs={2}>
+            <CarByPerson user={user}/>
+          </Grid> : ''}
         </Grid>
       </Box>
     </Container>

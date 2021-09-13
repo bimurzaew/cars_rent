@@ -1,15 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
-import "./header_styles.css";
+import style from "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-import logo from "../../logo.svg";
-import { Link } from "react-router-dom";
+import logo from "../../logo2.png";
+import { Link, NavLink } from "react-router-dom";
 import { logOut } from "../../redux/features/users";
-import logoExit from "./exit.png";
 import Typical from "react-typical";
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    fontSize:40,
+    color:'antiquewhite'
+  }
+}))
 
 function Header(props) {
+  const classes = useStyles()
   const dispatch = useDispatch();
   const token = useSelector((state) => state.users.token);
 
@@ -28,9 +38,8 @@ function Header(props) {
           <div className="head-top">
             <div className="row text-center">
               <div className="col">
-                <img className="logo-company" src={logo} />
+                <img className="logo-company" style={style.logoCompany} src={logo} />
               </div>
-
               <div className="col-6">
                 <div className="head-tel">
                   Аренда
@@ -55,20 +64,21 @@ function Header(props) {
                 <div className="person">
                   <div className="person-text">
                     {token ? (
-                      <Link variant="body2" color="secondary" to="/personal">
-                        Личный кабинет
-                      </Link>
+                      <NavLink  variant="body2" color="secondary" to="/personal">
+                        <PermIdentityTwoToneIcon className={classes.avatar} />
+                      </NavLink>
                     ) : (
                       <Link variant="body2" color="secondary" to="/signIn">
-                        Авторизоваться
+                        <PermIdentityTwoToneIcon className={classes.avatar} />
                       </Link>
                     )}
                   </div>
                   <div className="logo">
+
                     {token ? (
                       <Link to="/">
                         <div className="exitPage" onClick={handleLogOut}>
-                          <img className={"logoExit"} src={logoExit} alt="" />
+                         <ExitToAppTwoToneIcon className={classes.avatar}/>
                         </div>
                       </Link>
                     ) : (
