@@ -59,6 +59,10 @@ export default function users(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         message: action.message,
+        user: {
+          ...state.user,
+          carRent: action.payload.carRent
+        }
       };
     case "user/load/pending":
       return {
@@ -98,19 +102,19 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        user: { ...state.user, carRent: null }
       };
     default:
       return state;
   }
 }
 
-export const registerUser = ({ login, password, lastName, name }) => {
+export const registerUser = ({ login, password, lastName, name, mail, number }) => {
   return async (dispatch) => {
     dispatch({ type: "user/signup/pending" });
     const response = await fetch("/user", {
       method: "POST",
-      body: JSON.stringify({ login, password, lastName, name }),
+      body: JSON.stringify({ login, password, lastName, name, mail, number }),
       headers: { "Content-type": "application/json" },
     });
     const json = await response.json();
@@ -125,6 +129,7 @@ export const registerUser = ({ login, password, lastName, name }) => {
 export const auth = ({ login, password }) => {
   return async (dispatch) => {
     dispatch({ type: "user/signIn/pending" });
+
     const response = await fetch("/login", {
       method: "POST",
       body: JSON.stringify({ login, password }),
@@ -133,6 +138,7 @@ export const auth = ({ login, password }) => {
     const json = await response.json();
     if (json.authError) {
       dispatch({ type: "user/signIn/rejected", authError: json.authError });
+      throw new Error(json.authError);
     } else {
       dispatch({ type: "user/signIn/fulfilled", payload: json });
 
@@ -189,7 +195,7 @@ export const putCar = (id) => {
     if (json.error) {
       dispatch({ type: "user/put/rejected", error: json.error });
     } else {
-      dispatch({ type: "user/put/fulfilled" });
+      dispatch({ type: "user/put/fulfilled", payload:json });
     }
   };
 };

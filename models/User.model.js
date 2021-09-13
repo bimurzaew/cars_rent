@@ -13,6 +13,8 @@ const userSchema = mongoose.Schema({
     ref: "Car",
   },
   amount: Number,
+  mail:String,
+  number:Number
 });
 
 const User = mongoose.model("User", userSchema);

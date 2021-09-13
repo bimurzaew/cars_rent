@@ -9,11 +9,9 @@ import PersonalPage from "./personal/PersonalPage";
 import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-
-import { More } from "@material-ui/icons";
-import Car from "./cars/Car";
 import AboutUs from "./Header/AboutUs";
 import CarsByBrands from "./cars/CarsByBrands";
+
 
 function App() {
   return (
@@ -22,14 +20,20 @@ function App() {
         <Route exact path="/">
           <Header />
           <Cars />
+          <FooterCars />
+        </Route>
+        <Route path="/about-us">
+          <AboutUs />
         </Route>
           <Route  path="/about-us">
               <Header />
               <AboutUs/>
           </Route>
+
         <Route path="/cars/category/:id">
           <Header />
           <CarsByCategory />
+          <FooterCars />
         </Route>
           <Route path="/cars/brand/:id">
               <Header />
@@ -44,14 +48,12 @@ function App() {
           <PersonalPage />
         </Route>
       </Switch>
-      {/*<FooterCars />*/}
       <Route path="/signIn">
         <SignInPage />
       </Route>
       <Route path="/signup">
         <SignUpPage />
       </Route>
-
     </BrowserRouter>
   );
 }

@@ -6,6 +6,8 @@ import  client from "../assets/clin.svg"
 import  moneyBox from "../assets/piggy_bank.svg"
 import  watch from "../assets/clock.svg"
 import  car from "../assets/100+.svg"
+
+
 const useStyles = makeStyles({
 title: {
 color: "#33325E",
