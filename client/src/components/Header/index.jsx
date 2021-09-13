@@ -44,7 +44,9 @@ function Header(props) {
               <div className="col">
              {/*<Link to="/about-us">О нас</Link>*/}
               </div>
-
+              <div className="col">
+                {/*<Link to="/contacts">Контакты</Link>*/}
+              </div>
               <div className="col">
                 <a href="https://api.whatsapp.com/send/?phone=%2B79284781016&text&app_absent=0">
                   <img
