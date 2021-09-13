@@ -39,21 +39,7 @@ function Header(props) {
 
               <div className="col-6">
                   <div className="head-tel">
-                    Аренда
-                    <Typical
-                        loop={Infinity}
-                        wrapper="p"
-                        steps={[
-                          "эконом",
-                          1000,
-                          "среднего",
-                          1000,
-                          "бизнес",
-                          1000,
-                          "и VIP-класса автомобилей по всей РОССИИ!!",
-                          1000,
-                        ]}
-                    />
+
                   </div>
 
               </div>

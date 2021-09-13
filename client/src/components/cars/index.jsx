@@ -6,16 +6,36 @@ import Grid from "@material-ui/core/Grid";
 import { useParams } from "react-router-dom";
 import {Box, Button, Paper, TextField, Toolbar} from "@material-ui/core";
 import { loadCars } from "../../redux/features/cars";
-
+import Typical from "react-typical";
 import Car from "./Car";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  title:{
+    margin:"150px auto 0",
+    width:950,
+    backgroundColor:"transparent",
+    padding:15,
+    boxShadow:"none",
+    color:"white",
+    fontSize:30,
+    textAlign:"center",
+
+
+  },
+  text_title:{
+    display:"flex",
+    alignItems:"center"
+
+  },
+  type_p:{
+    marginLeft:10
+  },
   info_block:{
-    margin: "150px auto 50px",
-    width:700,
+    margin: "30px auto 50px",
+    width:950,
     backgroundColor:"rgba(255,255,255,0.8)",
     padding:15
   },
@@ -44,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize:"cover",
     backgroundRepeat:"no-repeat",
     background:"fixed",
-    height:"376vh"
+    height:"399vh"
   },
   wid:{
     width:"100%"
@@ -81,6 +101,28 @@ function Cars() {
           <Box className={classes.mainImg}>
       <Toolbar />
       <Container maxWidth={classes.wid}  className={classes.main}>
+        <Paper
+            className={classes.title}
+        >
+          <div className={classes.text_title}>
+            Аренда
+            <Typical
+                className={classes.type_p}
+                loop={Infinity}
+                wrapper="p"
+                steps={[
+                  "эконом",
+                  1000,
+                  "среднего",
+                  1000,
+                  "бизнес",
+                  1000,
+                  "и VIP-класса автомобилей по всей РОССИИ!!",
+                  1000,
+                ]}
+            />
+          </div>
+        </Paper>
         <Paper className={classes.info_block}>
           <p className={classes.block_title}>
             Остался без машины , есть срочные дела или на работу опаздываешь?
@@ -118,7 +160,8 @@ function Cars() {
         </Paper>
         <Box className={classes.boxSearch}>
           <TextField
-            value={text}
+              id={"cars"}
+              value={text}
             onChange={(event) => setText(event.target.value)}
             className={classes.search}
             placeholder={"Поиск"}
@@ -137,7 +180,6 @@ function Cars() {
             :
 
         <Grid
-            id={"cars"}
           classes={classes.cont}
           container
           direction="row"

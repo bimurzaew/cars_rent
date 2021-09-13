@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap-grid.min.css";
 import { More } from "@material-ui/icons";
 import Car from "./cars/Car";
 import AboutUs from "./Header/AboutUs";
+import CarsByBrands from "./cars/CarsByBrands";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
           <Header />
           <CarsByCategory />
         </Route>
+          <Route path="/cars/brand/:id">
+              <Header />
+              <CarsByBrands />
+          </Route>
         <Route path="/cars/:id">
           <Header />
           <CarsById />

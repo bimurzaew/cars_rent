@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Car({ item }) {
   const classes = useStyles();
-  const [value, setValue] = useState(item.price);
+  const [value, setValue] = useState(1);
   const dispatch = useDispatch();
   const { id } = useParams();
 
