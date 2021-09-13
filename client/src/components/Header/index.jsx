@@ -40,6 +40,7 @@ function Header(props) {
               <div className="col">
                 <img className="logo-company" style={style.logoCompany} src={logo} />
               </div>
+
               <div className="col-6">
                 <div className="head-tel">
                   Аренда

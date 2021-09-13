@@ -9,10 +9,8 @@ import PersonalPage from "./personal/PersonalPage";
 import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-
-import { More } from "@material-ui/icons";
-import Car from "./cars/Car";
 import AboutUs from "./Header/AboutUs";
+
 
 function App() {
   return (
