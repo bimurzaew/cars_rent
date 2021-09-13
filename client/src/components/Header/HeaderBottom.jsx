@@ -50,9 +50,9 @@ function HeaderBottom() {
     dispatch(loadCars());
   };
 
-  // const handleLoadBrands = () => {
-  //   dispatch(loadBrands());
-  // };
+  const handleLoadBrands = () => {
+    dispatch(loadBrands());
+  };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
