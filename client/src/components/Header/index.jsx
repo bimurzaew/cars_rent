@@ -3,34 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../redux/features/categories";
 import "./header_styles.css";
 import HeaderBottom from "./HeaderBottom";
-
-import { Icon, makeStyles } from "@material-ui/core";
-
 import logo from "../../logo.svg";
-import { Link, useHistory } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-
-import { logOut, registerUser } from "../../redux/features/users";
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+import { Link } from "react-router-dom";
+import { logOut } from "../../redux/features/users";
+import logoExit from "./exit.png";
+import Typical from "react-typical";
 
 function Header(props) {
-  const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const token = useSelector((state) => state.users.token);
 
   useEffect(() => {
     dispatch(loadCategories());
   }, []);
 
-  const handleLogOut =() => {
-    dispatch(logOut())
-  }
-
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
 
   return (
     <header>
@@ -42,20 +31,33 @@ function Header(props) {
                 <img className="logo-company" src={logo} />
               </div>
               <div className="col">
-             {/*<Link to="/about-us">О нас</Link>*/}
-              </div>
-              <div className="col">
-                {/*<Link to="/contacts">Контакты</Link>*/}
-              </div>
-              <div className="col">
                 <a href="https://api.whatsapp.com/send/?phone=%2B79284781016&text&app_absent=0">
                   <img
                     src="	https://prostoprokat.ru/upload/medialibrary/477/477523c8ee633564ef1892dbb69997eb.png"
                     alt=""
-                    className="social"
-                  />
+                    className="social"/>
                 </a>
               </div>
+              <div className="col-6">
+                <div className="head-tel">
+                  Аренда
+                  <Typical
+                    loop={Infinity}
+                    wrapper="p"
+                    steps={[
+                      "эконом",
+                      1000,
+                      "среднего",
+                      1000,
+                      "бизнес",
+                      1000,
+                      "и VIP-класса автомобилей по всей РОССИИ!!",
+                      1000,
+                    ]}
+                  />
+                </div>
+              </div>
+
               <div className="col">
                 <div className="person">
                   <div className="person-text">
@@ -71,17 +73,11 @@ function Header(props) {
                   </div>
                   <div className="logo">
                     {token ? (
-                      <Link to='/'>
-                      <Button
-                        onClick={handleLogOut}
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                        endIcon={<Icon>send</Icon>}
-                      >
-                        выход
-                      </Button>
-                        </Link>
+                      <Link to="/">
+                        <div className="exitPage" onClick={handleLogOut}>
+                          <img className={"logoExit"} src={logoExit} alt="" />
+                        </div>
+                      </Link>
                     ) : (
                       ""
                     )}
@@ -91,7 +87,7 @@ function Header(props) {
             </div>
           </div>
           <div className="head-bottom">
-            <div className="row text-center">
+            <div className="row justify-content-around text-center">
               <HeaderBottom />
             </div>
           </div>
