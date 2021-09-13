@@ -7,15 +7,11 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Grid from "@material-ui/core/Grid";
 import "./carsById-style.css";
-
-import {Box, Button, Container, Paper} from "@material-ui/core";
-import {Carousel, CarouselItem} from "react-bootstrap";
-
+import { Button, Paper } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, putCar, rentCar } from "../../../redux/features/users";
 import { useParams } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   day: {
     display: "flex",
     justifyContent: "space-between",
-    width:190,
+    width: 190,
     color: "#9B3C51",
   },
   value: {
@@ -65,11 +61,11 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     margin: "0 auto 5px",
   },
-  list:{
-    padding:30,
-    marginTop:180,
-    opacity:.7
-  }
+  list: {
+    padding: 30,
+    marginTop: 180,
+    opacity: 0.7,
+  },
 }));
 
 function Car({ item }) {
@@ -92,27 +88,26 @@ function Car({ item }) {
   }, []);
   const { user } = useSelector((state) => state.users);
 
-
   return (
-      <>
+    <>
       <Grid item xs={6}>
         <Paper className={classes.list}>
           <h1 className="title">{item.name}</h1>
           <h2 className="rent-text">Укажите срок аренды в днях</h2>
           <span className="rent">
-          <span className={classes.day}>
-            <p>{value * item.price} ₽</p>
-            <p>/ Сутки:{value}</p>
-          </span>
+            <span className={classes.day}>
+              <p>{value * item.price} ₽</p>
+              <p>/ Сутки:{value}</p>
+            </span>
             <Slider
-                className={classes.index}
-                step={1}
-                marks
-                min={1}
-                max={10}
-                onChange={handleChange}
+              className={classes.index}
+              step={1}
+              marks
+              min={1}
+              max={10}
+              onChange={handleChange}
             />
-        </span>
+          </span>
         </Paper>
       </Grid>
       <Grid item xs={3}>
@@ -170,14 +165,13 @@ function Car({ item }) {
                 : user?.carRent
                 ? "у вас есть машина"
                 : !user
-                ? "авторизируйтесь"
+                ? "Еврей? авторизуйся"
                 : "арендовать"}
             </Button>
           )}
         </Card>
       </Grid>
-      </>
-
+    </>
   );
 }
 
