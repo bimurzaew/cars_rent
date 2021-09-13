@@ -42,6 +42,9 @@ function Header(props) {
               </div>
 
               <div className="col-6">
+                 
+
+
                 <div className="head-tel">
                   Аренда
                   <Typical
@@ -59,6 +62,7 @@ function Header(props) {
                     ]}
                   />
                 </div>
+
               </div>
 
               <div className="col">

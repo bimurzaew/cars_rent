@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
         "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
     backgroundSize:"cover",
     background:"fixed",
-    backgroundRepeat:"no-repeat",
-    height:"100vh"
+    backgroundRepeat: 'round',
+    height: '100%'
   },
   cont: {
     marginTop: theme.spacing(10),

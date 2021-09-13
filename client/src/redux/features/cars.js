@@ -28,6 +28,17 @@ export const carsReducer = (state = initialState, action) => {
         cars: action.payload,
         loading: false,
       };
+    case "load/carsByBrands/pending":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "load/carsByBrands/fulfilled":
+      return {
+        ...state,
+        cars: action.payload,
+        loading: false,
+      };
 
     case "cars/receive/pending":
       return {
@@ -89,6 +100,17 @@ export const getByCategories = (id) => {
     const json = await response.json();
 
     dispatch({ type: "load/carsByCategories/fulfilled", payload: json });
+  };
+};
+
+export const getByBrands = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "load/carsByBrands/pending", payload: id });
+
+    const response = await fetch(`/cars/brand/${id}`);
+    const json = await response.json();
+
+    dispatch({ type: "load/carsByBrands/fulfilled", payload: json });
   };
 };
 

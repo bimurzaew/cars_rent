@@ -11,6 +11,10 @@ const carSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
   },
+  brand:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Brand"
+  },
   image: String,
   amount:Number,
   user: [{

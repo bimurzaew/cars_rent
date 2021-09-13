@@ -10,6 +10,7 @@ import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import AboutUs from "./Header/AboutUs";
+import CarsByBrands from "./cars/CarsByBrands";
 
 
 function App() {
@@ -24,11 +25,20 @@ function App() {
         <Route path="/about-us">
           <AboutUs />
         </Route>
+          <Route  path="/about-us">
+              <Header />
+              <AboutUs/>
+          </Route>
+
         <Route path="/cars/category/:id">
           <Header />
           <CarsByCategory />
           <FooterCars />
         </Route>
+          <Route path="/cars/brand/:id">
+              <Header />
+              <CarsByBrands />
+          </Route>
         <Route path="/cars/:id">
           <Header />
           <CarsById />

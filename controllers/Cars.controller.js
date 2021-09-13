@@ -36,6 +36,14 @@ module.exports.carsController = {
       res.json(e)
     }
   },
+  getCarsByBrands: async (req, res) => {
+    try {
+      const car = await Car.find({brand: req.params.id});
+      res.json(car)
+    }catch (e) {
+      console.log(e)
+    }
+  },
   getCarsById:async (req, res) => {
     try {
       const car = await Car.findById(req.params.id);

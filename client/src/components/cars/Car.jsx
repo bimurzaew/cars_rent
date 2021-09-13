@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    marginTop: theme.spacing(15),
+    marginTop: theme.spacing(5),
     width: 350,
     margin: "auto",
     borderRadius: 10,
