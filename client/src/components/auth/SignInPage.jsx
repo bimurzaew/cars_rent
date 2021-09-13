@@ -1,21 +1,48 @@
 import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useHistory } from "react-router-dom";
-import {
-  Button,
-  Container,
-  CssBaseline,
-  Grid,
-  makeStyles,
-  TextField,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
 import { auth } from "../../redux/features/users";
+import { useHistory } from "react-router-dom";
+import GroupTwoToneIcon from '@material-ui/icons/GroupTwoTone';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "100vh",
+  },
+  image: {
+    backgroundImage: "url(https://images.caricos.com/d/dodge/2021_ram_1500_trx/images/1600x1200/2021_ram_1500_trx_33_1600x1200.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
   paper: {
-    marginTop: theme.spacing(8),
+    margin: theme.spacing(8, 4),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -25,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%",
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -33,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignInPage(props) {
+export default function SignInPage() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -43,8 +70,8 @@ function SignInPage(props) {
   const loading = useSelector((state) => state.users.loading);
   const error = useSelector((state) => state.users.authError);
   const token = useSelector((state) => state.users.token);
+
   const history = useHistory();
-  console.log(token);
   const handleChangeLogin = (e) => {
     setLogin(e.target.value);
   };
@@ -53,25 +80,29 @@ function SignInPage(props) {
   };
 
   const handleSubmit = () => {
-    dispatch(auth({ password, login }));
-    error ? history.push("/") : history.push("/signIn");
+    dispatch(auth({ password, login }))
+      .then(() => {
+        if (!error) {
+          history.push("/");
+        }
+      })
+      .catch((e) => {});
   };
+
   return (
-    <div>
-      <Toolbar />
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
+    <Grid container component="main" className={classes.root} >
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={12} sm={8} md={5} component={Paper} style={{    backgroundColor:'#f7dcad'
+      }} elevation={6} square>
+        <div className={classes.paper} >
+          <Avatar className={classes.avatar}>
+            <GroupTwoToneIcon />
+          </Avatar>
           <Typography component="h1" variant="h5">
             Вход
           </Typography>
-          <Typography
-            component="h1"
-            variant="body2"
-            color={error ? "error" : "primary"}
-          >
-            {error}
-          </Typography>
+          {<Typography color="secondary">{error}</Typography>}
           <form className={classes.form} noValidate>
             <TextField
               onChange={handleChangeLogin}
@@ -79,8 +110,11 @@ function SignInPage(props) {
               margin="normal"
               required
               fullWidth
+              id="email"
               label="Логин"
-              name="login"
+              name="email"
+              autoComplete="email"
+              autoFocus
             />
             <TextField
               onChange={handleChangePassword}
@@ -92,44 +126,31 @@ function SignInPage(props) {
               label="Пароль"
               type="password"
               id="password"
+              autoComplete="current-password"
             />
+
+            <Button
+              onClick={handleSubmit}
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              войти
+            </Button>
             <Grid container>
               <Grid item>
-                <Link to="/signup" variant="body2">
-                  У вас нет аккаунта? <Typography variant='' color='secondary'>Зарегистрироваться</Typography>
+                <Link href="/signUp" variant="body2">
+                  {"Нет аккаунта? Зарегистрироваться"}
                 </Link>
               </Grid>
             </Grid>
-            {error ? (
-              <Link to="/signIn">
-                <Button
-                  onClick={handleSubmit}
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  войти
-                </Button>
-              </Link>
-            ) : (
-              <Link to="/">
-                <Button
-                  onClick={handleSubmit}
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  войти
-                </Button>
-              </Link>
-            )}
+            <Box mt={5}>
+              <Copyright />
+            </Box>
           </form>
         </div>
-      </Container>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
-
-export default SignInPage;

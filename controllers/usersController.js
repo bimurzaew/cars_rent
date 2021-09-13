@@ -1,3 +1,4 @@
+
 const bcrypt = require("bcrypt");
 const path = require("path");
 const jwt = require("jsonwebtoken");
@@ -7,7 +8,7 @@ const Car = require("../models/Car.model");
 module.exports.usersController = {
   registerUser: async (req, res) => {
     try {
-      const { name, login, password, carRent, lastName } = req.body;
+      const { name, login, password, lastName, mail, number } = req.body;
       const hash = await bcrypt.hash(password, Number(process.env.HASH));
 
       if (!lastName) {
@@ -35,6 +36,8 @@ module.exports.usersController = {
         login,
         password: hash,
         carRent: null,
+        mail,
+        number,
       });
       res.status(200).json({ message: "вы успешно зарегистрировались" });
     } catch (e) {
@@ -88,17 +91,20 @@ module.exports.usersController = {
       } else if (car.amount === 0) {
         res.json({ error: "нет свободных машин" });
       } else {
-        await User.findByIdAndUpdate(user, {
-          carRent: car,
-        });
+      // const some = await User.findByIdAndUpdate(user, {
+      //     carRent: car,
+      //   });
+        user.carRent = car;
+      await user.save();
         await Car.findByIdAndUpdate(car, {
           $push: { user },
           amount: car.amount - 1,
         });
+        res.json(user);
+        console.log(user)
       }
-      res.json({ message: "ровных вам дорог!!" });
     } catch (e) {
-      res.status(400).json({ error: toString(e) + " catch" });
+      res.status(400).json({ error: e.toString() + " catch" });
     }
   },
   putCar: async (req, res) => {
@@ -106,16 +112,18 @@ module.exports.usersController = {
       const user = await User.findById(req.user.id);
       const car = await Car.findById(req.params.id);
 
-      await User.findByIdAndUpdate(user, {
-        carRent: null,
-      });
+     // const some = await User.findByIdAndUpdate(user, {
+     //    carRent: null,
+     //  });
       await Car.findByIdAndUpdate(car, {
         $pull: { user: user.id },
         amount: car.amount + 1,
       });
-      res.json("d1avala");
+      user.carRent = null;
+      user.save();
+      res.json(user)
     } catch (e) {
-      res.json({ error: toString(e) + " карар яьлла кетчи" });
+      res.json({ error: e.toString() + " карар яьлла кетчи" });
     }
   },
 };
