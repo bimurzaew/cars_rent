@@ -86,6 +86,7 @@ export const loadCars = () => {
 
 export const getCarsByID = (id) => {
   return async (dispatch) => {
+    dispatch({type:"cars/receive/pending"})
     const response = await fetch(`/cars/${id}`);
     const json = await response.json();
     dispatch({ type: "cars/receive/fulfilled", payload: json });

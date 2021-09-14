@@ -12,8 +12,8 @@ module.exports.carsController = {
     //   if (err) {
     //     console.log(err)
     //   } else {
-        const {name, year, desc, price, category,image} = req.body;
-        const car = await Car.create({name, year, desc, price, category, image});
+        const {name, year, desc, price, category,image , imgCar1, imgCar2, imgCar3, brand, isReserved, equipment, detailedDescription} = req.body;
+        const car = await Car.create({name, year, desc, price, category, image , imgCar1, imgCar2, imgCar3 , brand, isReserved, equipment, detailedDescription});
         res.json(car);
       // }
       // res.json("машина добавлена")

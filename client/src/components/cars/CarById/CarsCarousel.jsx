@@ -3,8 +3,12 @@ import "./carsById-style.css"
 
 function CarsCarousel({img1, img2, img3, name}) {
   return (
-      <Carousel>
-        <Carousel.Item>
+      <Carousel
+          className={"carousel-block"}
+      >
+        <Carousel.Item
+            className="block_imgCar"
+        >
           <img
               className="imgCar"
               src={img1}
@@ -15,7 +19,9 @@ function CarsCarousel({img1, img2, img3, name}) {
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item
+            className="block_imgCar"
+        >
           <img
               className="imgCar"
               src={img2}
@@ -27,7 +33,9 @@ function CarsCarousel({img1, img2, img3, name}) {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item
+            className="block_imgCar"
+        >
           <img
               className="imgCar"
               src={img3}

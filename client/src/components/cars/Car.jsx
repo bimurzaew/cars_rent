@@ -48,6 +48,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+    nav:{
+      color:"inherit",
+        textDecoration:"none",
+        "&:hover":{
+          color:"inherit"
+        }
+    }
 }));
 
 function Car({ item }) {
@@ -82,7 +89,7 @@ function Car({ item }) {
                       aria-label="add"
                       className={classes.margin}
                   >
-                      <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
+                      <NavLink className={classes.nav} to={`/cars/${item._id}`}>подробнее</NavLink>
                   </Fab>
               </CardActions>
           </Card>

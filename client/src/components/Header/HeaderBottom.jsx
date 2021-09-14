@@ -6,6 +6,10 @@ import { Button, Popover } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { loadBrands } from "../../redux/features/brands";
+import "./header_styles.css"
+import "bootstrap/dist/css/bootstrap-grid.min.css";
+import LoadingModal from "./LoadingModal";
+
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -16,13 +20,22 @@ const useStyles = makeStyles((theme) => ({
   },
   popover:{
     position:"absolute",
-    top:160
+    top:200
+  },
+  nav_1:{
+    color:"white",
+    "&:hover":{
+      color:"white"
+    },
+    textDecoration:"none",
+
   },
   modal_logo: {
     width: 20,
     marginRight:5
   },
   modal_text:{
+    color:"#5e5151",
     display:"flex",
     alignItems:"center",
     margin:"auto",
@@ -33,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 function HeaderBottom() {
   const classes = useStyles();
   const { categories } = useSelector((state) => state.categories);
-  const { brands } = useSelector((state) => state.brands);
+  const { brands, loading } = useSelector((state) => state.brands);
 
   console.log(brands);
 
@@ -76,14 +89,15 @@ function HeaderBottom() {
             <NavLink
               exact
               to="/"
-              className="nav-link"
+              className="nav-1"
               activeClassName="nav-active"
             >
               Главная
             </NavLink>
           </p>
         </div>
-        {categories.map((item) => {
+        {
+          categories.map((item) => {
           return (
             <div className="col">
               <p
@@ -91,7 +105,7 @@ function HeaderBottom() {
                 onClick={() => handleGetByCategories(item._id)}
               >
                 <NavLink
-                  className="nav-link"
+                  className="nav-1"
                   to={`/cars/category/${item._id}`}
                   activeClassName="nav-active"
                 >
@@ -126,25 +140,27 @@ function HeaderBottom() {
                 horizontal: "center",
               }}
             >
-              {brands.map((item) => {
+              {loading ? <LoadingModal/> :
+
+                  brands.map((item) => {
                 return (
                   <Typography className={classes.typography}>
-                    <p
+                      <p
                       onClick={()=> handleGetByBrands(item._id)}
-                    >
-                      <NavLink to={`/cars/brand/${item._id}`}>
-                       <div
-                           className={classes.modal_text}
-                       >
-                         <img
-                             className={classes.modal_logo}
-                             src={item.logo}
-                             alt=""
-                         />
-                         <span>{item.name}</span>
-                       </div>
+                      >
+                      <NavLink className={classes.nav_1} to={`/cars/brand/${item._id}`}>
+                      <div
+                      className={classes.modal_text}
+                      >
+                      <img
+                      className={classes.modal_logo}
+                      src={item.logo}
+                      alt=""
+                      />
+                      <span>{item.name}</span>
+                      </div>
                       </NavLink>
-                    </p>
+                      </p>
                     <hr/>
 
                   </Typography>

@@ -62,7 +62,15 @@ const useStyles = makeStyles((theme) => ({
     },
     wid:{
         width:"100%"
-    }
+    },
+    nav:{
+        color:"white",
+        "&:hover":{
+            color:"inherit"
+        },
+        textDecoration:'none'
+    },
+
 }));
 
 function CarsByBrands(props) {
@@ -110,7 +118,7 @@ function CarsByBrands(props) {
                                             aria-label="add"
                                             className={classes.margin}
                                         >
-                                            <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
+                                            <NavLink className={classes.nav} to={`/cars/${item._id}`}>подробнее</NavLink>
                                         </Fab>
                                     </CardActions>
                                 </Card>

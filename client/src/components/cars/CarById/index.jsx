@@ -13,16 +13,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  cont: {
-    marginTop: theme.spacing(10),
-  },
+  // cont: {
+  //   marginTop: theme.spacing(10),
+  // },
   mainImg: {
     backgroundImage:
         "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
     backgroundSize:"cover",
     background:"fixed",
     backgroundRepeat:"no-repeat",
-    height:"100vh"
+    // height:"100vh"
   },
 }));
 

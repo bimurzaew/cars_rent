@@ -8,33 +8,15 @@ import {Box, Button, Paper, TextField, Toolbar} from "@material-ui/core";
 import { loadCars } from "../../redux/features/cars";
 import Typical from "react-typical";
 import Car from "./Car";
+import "./style.css"
+import Loading from "./Loading";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  title:{
-    margin:"150px auto 0",
-    width:950,
-    backgroundColor:"transparent",
-    padding:15,
-    boxShadow:"none",
-    color:"white",
-    fontSize:30,
-    textAlign:"center",
-
-
-  },
-  text_title:{
-    display:"flex",
-    alignItems:"center"
-
-  },
-  type_p:{
-    marginLeft:10
-  },
   info_block:{
-    margin: "30px auto 50px",
+    margin: "120px auto 50px",
     width:950,
     backgroundColor:"rgba(255,255,255,0.8)",
     padding:15
@@ -101,28 +83,17 @@ function Cars() {
           <Box className={classes.mainImg}>
       <Toolbar />
       <Container maxWidth={classes.wid}  className={classes.main}>
-        <Paper
-            className={classes.title}
-        >
-          <div className={classes.text_title}>
-            Аренда
-            <Typical
-                className={classes.type_p}
-                loop={Infinity}
-                wrapper="p"
-                steps={[
-                  "эконом",
-                  1000,
-                  "среднего",
-                  1000,
-                  "бизнес",
-                  1000,
-                  "и VIP-класса автомобилей по всей РОССИИ!!",
-                  1000,
-                ]}
-            />
-          </div>
-        </Paper>
+        {loading ?
+            <Grid container>
+              <Grid item xs={12}>
+                <div className="loading">
+                  <Loading/>
+                </div>
+              </Grid>
+            </Grid>
+            :
+
+
         <Paper className={classes.info_block}>
           <p className={classes.block_title}>
             Остался без машины , есть срочные дела или на работу опаздываешь?
@@ -151,13 +122,13 @@ function Cars() {
                 variant="contained"
                 color="secondary"
             >
-              <a href="#cars">
+              <a className="a" href="#cars">
                 Подобрать авто
               </a>
             </Button>
           </div>
 
-        </Paper>
+        </Paper>}
         <Box className={classes.boxSearch}>
           <TextField
               id={"cars"}
@@ -169,15 +140,7 @@ function Cars() {
             variant="filled"
           />
         </Box>
-        {loading ?
-            <Grid container>
-              <Grid item xs={12}>
-                <div className="loading">
-                  идет загрузка страницы...
-                </div>
-              </Grid>
-            </Grid>
-            :
+
 
         <Grid
           classes={classes.cont}

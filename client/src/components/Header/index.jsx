@@ -6,16 +6,25 @@ import HeaderBottom from "./HeaderBottom";
 import logo from "../../logo2.png";
 import { Link, NavLink } from "react-router-dom";
 import { logOut } from "../../redux/features/users";
-import Typical from "react-typical";
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
-import { makeStyles } from '@material-ui/core';
+import {makeStyles, Paper} from '@material-ui/core';
+import "bootstrap/dist/css/bootstrap-grid.min.css";
+
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
     fontSize:40,
     color:'antiquewhite'
-  }
+  },
+  text_title:{
+    display:"flex",
+    color:"#fff",
+    fontSize:30,
+      fontWeight:"bold",
+      fontStyle:"italic"
+  },
+
 }))
 
 function Header(props) {
@@ -42,13 +51,10 @@ function Header(props) {
               </div>
 
               <div className="col-6">
-                 
 
-
-                <div className="ahmad">
-                    Ахьмадс ишт мег аьлла
-                </div>
-
+                  <div className={classes.text_title}>
+                    Катись отсюда
+                  </div>
               </div>
 
               <div className="col">
