@@ -1,11 +1,21 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import { Link, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles({
   about: {
     fontSize: 25,
     color: "white",
+    textDecoration:"none",
+    "&:hover":{
+      color:"#7f2626",
+      textDecoration:"none",
+      transition:".5s"
+    }
+  },
+  aboutActive:{
+    color:"#7f2626",
   },
   footer_item: {
     textAlign: "center",
@@ -27,20 +37,20 @@ function FooterTop(props) {
       justifyContent="center"
     >
       <Grid item xs={4} className={classes.footer_item}>
-        <Link href="/about-us" className={classes.about}>
+        <NavLink to="/about-us" className={classes.about} activeClassName={classes.aboutActive}>
           O нас
-        </Link>
+        </NavLink>
       </Grid>
 
       <Grid item xs={4} className={classes.footer_item}>
-        <Link href="/review" className={classes.about}>
+        <NavLink to="/review" className={classes.about} activeClassName={classes.aboutActive}>
           Отзывы
-        </Link>
+        </NavLink>
       </Grid>
       <Grid item xs={4} className={classes.footer_item}>
-        <Link href="/contacts" className={classes.about}>
+        <NavLink to="/contacts" className={classes.about} activeClassName={classes.aboutActive}>
           Контакты
-        </Link>
+        </NavLink>
       </Grid>
     </Grid>
   );

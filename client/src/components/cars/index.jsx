@@ -11,17 +11,19 @@ import Car from "./Car";
 import "./style.css"
 import Loading from "./Loading";
 import Desc from "./Desc";
+import Button from "@material-ui/core/Button";
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  info_block:{
+  info_block: {
     margin: "120px auto 50px",
-    width:950,
-    backgroundColor:"rgba(255,255,255,0.8)",
-    padding:15
+    width: 950,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    padding: 15,
+  },
   title: {
     margin: "150px auto 0",
     width: 950,

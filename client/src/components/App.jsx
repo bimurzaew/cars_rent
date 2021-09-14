@@ -23,17 +23,19 @@ function App() {
           <FooterCars />
         </Route>
         <Route path="/about-us">
-          <AboutUs />
-        </Route>
-        <Route path="/about-us">
           <Header />
           <AboutUs />
+          <FooterCars/>
         </Route>
         <Route path="/contacts">
+          <Header/>
           <Contacts />
+          <FooterCars/>
         </Route>
         <Route path="/review">
+          <Header/>
           <Reviews />
+          <FooterCars/>
         </Route>
         <Route path="/cars/category/:id">
           <Header />
