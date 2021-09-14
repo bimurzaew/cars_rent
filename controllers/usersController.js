@@ -100,7 +100,6 @@ module.exports.usersController = {
           amount: car.amount - 1,
         });
         res.json(user);
-        console.log(user)
       }
     } catch (e) {
       res.status(400).json({ error: e.toString() + " catch" });

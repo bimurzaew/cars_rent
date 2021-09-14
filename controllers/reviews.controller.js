@@ -7,24 +7,24 @@ module.exports.reviewsController = {
       const user = await User.findById(req.user.id);
       const { text } = req.body;
 
-      if  (!text) {
-       return res.json({error:'нужно ввести текст'})
+      if (!text) {
+        return res.json({ error: "воздухан?" });
       }
-         await Review.create({
-          text,
-          userId: user,
-        });
-        res.json('success')
+     const rev = await Review.create({
+        text,
+        userId: user,
+      });
+      res.json(rev);
     } catch (e) {
       res.json(e.toString());
     }
   },
-  getReviews: async (req,res) => {
+  getReviews: async (req, res) => {
     try {
-     const reviews =  await Review.find()
-      res.json(reviews)
-    }catch(e) {
-      res.json(e.toString())
+      const reviews = await Review.find().populate("userId");
+      res.json(reviews);
+    } catch (e) {
+      res.json(e.toString());
     }
-  }
+  },
 };

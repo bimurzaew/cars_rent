@@ -51,7 +51,7 @@ function Header(props) {
               </div>
               <div className="col-6">
                   <div className={classes.text_title}>
-                    Катись отсюда
+                    Ахьмадс ишт мег аьлла
                   </div>
               </div>
               <div className="col">
