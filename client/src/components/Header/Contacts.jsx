@@ -62,15 +62,15 @@ const Contacts = () => {
                             <b>Основные пункты выдачи:</b>
                         </Typography>
                         <Typography className={classes.subTitle} gutterBottom component="p">
-                            г. Москва, м. Волгоградский пр-т, Волгоградский пр-т, д.32 к.8, офис 16 (3 этаж), БЦ «ТехноХолл»
+                            г. Грозный,   Мичуринский пр-т, д.32 к.8, офис 16 (3 этаж), БЦ «ТехноХолл»
                         </Typography>
                     </Grid>
                     <Grid item={4}>
                    <Typography className={classes.title} gutterBottom variant="h5">
-                       <b>+7 (495) 255 39 01</b>
+                       <b>+7 (995) 826 39 01</b>
                    </Typography>
                         <Typography className={classes.title} gutterBottom variant="h5">
-                            <b>+7 (915) 206-66-64</b>
+                            <b>+7 (989) 266-66-64</b>
                         </Typography>
                     </Grid>
                 </Grid>
@@ -81,7 +81,7 @@ const Contacts = () => {
                 </Typography>
                 <Grid container spacing={7}>
                     <Grid item={6}>
-                        <Typography variant="h6">Офис компании «Волгоградский проспект»</Typography>
+                        <Typography variant="h6">Офис компании «Мичуринский проспект»</Typography>
                         <Typography className={classes.AdvertisingText} component="div">
 
                             Аэропорт Домодедово
@@ -119,8 +119,8 @@ const Contacts = () => {
 
                         </Typography>
                         <Typography className={classes.subTittle} gutterBottom component="p">
-                            Юридический адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
-                            Почтовый адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
+                            Юридический адрес: 109316, г. Грозный, проспект Путина, д. 32 к. 8
+                            Почтовый адрес: 109316, г. Грозный, проспект Бульвара, д. 32 к. 8
                             ИНН/КПП: 7723788393/772301001
                             ОГРН: 1117746112318
                         </Typography>
@@ -130,8 +130,7 @@ const Contacts = () => {
                             <b>ООО «ЕВРОАВТО РУС»</b>
                         </Typography>
                         <Typography className={classes.subTittle} gutterBottom variant="h5">
-                            Юридический адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
-                            Почтовый адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
+                            Юридический адрес: 63547375, г. Москва , проспект Кольцевой, д. 32 к. 8
                             ИНН/КПП: 7723733235/772301001
                             ОГРН: 1097746633401
                         </Typography>
@@ -143,8 +142,8 @@ const Contacts = () => {
                     <b>Мы рады обратной связи</b>
                 </Typography>
                 <Typography gutterBottom  variant="h5">
-                    Юридический адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
-                    Почтовый адрес: 109316, г. Москва, проспект Волгоградский, д. 32 к. 8
+                    Юридический адрес: 109316, г. Грозный,  ТЦ Медина 3 этаж, кабинет 12.
+                    Почтовый адрес: intocode@mail.ru
                     ИНН/КПП: 7723733235/772301001
                     ОГРН: 1097746633401
                 </Typography>
