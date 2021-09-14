@@ -18,7 +18,7 @@ import CarsCarousel from "./CarsCarousel";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    marginTop: theme.spacing(25),
+    marginTop: theme.spacing(5),
     borderRadius: 10,
   },
   price: {
@@ -65,9 +65,13 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     padding: 30,
-    marginTop: 180,
+    // marginTop: 180,
     opacity: 0.7,
   },
+  p:{
+    color:"#000000",
+    fontWeight:"bold"
+  }
 }));
 
 function Car({ item }) {
@@ -118,6 +122,10 @@ function Car({ item }) {
               onChange={handleChange}
             />
           </span>
+          <p className={classes.p}>
+            {item.detailedDescription}
+          </p>
+
         </Paper>
       </Grid>
       <Grid item xs={3}>

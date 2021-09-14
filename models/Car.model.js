@@ -7,6 +7,10 @@ const carSchema = mongoose.Schema({
   detailedDescription: String,
   desc: String,
   price: Number,
+  imgCar1:String,
+  imgCar2:String,
+  imgCar3:String,
+  isReserved:Boolean,
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",

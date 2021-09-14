@@ -8,12 +8,20 @@ import { Box, Paper, TextField, Toolbar } from "@material-ui/core";
 import { loadCars } from "../../redux/features/cars";
 import Typical from "react-typical";
 import Car from "./Car";
+import "./style.css"
+import Loading from "./Loading";
 import Desc from "./Desc";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  info_block:{
+    margin: "120px auto 50px",
+    width:950,
+    backgroundColor:"rgba(255,255,255,0.8)",
+    padding:15
   title: {
     margin: "150px auto 0",
     width: 950,
@@ -82,28 +90,52 @@ function Cars() {
   return (
     <Box className={classes.mainImg}>
       <Toolbar />
-      <Container maxWidth={classes.wid} className={classes.main}>
-        <Paper className={classes.title}>
-          <div className={classes.text_title}>
-            Аренда
-            <Typical
-              className={classes.type_p}
-              loop={Infinity}
-              wrapper="p"
-              steps={[
-                "эконом",
-                1000,
-                "среднего",
-                1000,
-                "бизнес",
-                1000,
-                "и VIP-класса автомобилей по всей РОССИИ!!",
-                1000,
-              ]}
-            />
+      <Container maxWidth={classes.wid}  className={classes.main}>
+        {loading ?
+            <Grid container>
+              <Grid item xs={12}>
+                <div className="loading">
+                  <Loading/>
+                </div>
+              </Grid>
+            </Grid>
+            :
+        <Paper className={classes.info_block}>
+          <p className={classes.block_title}>
+            Остался без машины , есть срочные дела или на работу опаздываешь?
+          </p>
+          <p className={classes.block_title}>
+            Наши марки абсолютно новые и не подведут вас в самый не подходящий момент.
+          </p>
+          <p className={classes.block_title}>
+            А если так случится, что по нашей вине и вы опоздаете , то мы за предоставленные неудобства мы отдадим автомобиль вам
+          </p>
+          <p className={classes.block_title}>
+            У нас быстрое оформление, и действует скидка 10% если берешь авто больше сутки
+          </p>
+          <p className={classes.block_list}>
+            Мы поможем вам по подобрать автомобиль по обстоятельству:
+            <ul>
+              <li>Авто для поездки с семьей</li>
+              <li>Авто средних классов, цена+качество</li>
+              <li>Есть sportCar</li>
+              <li>А также для более важных встреч, у нас представительские <b>VIP</b> марки </li>
+            </ul>
+          </p>
+          <div>
+            <Button
+                className={classes.pick_up}
+                variant="contained"
+                color="secondary"
+            >
+              <a className="a" href="#cars">
+                Подобрать авто
+              </a>
+            </Button>
           </div>
-        </Paper>
-        <Desc />
+
+        </Paper>}
+
         <Box className={classes.boxSearch}>
           <TextField
             id={"cars"}
@@ -115,29 +147,22 @@ function Cars() {
             variant="filled"
           />
         </Box>
-        {loading ? (
-          <Grid container>
-            <Grid item xs={12}>
-              <div className="spinner-border"></div>
-            </Grid>
-          </Grid>
-        ) : (
-          <Grid
-            classes={classes.cont}
-            container
-            direction="row"
-            justifyContent="space-evenly"
-            alignItems="center"
-          >
-            {searchText.map((item) => {
-              return (
-                <Grid item xs={4}>
-                  <Car item={item} key={item.id} />
-                </Grid>
-              );
-            })}
-          </Grid>
-        )}
+        <Grid
+          classes={classes.cont}
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+        >
+          {searchText.map((item) => {
+            return (
+
+                    <Grid item xs={4}  className={classes.gridItem}>
+                      <Car item={item} key={item.id} />
+              </Grid>
+            );
+          })}
+        </Grid>}
       </Container>
     </Box>
   );

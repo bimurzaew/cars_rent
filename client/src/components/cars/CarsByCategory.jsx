@@ -7,16 +7,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import "./style.css";
-import {Box, Container, Grid, Toolbar} from "@material-ui/core";
+import { Box, Container, Grid, Toolbar } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import { NavLink } from "react-router-dom";
+import LoadingCategories from "./LoadingCategories";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(15),
-    width:350,
+    width: 350,
     borderRadius: 10,
-    margin:"auto"
+    margin: "auto",
   },
   price: {
     width: 200,
@@ -51,24 +52,31 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImg: {
     backgroundImage:
-        "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
-    backgroundSize:"cover",
-    background:"fixed",
-    backgroundRepeat: 'round',
-    height: '100%'
+      "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+    backgroundSize: "cover",
+    background: "fixed",
+    backgroundRepeat: "no-repeat",
+    paddingBottom:15
   },
   cont: {
     marginTop: theme.spacing(10),
   },
-  wid:{
-    width:"100%"
-  }
+  wid: {
+    width: "100%",
+  },
+  nav: {
+    color: "inherit",
+    textDecoration: "none",
+    "&:hover": {
+      color: "inherit",
+    },
+  },
 }));
 
 function CarsByCategory(props) {
   const classes = useStyles();
 
-  const { cars } = useSelector((state) => state.cars);
+  const { cars, loading } = useSelector((state) => state.cars);
 
   return (
     <Box className={classes.mainImg}>
@@ -81,7 +89,12 @@ function CarsByCategory(props) {
           justifyContent="space-around"
           alignItems="center"
         >
-          {cars.map((item) => {
+          {
+            loading ?
+                <Grid item xs={4} className={classes.root}>
+                    <LoadingCategories/> :
+                </Grid> :
+                cars.map((item) => {
             return (
               <Grid item xs={4}>
                 <Card className={classes.root}>
@@ -110,7 +123,9 @@ function CarsByCategory(props) {
                       aria-label="add"
                       className={classes.margin}
                     >
-                      <NavLink to={`/cars/${item._id}`}>подробнее</NavLink>
+                      <NavLink className={classes.nav} to={`/cars/${item._id}`}>
+                        подробнее
+                      </NavLink>
                     </Fab>
                   </CardActions>
                 </Card>

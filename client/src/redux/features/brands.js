@@ -5,10 +5,16 @@ const initialState = {
 
 export const brandsReducer = (state=initialState, action) => {
     switch (action.type){
+        case "load/brands/pending":
+            return {
+                ...state,
+                loading: true
+            }
         case "load/brands/fulfilled":
             return {
                 ...state,
-                brands: action.payload
+                brands: action.payload,
+                loading: false
             }
         default:
             return state
@@ -17,6 +23,7 @@ export const brandsReducer = (state=initialState, action) => {
 
 export const loadBrands = () => {
     return async (dispatch) => {
+        dispatch({type:"load/brands/pending"})
         const response = await fetch("/brands");
         const json = await response.json();
         console.log(json);

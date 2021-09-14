@@ -5,9 +5,16 @@
     color: #33325E;;
 }
 .rent-text{
-    margin-top: 100px;
+    margin-top: 20px;
 }
 .imgCar{
-    width: 400px;
-    margin: auto;
+    margin-top: 120px;
+    width: 500px;
+    height: 400px;
+}
+.block_imgCar{
+    text-align: center;
+}
+.carousel-block{
+    z-index: 0;
 }
