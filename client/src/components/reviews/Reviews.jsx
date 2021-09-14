@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview, getReviews } from "../../redux/features/reviews";
 import Button from "@material-ui/core/Button";
-import {Box, Container, makeStyles, Paper, TextField} from "@material-ui/core";
+import {
+  Box,
+  Container,
+  makeStyles,
+  Paper,
+  TextField,
+  Toolbar,
+} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import logo from "./logo-people.png";
 import CircularStatic from './Preload';
-import CustomizedProgressBars from './Preload';
 
 
 const useStyles = makeStyles({
   title: {
     color: "#33325E",
-    margin: "50px 0px 30px"
+    margin: "50px 0px 30px",
   },
   titles:{
     marginTop:100
@@ -19,8 +26,10 @@ const useStyles = makeStyles({
   subTitle: {
     color: "#525F82",
     fontSize: "20px",
+
     textAlign:'center',
     marginTop:70
+
   },
   subbTitle: {
     marginTop: "30px",
@@ -33,29 +42,35 @@ const useStyles = makeStyles({
     background: "#F6F4F5"
   },
   reviews: {
-    height: "150px"
+    height: "150px",
   },
   formBtn: {
-    marginLeft: "20px"
+    marginLeft: "20px",
   },
   todoText: {
     margin: "40px",
     background: "white",
-    padding: "20px"
+    padding: "20px",
+    borderBottom: "1px solid black",
   },
   container: {
-    background: "#F6F4F5"
-  }
-})
-
+    background: "#F6F4F5",
+    marginTop: 100,
+  },
+  logo: {
+    width: 25,
+    marginRight: 10,
+  },
+});
 
 function Reviews() {
-  const classes = useStyles()
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const [text, setText] = useState("");
 
   const handleChangeText = (e) => {
+
     setText(e.target.value);
   };
 
@@ -70,15 +85,18 @@ function Reviews() {
   const loading = useSelector(state => state.reviews.loading)
   const error = useSelector(state => state.reviews.error)
   return (
+
         <Container className={classes.container}>
           {loading ? <CustomizedProgressBars /> : ''}
         <Box className={classes.titles}>
           <Typography className={classes.subTitle} gutterBottom component="p" >
             Рез валахь цхьаъ яз е, вацахь охь г1о!!!
+
           </Typography>
         </Box>
         <Container>
           <Box>
+
             {recall?.map((item) => {
               return (
                   <Box>
