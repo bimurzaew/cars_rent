@@ -36,7 +36,7 @@ function Header(props) {
       <div className="header-blog">
         <div className="container-fluid">
           <div className="head-top">
-            <div className="row text-center">
+            <div className="row text-center align-items-center">
               <div className="col">
                 <img className="logo-company" style={style.logoCompany} src={logo} />
               </div>
@@ -45,22 +45,8 @@ function Header(props) {
                  
 
 
-                <div className="head-tel">
-                  Аренда
-                  <Typical
-                    loop={Infinity}
-                    wrapper="p"
-                    steps={[
-                      "эконом",
-                      1000,
-                      "среднего",
-                      1000,
-                      "бизнес",
-                      1000,
-                      "и VIP-класса автомобилей по всей РОССИИ!!",
-                      1000,
-                    ]}
-                  />
+                <div className="ahmad">
+                    Ахьмадс ишт мег аьлла
                 </div>
 
               </div>
