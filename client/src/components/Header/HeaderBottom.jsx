@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getByBrands, getByCategories, loadCars} from "../../redux/features/cars";
+import {
+  getByBrands,
+  getByCategories,
+  loadCars,
+} from "../../redux/features/cars";
 import { Button, Popover } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,9 +18,9 @@ import LoadingModal from "./LoadingModal";
 const useStyles = makeStyles((theme) => ({
   typography: {
     // padding: 5,
-    width:150,
-    textAlign:"center",
-    alignItems:"center"
+    width: 150,
+    textAlign: "center",
+    alignItems: "center",
   },
   popover:{
     position:"absolute",
@@ -29,10 +33,17 @@ const useStyles = makeStyles((theme) => ({
     },
     textDecoration:"none",
 
+
   },
   modal_logo: {
     width: 20,
-    marginRight:5
+    marginRight: 5,
+  },
+  modal_text: {
+    display: "flex",
+    alignItems: "center",
+    margin: "auto",
+    justifyContent: "center",
   },
   modal_text:{
     color:"#5e5151",
@@ -41,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     margin:"auto",
     justifyContent:"center"
   }
+
 }));
 
 function HeaderBottom() {
@@ -56,8 +68,8 @@ function HeaderBottom() {
     dispatch(getByCategories(id));
   };
   const handleGetByBrands = (id) => {
-    dispatch(getByBrands(id))
-  }
+    dispatch(getByBrands(id));
+  };
 
   const handleLoadCars = () => {
     dispatch(loadCars());
@@ -162,6 +174,7 @@ function HeaderBottom() {
                       </NavLink>
                       </p>
                     <hr/>
+
 
                   </Typography>
                 );

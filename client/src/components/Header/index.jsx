@@ -49,14 +49,11 @@ function Header(props) {
               <div className="col">
                 <img className="logo-company" style={style.logoCompany} src={logo} />
               </div>
-
               <div className="col-6">
-
                   <div className={classes.text_title}>
                     Катись отсюда
                   </div>
               </div>
-
               <div className="col">
                 <div className="person">
                   <div className="person-text">
@@ -71,7 +68,6 @@ function Header(props) {
                     )}
                   </div>
                   <div className="logo">
-
                     {token ? (
                       <Link to="/">
                         <div className="exitPage" onClick={handleLogOut}>
