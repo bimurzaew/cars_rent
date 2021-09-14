@@ -8,11 +8,10 @@ import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
 import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
-import AboutUs from "./Header/AboutUs";
+import AboutUs from "./about/AboutUs";
 import CarsByBrands from "./cars/CarsByBrands";
-import Contacts from './Header/Contacts';
-import Reviews from './reviews/Reviews';
-
+import Contacts from "./contacts/Contacts";
+import Reviews from "./reviews/Reviews";
 
 function App() {
   return (
@@ -26,26 +25,25 @@ function App() {
         <Route path="/about-us">
           <AboutUs />
         </Route>
-          <Route  path="/about-us">
-              <Header />
-              <AboutUs/>
-          </Route>
-        <Route path='/contacts'>
+        <Route path="/about-us">
+          <Header />
+          <AboutUs />
+        </Route>
+        <Route path="/contacts">
           <Contacts />
         </Route>
-        <Route path='/review'>
+        <Route path="/review">
           <Reviews />
         </Route>
-
         <Route path="/cars/category/:id">
           <Header />
           <CarsByCategory />
           <FooterCars />
         </Route>
-          <Route path="/cars/brand/:id">
-              <Header />
-              <CarsByBrands />
-          </Route>
+        <Route path="/cars/brand/:id">
+          <Header />
+          <CarsByBrands />
+        </Route>
         <Route path="/cars/:id">
           <Header />
           <CarsById />
