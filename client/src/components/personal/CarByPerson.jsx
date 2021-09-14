@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
+import { putCar } from '../../redux/features/users';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,10 +41,16 @@ const useStyles = makeStyles((theme) => ({
 export default function CarByPerson({ user }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const dispatch = useDispatch()
+  const carId = user.carRent._id
+  console.log(carId)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const handlePutCar = (carId) => {
+    dispatch(putCar(carId))
+  }
 
   return (
     <Card className={classes.root}>
@@ -53,7 +61,7 @@ export default function CarByPerson({ user }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button variant="outlined" color="primary" href="#outlined-buttons">
+        <Button onClick={() => {handlePutCar(carId)}} variant="outlined" color="primary" href="#outlined-buttons">
           Вернуть
         </Button>
         <IconButton
