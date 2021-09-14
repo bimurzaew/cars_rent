@@ -143,6 +143,7 @@ export const auth = ({ login, password }) => {
       dispatch({ type: "user/signIn/fulfilled", payload: json });
 
       localStorage.setItem("token", json.token);
+
     }
   };
 };
