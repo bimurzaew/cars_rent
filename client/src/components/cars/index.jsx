@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize:"cover",
     backgroundRepeat:"no-repeat",
     background:"fixed",
-    height:"399vh"
+    paddingBottom:15
   },
   wid:{
     width:"100%"

@@ -8,7 +8,6 @@ import FooterCars from "./Footer/FooterCars";
 import PersonalPage from "./personal/PersonalPage";
 import CarsByCategory from "./cars/CarsByCategory";
 import CarsById from "./cars/CarById";
-import "bootstrap/dist/css/bootstrap-grid.min.css";
 import AboutUs from "./Header/AboutUs";
 import CarsByBrands from "./cars/CarsByBrands";
 

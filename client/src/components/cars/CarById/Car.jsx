@@ -12,6 +12,8 @@ import { Button, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, putCar, rentCar } from "../../../redux/features/users";
 import { useParams } from "react-router-dom";
+import { Carousel } from "bootstrap";
+import CarsCarousel from "./CarsCarousel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,6 +92,14 @@ function Car({ item }) {
 
   return (
     <>
+      <Grid item xs={12}>
+        <CarsCarousel
+            img1={item.imgCar1}
+            img2={item.imgCar2}
+            img3={item.imgCar3}
+            name={item.name}
+        />
+      </Grid>
       <Grid item xs={6}>
         <Paper className={classes.list}>
           <h1 className="title">{item.name}</h1>

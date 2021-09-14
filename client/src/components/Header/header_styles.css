@@ -4,6 +4,7 @@ header{
     z-index: 1;
 }
 .logo-company{
+    margin-left: 50px;
     width: 160px;
     height: 40px;
 }
@@ -17,9 +18,7 @@ header{
     width: 220px;
     align-items: center;
 }
-.person-text{
-    margin-bottom: 15px;
-}
+
 .person-text a{
     width: 100px;
     color: #e7e7e7;
@@ -131,5 +130,11 @@ a:hover{
 .exitPage{
     cursor: pointer;
     padding: 5px;
+}
+.ahmad{
+    font-size: 25px;
+    font-weight: 400;
+    color: white;
+    font-style: italic;
 }
 
