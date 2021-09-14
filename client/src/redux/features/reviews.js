@@ -1,6 +1,7 @@
 const initialState = {
-  recall: null,
+  recall: [],
   loading: null,
+  error: null,
 };
 
 export const reviews = (state = initialState, action) => {
@@ -13,7 +14,7 @@ export const reviews = (state = initialState, action) => {
     case "reviews/load/rejected":
       return {
         ...state,
-        rError: action.payload.error,
+        error: action.payload.error,
       };
     case "reviews/load/fulfilled":
       return {
@@ -25,16 +26,20 @@ export const reviews = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: false,
       };
     case "review/add/rejected":
       return {
         ...state,
-        rError: action.payload.error,
+        error: action.payload,
+        loading: false,
       };
     case "review/add/fulfilled":
       return {
         ...state,
         loading: false,
+        recall: [...state.recall, action.payload],
+        error: false,
       };
     default:
       return state;
@@ -47,21 +52,21 @@ export const getReviews = () => {
     const response = await fetch("/reviews");
     const json = await response.json();
     if (json.error) {
-      dispatch({ type: "reviews/load/rejected", payload: json.error });
+      dispatch({ type: "reviews/load/rejected", payload: json });
     } else {
       dispatch({ type: "reviews/load/fulfilled", payload: json });
     }
   };
 };
-export const addReview = ( text ) => {
+export const addReview = (text) => {
   return async (dispatch, getState) => {
     dispatch({ type: "review/add/pending" });
     const state = getState();
     const response = await fetch("/review", {
       method: "POST",
-      body: JSON.stringify({ text } ),
+      body: JSON.stringify({ text }),
       headers: {
-        "Content-Type":"application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${state.users.token}`,
       },
     });

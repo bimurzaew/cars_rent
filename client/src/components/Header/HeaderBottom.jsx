@@ -10,49 +10,38 @@ import { Button, Popover } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { loadBrands } from "../../redux/features/brands";
-import "./header_styles.css"
+import "./header_styles.css";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import LoadingModal from "./LoadingModal";
 
-
 const useStyles = makeStyles((theme) => ({
   typography: {
-    // padding: 5,
     width: 150,
     textAlign: "center",
     alignItems: "center",
   },
-  popover:{
-    position:"absolute",
-    top:200
+  popover: {
+    position: "absolute",
+    top: 200,
   },
-  nav_1:{
-    color:"white",
-    "&:hover":{
-      color:"white"
+  nav_1: {
+    color: "white",
+    "&:hover": {
+      color: "white",
     },
-    textDecoration:"none",
-
-
+    textDecoration: "none",
   },
   modal_logo: {
     width: 20,
     marginRight: 5,
   },
   modal_text: {
+    color: "#5e5151",
     display: "flex",
     alignItems: "center",
     margin: "auto",
     justifyContent: "center",
   },
-  modal_text:{
-    color:"#5e5151",
-    display:"flex",
-    alignItems:"center",
-    margin:"auto",
-    justifyContent:"center"
-  }
-
 }));
 
 function HeaderBottom() {
@@ -60,7 +49,6 @@ function HeaderBottom() {
   const { categories } = useSelector((state) => state.categories);
   const { brands, loading } = useSelector((state) => state.brands);
 
-  console.log(brands);
 
   const dispatch = useDispatch();
 
@@ -108,8 +96,7 @@ function HeaderBottom() {
             </NavLink>
           </p>
         </div>
-        {
-          categories.map((item) => {
+        {categories.map((item) => {
           return (
             <div className="col">
               <p
@@ -152,33 +139,32 @@ function HeaderBottom() {
                 horizontal: "center",
               }}
             >
-              {loading ? <LoadingModal/> :
-
-                  brands.map((item) => {
-                return (
-                  <Typography className={classes.typography}>
-                      <p
-                      onClick={()=> handleGetByBrands(item._id)}
-                      >
-                      <NavLink className={classes.nav_1} to={`/cars/brand/${item._id}`}>
-                      <div
-                      className={classes.modal_text}
-                      >
-                      <img
-                      className={classes.modal_logo}
-                      src={item.logo}
-                      alt=""
-                      />
-                      <span>{item.name}</span>
-                      </div>
-                      </NavLink>
+              {loading ? (
+                <LoadingModal />
+              ) : (
+                brands.map((item) => {
+                  return (
+                    <Typography className={classes.typography}>
+                      <p onClick={() => handleGetByBrands(item._id)}>
+                        <NavLink
+                          className={classes.nav_1}
+                          to={`/cars/brand/${item._id}`}
+                        >
+                          <div className={classes.modal_text}>
+                            <img
+                              className={classes.modal_logo}
+                              src={item.logo}
+                              alt=""
+                            />
+                            <span>{item.name}</span>
+                          </div>
+                        </NavLink>
                       </p>
-                    <hr/>
-
-
-                  </Typography>
-                );
-              })}
+                      <hr />
+                    </Typography>
+                  );
+                })
+              )}
             </Popover>
           </div>
         </div>
