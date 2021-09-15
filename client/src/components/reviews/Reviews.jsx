@@ -11,7 +11,11 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+
+
+
 import Loading from "../cars/Loading";
+
 
 
 
@@ -78,6 +82,17 @@ const useStyles = makeStyles({
   formInp:{
     width:700,
     margin:"auto"
+  },
+  errText: {
+    margin: "20px 0px 20px 200px",
+    paddingLeft: "20px",
+    display: "flex",
+    alignItems: "center",
+    borderRadius: "3px",
+    border: "3px solid red",
+    width: "150px",
+    height: "30px",
+    color: "red"
   }
 });
 
@@ -91,8 +106,12 @@ function Reviews() {
       setText(e.target.value);
   };
 
+
   const addRecall = (e) => {
     setText('')
+  const addRecall = () => {
+
+
     dispatch(addReview( text ))
   };
 
@@ -117,6 +136,7 @@ function Reviews() {
         </Box>
         <Container>
           <Box>
+
                   <Paper>
                     {recall?.map((item) => {
                       return (
@@ -128,6 +148,7 @@ function Reviews() {
                     })}
                   </Paper>
           </Box>
+
           {token ? <Box className={classes.formInp}>
             {error ? <Typography>{error}</Typography> : ''}
             <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
@@ -140,6 +161,7 @@ function Reviews() {
               Добавить
             </Button>
           </Box> : ''}
+
 
         </Container>
       </Container>
