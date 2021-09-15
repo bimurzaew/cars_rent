@@ -4,10 +4,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Grid, Toolbar } from "@material-ui/core";
-import { getUser } from "../../redux/features/users";
+import { deleteAccount, getUser } from "../../redux/features/users";
 import CarByPerson from './CarByPerson';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: 150,
     justifyContent:'space-evenly'
@@ -15,12 +17,19 @@ const useStyles = makeStyles({
   media: {
     height: 360,
   },
-});
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 function PersonalPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
   }, []);
+
+ const handleDelete = () => {
+    dispatch(deleteAccount())
+  }
   const { user } = useSelector((state) => state.users);
   const classes = useStyles();
   return (
@@ -49,6 +58,17 @@ function PersonalPage() {
             </Typography>
             <Typography gutterBottom variant="h5" component="p">
               <b>Контакты</b>:{user?.number}
+            </Typography>
+            <Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                startIcon={<DeleteIcon />}
+                onClick={handleDelete}
+              >
+                Delete account
+              </Button>
             </Typography>
           </Grid>
           {user?.carRent? <Grid item xs={2}>
