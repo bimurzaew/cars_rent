@@ -104,6 +104,23 @@ export default function users(state = initialState, action) {
         loading: false,
         user: { ...state.user, carRent: null }
       };
+    case 'user/delete/pending':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'user/delete/rejected':
+      return {
+        ...state,
+        loading: false,
+        error:action.payload
+      }
+    case 'user/delete/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        message: action.payload
+      }
     default:
       return state;
   }
@@ -207,3 +224,22 @@ export const logOut = () => {
     localStorage.clear();
   };
 };
+
+export const deleteAccount = () => {
+  return async (dispatch, getState) => {
+    dispatch({type:'user/delete/pending'})
+    const state = getState()
+    const response = await fetch('user/delete', {
+      method:"DELETE",
+      headers:{
+        Authorization:`Bearer ${state.users.token}`
+      }
+    })
+    const json = response.json()
+    if (json.error) {
+      dispatch({type:"user/delete/rejected", payload:json})
+    }else {
+      dispatch({type:"user/delete/fulfilled", payload:json})
+    }
+  }
+}
