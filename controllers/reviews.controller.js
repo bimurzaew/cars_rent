@@ -2,13 +2,13 @@ const Review = require("../models/Review.model");
 const User = require("../models/User.model");
 
 module.exports.reviewsController = {
-  addReview: async (req, res) => {
+  addReview: async (req, res)  => {
     try {
       const user = await User.findById(req.user.id);
       const { text } = req.body;
 
       if (!text) {
-        return res.json({ error: "воздухан?" });
+        return res.json({ error: "Воздухан?" });
       }
      const rev = await Review.create({
         text,
