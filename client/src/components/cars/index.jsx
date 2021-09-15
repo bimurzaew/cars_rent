@@ -6,12 +6,10 @@ import Grid from "@material-ui/core/Grid";
 import { useParams } from "react-router-dom";
 import { Box, Paper, TextField, Toolbar } from "@material-ui/core";
 import { loadCars } from "../../redux/features/cars";
-import Typical from "react-typical";
 import Car from "./Car";
 import "./style.css";
 import Loading from "./Loading";
 import Desc from "./Desc";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,20 +23,20 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     margin: "150px auto 0",
-
     width: 950,
     backgroundColor: "rgba(255,255,255,0.8)",
     padding: 15,
-    title: {
-      margin: "150px auto 0",
-      width: 950,
-      backgroundColor: "transparent",
-      padding: 15,
-      boxShadow: "none",
-      color: "white",
-      fontSize: 30,
-      textAlign: "center",
-    },
+  },
+    // title: {
+    //   margin: "150px auto 0",
+    //   width: 950,
+    //   backgroundColor: "transparent",
+    //   padding: 15,
+    //   boxShadow: "none",
+    //   color: "white",
+    //   fontSize: 30,
+    //   textAlign: "center",
+    // },
     text_title: {
       display: "flex",
       alignItems: "center",
@@ -76,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
     wid: {
       width: "100%",
     },
-  },
 }));
 
 function Cars() {
@@ -95,7 +92,7 @@ function Cars() {
   });
 
   return (
-    <Box className={classes.main}>
+    <Box className={classes.mainImg}>
       <Toolbar />
       <Container maxWidth={classes.wid} className={classes.main}>
         {loading ? (
@@ -135,7 +132,7 @@ function Cars() {
             );
           })}
         </Grid>
-        }
+
       </Container>
     </Box>
   );

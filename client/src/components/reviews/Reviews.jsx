@@ -11,8 +11,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import logo from "./logo-people.png";
-import CircularStatic from './Preload';
+import Loading from "../cars/Loading";
 
 
 const useStyles = makeStyles({
@@ -52,15 +51,33 @@ const useStyles = makeStyles({
     background: "white",
     padding: "20px",
     borderBottom: "1px solid black",
+    display:"flex",
+    justifyContent:"space-between",
+
   },
   container: {
     background: "#F6F4F5",
     marginTop: 100,
+    paddingBottom:20
   },
   logo: {
     width: 25,
     marginRight: 10,
   },
+  text:{
+    flex:1
+  },
+  inp:{
+    width:500,
+    marginRight:5
+  },
+  btn_delete:{
+    height:40
+  },
+  formInp:{
+    width:700,
+    margin:"auto"
+  }
 });
 
 function Reviews() {
@@ -70,8 +87,7 @@ function Reviews() {
   const [text, setText] = useState("");
 
   const handleChangeText = (e) => {
-
-    setText(e.target.value);
+      setText(e.target.value);
   };
 
   const addRecall = (e) => {
@@ -85,9 +101,11 @@ function Reviews() {
   const loading = useSelector(state => state.reviews.loading)
   const error = useSelector(state => state.reviews.error)
   return (
+    <>
+      <Toolbar/>
 
-        <Container className={classes.container}>
-          {loading ? <CustomizedProgressBars /> : ''}
+      <Container className={classes.container}>
+        {loading ? <Loading /> : ''}
         <Box className={classes.titles}>
           <Typography className={classes.subTitle} gutterBottom component="p" >
             Рез валахь цхьаъ яз е, вацахь охь г1о!!!
@@ -97,30 +115,37 @@ function Reviews() {
         <Container>
           <Box>
 
-            {recall?.map((item) => {
-              return (
-                  <Box>
-                    <Typography variant="h6" component="p" className={classes.todoText}>{item.userId.name}: {item.text}</Typography>
-                  </Box>
-              )
-            })}
+
+                  <Paper>
+                    {recall?.map((item) => {
+                      return (
+                    <Typography variant="subtitle1" component="p" className={classes.todoText}
+                    >
+                      <b>{item.userId?.name}</b>: <span className={classes.text}>{item.text}</span>
+                      <Button variant="contained" color="secondary" className={classes.btn_delete}>
+                        Удалить
+                      </Button>
+                    </Typography>
+                      )
+                    })}
+                  </Paper>
+
           </Box>
-          <Paper className={classes.reviews} elevation={6}>
-            <Box className={classes.blockReviews}>
+            <Box className={classes.formInp}>
               {error ? <Typography>{error}</Typography> : ''}
-              <Typography className={classes.subbTitle} gutterBottom variant="h5">
-                Оставить отзыв
-              </Typography>
-              <form action="">
-                <TextField variant="outlined" onChange={(e) => handleChangeText(e)} type="text" />
+                <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
+                           autoComplete={false}
+                           value={text}
+                           onChange={(e)=> handleChangeText(e)}
+                           className={classes.inp}
+                />
                 <Button  className={classes.formBtn} onClick={addRecall}   variant="contained" size="large" color="primary">
                   Добавить
                 </Button>
-              </form>
             </Box>
-          </Paper>
         </Container>
       </Container>
+    </>
   );
 }
 
