@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImg: {
     backgroundImage:
-      "URL(https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg)",
+      "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
     backgroundSize: "cover",
     background: "fixed",
     backgroundRepeat: "no-repeat",
