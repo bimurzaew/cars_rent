@@ -6,6 +6,14 @@ import Grid from "@material-ui/core/Grid";
 
 
 const useStyles = makeStyles({
+    box_img:{
+        backgroundImage:
+            "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        background: "fixed",
+        paddingBottom: 15,
+    },
     root:{
         marginTop:120,
         paddingBottom:20
@@ -54,7 +62,7 @@ const Contacts = () => {
     const  classes = useStyles()
 
     return (
-        <>
+        <Box className={classes.box_img}>
             <Toolbar/>
             <Container className={classes.root}>
                 <Box >
@@ -145,7 +153,7 @@ const Contacts = () => {
                     </Typography>
                 </Box>
             </Container>
-        </>
+        </Box>
     );
 };
 
