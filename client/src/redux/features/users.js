@@ -119,7 +119,7 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        message: action.payload
+        token:null
       }
     default:
       return state;
@@ -240,6 +240,7 @@ export const deleteAccount = () => {
       dispatch({type:"user/delete/rejected", payload:json})
     }else {
       dispatch({type:"user/delete/fulfilled", payload:json})
+      localStorage.clear()
     }
   }
 }

@@ -106,7 +106,11 @@ function Reviews() {
       setText(e.target.value);
   };
 
+
+  const addRecall = (e) => {
+    setText('')
   const addRecall = () => {
+
 
     dispatch(addReview( text ))
   };
@@ -115,6 +119,7 @@ function Reviews() {
     dispatch(getReviews());
   }, [dispatch]);
   const recall = useSelector((state) => state.reviews.recall);
+  const token = useSelector(state => state.users.token)
   const loading = useSelector(state => state.reviews.loading)
   const error = useSelector(state => state.reviews.error)
   return (
@@ -132,34 +137,32 @@ function Reviews() {
         <Container>
           <Box>
 
-
-
                   <Paper>
                     {recall?.map((item) => {
                       return (
                     <Typography variant="subtitle1" component="p" className={classes.todoText}
                     >
                       <b>{item.userId?.name}</b>: <span className={classes.text}>{item.text}</span>
-                      <Button variant="contained" color="secondary" className={classes.btn_delete}>
-                        Удалить
-                      </Button>
                     </Typography>
                       )
                     })}
                   </Paper>
           </Box>
-            <Box className={classes.formInp}>
-              {error ? <Typography className={classes.errText} variant="h6" component="p">{error}</Typography> : ''}
-                <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
-                           autoComplete={false}
-                           value={text}
-                           onChange={(e)=> handleChangeText(e)}
-                           className={classes.inp}
-                />
-                <Button  className={classes.formBtn} onClick={addRecall}   variant="contained" size="large" color="primary">
-                  Добавить
-                </Button>
-            </Box>
+
+          {token ? <Box className={classes.formInp}>
+            {error ? <Typography>{error}</Typography> : ''}
+            <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
+                       autoComplete={false}
+                       value={text}
+                       onChange={(e)=> handleChangeText(e)}
+                       className={classes.inp}
+            />
+            <Button  className={classes.formBtn} onClick={addRecall}   variant="contained" size="large" color="primary">
+              Добавить
+            </Button>
+          </Box> : ''}
+
+
         </Container>
       </Container>
     </>
