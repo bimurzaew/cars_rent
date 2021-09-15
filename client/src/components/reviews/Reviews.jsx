@@ -13,6 +13,7 @@ import {
 import Typography from "@material-ui/core/Typography";
 import logo from "./logo-people.png";
 import CircularStatic from './Preload';
+import CustomizedProgressBars from './Preload';
 
 
 const useStyles = makeStyles({

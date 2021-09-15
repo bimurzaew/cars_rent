@@ -43,7 +43,6 @@ export default function CarByPerson({ user }) {
   const [expanded, setExpanded] = React.useState(false);
   const dispatch = useDispatch()
   const carId = user.carRent._id
-  console.log(carId)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
