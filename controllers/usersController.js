@@ -121,7 +121,16 @@ module.exports.usersController = {
       user.save();
       res.json(user)
     } catch (e) {
-      res.json({ error: e.toString() + " карар яьлла кетчи" });
+      res.json({ error: e.toString()});
     }
   },
+  deleteAccount: async (req,res) => {
+    try {
+      const user = await User.findById(req.user.id)
+     await User.findByIdAndDelete(user)
+      res.json({message:'ваш аккаунт успешно удален'})
+    }catch (e) {
+      res.json({error: e.toString()})
+    }
+  }
 };
