@@ -11,8 +11,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import logo from "./logo-people.png";
-import CircularStatic from './Preload';
+import CustomizedProgressBars from './Preload';
 
 
 const useStyles = makeStyles({
@@ -100,7 +99,7 @@ function Reviews() {
             {recall?.map((item) => {
               return (
                   <Box>
-                    <Typography variant="h6" component="p" className={classes.todoText}>{item.userId.name}: {item.text}</Typography>
+                    <Typography variant="h6" component="p" className={classes.todoText}>{item.userId?.name}: {item.text}</Typography>
                   </Box>
               )
             })}
