@@ -102,7 +102,7 @@ module.exports.usersController = {
         res.json(user);
       }
     } catch (e) {
-      res.status(400).json({ error: e.toString() + " catch" });
+      res.status(400).json({ error: e.toString()});
     }
   },
   putCar: async (req, res) => {

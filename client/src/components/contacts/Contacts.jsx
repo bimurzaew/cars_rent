@@ -44,7 +44,7 @@ const useStyles = makeStyles({
         fontWeight: "500",
         fontSize: "18px",
         lineHeight: "45px",
-        width: "250px"
+        width: "150px"
     },
     imgHeight: {
         height: "250px"
@@ -78,7 +78,7 @@ const Contacts = () => {
                                 <b>Основные пункты выдачи:</b>
                             </Typography>
                             <Typography className={classes.subTitle} gutterBottom component="p">
-                                г. Грозный,   Мичуринский пр-т, д.32 к.8, офис 16 (3 этаж), БЦ «ТехноХолл»
+                                г. Грозный,   Трошева 7, офис 16 (3 этаж), ТЦ «Медина»
                             </Typography>
                         </Grid>
                         <Grid item={4}>
@@ -97,26 +97,16 @@ const Contacts = () => {
                     </Typography>
                     <Grid container spacing={7}>
                         <Grid item={6}>
-                            <Typography variant="h6">Офис компании «Мичуринский проспект»</Typography>
+                            <Typography variant="h6">Офис компании «Трошева 7»</Typography>
                             <Typography className={classes.AdvertisingText} component="div">
-
-                                Аэропорт Домодедово
-                                Аэропорт Шереметьево
-                                Аэропорт Внуково
-                                Аэропорт Остафьево
-                                Аэропорт Жуковский
-                                Савеловский ЖД вокзал
-                                Рижский ЖД вокзал
-                                Павелецкий ЖД вокзал
-                                Ленинградский ЖД вокзал
-                                Курский ЖД вокзал
-                                Ярославский ЖД вокзал
-                                Киевский ЖД вокзал
-                                Казанский ЖД вокзал
-                                Белорусский ЖД вокзал
+                                Урус-Мартан
+                                Грозный
+                                Ачхой-Мартан
+                                Дукх Вахи беш
+                                Салмани керт
+                                Медина кет1
+                                Роьшни чохь
                             </Typography>
-
-
                         </Grid>
                         <Grid item={6}>
                             <iframe
@@ -130,7 +120,7 @@ const Contacts = () => {
                     <Grid container spacing={10} >
                         <Grid item={6}>
                             <Typography className={classes.title} gutterBottom variant="h5">
-                                <b>ООО «Флай Авто»</b>
+                                <b>ООО «Аьрг баьлш»</b>
 
 
                             </Typography>
@@ -143,12 +133,10 @@ const Contacts = () => {
                         </Grid>
                         <Grid item={6}>
                             <Typography className={classes.title} gutterBottom variant="h5">
-                                <b>ООО «ЕВРОАВТО РУС»</b>
+                                <b>ООО «Интукод»</b>
                             </Typography>
                             <Typography className={classes.subTittle} gutterBottom variant="h5">
-                                Юридический адрес: 63547375, г. Москва , проспект Кольцевой, д. 32 к. 8
-                                ИНН/КПП: 7723733235/772301001
-                                ОГРН: 1097746633401
+                                Дукх вахиг хатта
                             </Typography>
                         </Grid>
                     </Grid>
