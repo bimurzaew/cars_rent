@@ -84,7 +84,7 @@ ______
 <img alt="concurrently" src="https://img.shields.io/badge/-concurrently-white?style=for-the-badge&logo=concurrently&logoColor=green" />
 <img alt="morgan" src="https://img.shields.io/badge/-morgan-green?style=for-the-badge&logo=morgan&logoColor=white" />
 <img alt="cors" src="https://img.shields.io/badge/-cors-pink?style=for-the-badge&logo=cors&logoColor=green" />
-<img alt="prettier" src="https://img.shields.io/badge/-prettier-555?style=for-the-badge&logo=prettier&logoColor=green" />
+<img alt="prettier" src="https://img.shields.io/badge/-prettier-555?style=for-the-badge&logo=prettier&logoColor=red" />
 <img alt="eslint" src="https://img.shields.io/badge/-eslint-430098?style=for-the-badge&logo=eslint&logoColor=white" />
 <img alt="http" src="https://img.shields.io/badge/-http-yellow?style=for-the-badge&logo=http&logoColor=green" />
 <img alt="git" src="https://img.shields.io/badge/-git-orange?style=for-the-badge&logo=git&logoColor=green" />
@@ -92,3 +92,23 @@ ______
 <img alt="css" src="https://img.shields.io/badge/-css-blue?style=for-the-badge&logo=css&logoColor=green" />
 <img alt="bootstrap modules" src="https://img.shields.io/badge/-bootstrap-lightblue?style=for-the-badge&logo=bootstrap&logoColor=blue" />
 </div>
+
+____
+
+##### Чтобы запустить данное приложение введите:
+
+1. `git clone https://github.com/Dukvaha27/cars_rent` <br/>
+2. `npm i` <br/>
+3. `cd client` <br/>
+4. `npm i` <br/>
+5. `cd ..` <br/>
+6. `npm run dev`
+
+____
+
+#### В команде разработчиков этого приложении были:
+
+ [<img alt="Yahkha" src="https://img.shields.io/badge/-Yahkha-black?style=for-the-badge&logo=&logoColor=red" />](https://github.com/bimurzaew)
+ [<img alt="Dukvakha" src="https://img.shields.io/badge/-Dukvakha-black?style=for-the-badge&logo=&logoColor=red" />](https://github.com/Dukvaha27)
+ [<img alt="RAkhim" src="https://img.shields.io/badge/-Rakhim-black?style=for-the-badge&logo=&logoColor=red" />](https://github.com/Khatciev)
+
