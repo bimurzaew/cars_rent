@@ -97,7 +97,7 @@ ____
 
 ##### Чтобы запустить данное приложение введите:
 
-1. `git clone https://github.com/Dukvaha27/cars_rent` <br/>
+1. `склонировать проект` <br/>
 2. `npm i` <br/>
 3. `cd client` <br/>
 4. `npm i` <br/>
