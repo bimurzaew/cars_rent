@@ -117,8 +117,9 @@ function Reviews() {
   };
 
 
-  const addRecall = (e) => {
-    setText('')
+  // const addRecall = (e) => {
+  //   setText('')
+
   const addRecall = () => {
 
 
@@ -163,8 +164,8 @@ function Reviews() {
 
           {token ? <Box className={classes.formInp}>
             {error ? <Typography>{error}</Typography> : ''}
-            <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
-                       autoComplete={false}
+            <TextField id="standard-secondary" label="Оставить комментарий" variant="outlined"
+                       autoComplete={true}
                        value={text}
                        onChange={(e)=> handleChangeText(e)}
                        className={classes.inp}
