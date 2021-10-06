@@ -12,17 +12,11 @@ import {
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
-
-
 import Loading from "../cars/Loading";
 
-
-
-
 const useStyles = makeStyles({
-  boxImg:{
-    backgroundImage:
-        "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
+  boxImg: {
+    backgroundImage: "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     background: "fixed",
@@ -32,27 +26,26 @@ const useStyles = makeStyles({
     color: "#33325E",
     margin: "50px 0px 30px",
   },
-  titles:{
-    marginTop:100,
-    borderRadius:10
+  titles: {
+    marginTop: 100,
+    borderRadius: 10,
   },
   subTitle: {
     color: "#525F82",
     fontSize: "20px",
 
-    textAlign:'center',
-    marginTop:70
-
+    textAlign: "center",
+    marginTop: 70,
   },
   subbTitle: {
     marginTop: "30px",
     color: "#525F82",
     fontSize: "30px",
-    textAlign:'center'
+    textAlign: "center",
   },
   blockReviews: {
     margin: "50px 300px 0",
-    background: "#F6F4F5"
+    background: "#F6F4F5",
   },
   reviews: {
     height: "150px",
@@ -65,33 +58,32 @@ const useStyles = makeStyles({
     background: "white",
     padding: "20px",
     borderBottom: "1px solid black",
-    display:"flex",
-    justifyContent:"space-between",
-
+    display: "flex",
+    justifyContent: "space-between",
   },
   container: {
     background: "#F6F4F5",
     marginTop: 100,
-    paddingBottom:20,
-    borderRadius:10
+    paddingBottom: 20,
+    borderRadius: 10,
   },
   logo: {
     width: 25,
     marginRight: 10,
   },
-  text:{
-    flex:1
+  text: {
+    flex: 1,
   },
-  inp:{
-    width:500,
-    marginRight:5
+  inp: {
+    width: 500,
+    marginRight: 5,
   },
-  btn_delete:{
-    height:40
+  btn_delete: {
+    height: 40,
   },
-  formInp:{
-    width:700,
-    margin:"auto"
+  formInp: {
+    width: 700,
+    margin: "auto",
   },
   errText: {
     margin: "20px 0px 20px 200px",
@@ -102,8 +94,8 @@ const useStyles = makeStyles({
     border: "3px solid red",
     width: "150px",
     height: "30px",
-    color: "red"
-  }
+    color: "red",
+  },
 });
 
 function Reviews() {
@@ -113,68 +105,74 @@ function Reviews() {
   const [text, setText] = useState("");
 
   const handleChangeText = (e) => {
-      setText(e.target.value);
+    setText(e.target.value);
   };
 
-
-  const addRecall = (e) => {
-    setText('')
   const addRecall = () => {
-
-
-    dispatch(addReview( text ))
+    dispatch(addReview(text));
   };
 
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
   const recall = useSelector((state) => state.reviews.recall);
-  const token = useSelector(state => state.users.token)
-  const loading = useSelector(state => state.reviews.loading)
-  const error = useSelector(state => state.reviews.error)
+  const token = useSelector((state) => state.users.token);
+  const loading = useSelector((state) => state.reviews.loading);
+  const error = useSelector((state) => state.reviews.error);
   return (
     <Box className={classes.boxImg}>
-      <Toolbar/>
+      <Toolbar />
 
       <Container className={classes.container}>
-        {loading ? <Loading /> : ''}
+        {loading ? <Loading /> : ""}
         <Box className={classes.titles}>
-          <Typography className={classes.subTitle} gutterBottom component="p" >
+          <Typography className={classes.subTitle} gutterBottom component="p">
             Рез валахь цхьаъ яз е, вацахь охь г1о!!!
-
           </Typography>
         </Box>
         <Container>
           <Box>
-
-
-                  <Paper >
-
-                    {recall?.map((item) => {
-                      return (
-                    <Typography variant="subtitle1" component="p" className={classes.todoText}
-                    >
-                      <b>{item.userId?.name}</b>: <span className={classes.text}>{item.text}</span>
-                    </Typography>
-                      )
-                    })}
-                  </Paper>
+            <Paper>
+              {recall?.map((item) => {
+                return (
+                  <Typography
+                    variant="subtitle1"
+                    component="p"
+                    className={classes.todoText}
+                  >
+                    <b>{item.userId?.name}</b>:{" "}
+                    <span className={classes.text}>{item.text}</span>
+                  </Typography>
+                );
+              })}
+            </Paper>
           </Box>
 
-          {token ? <Box className={classes.formInp}>
-            {error ? <Typography>{error}</Typography> : ''}
-            <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
-                       autoComplete={false}
-                       value={text}
-                       onChange={(e)=> handleChangeText(e)}
-                       className={classes.inp}
-            />
-            <Button  className={classes.formBtn} onClick={addRecall}   variant="contained" size="large" color="primary">
-              Добавить
-            </Button>
-          </Box> : ''}
-
-
+          {token ? (
+            <Box className={classes.formInp}>
+              {error ? <Typography>{error}</Typography> : ""}
+              <TextField
+                id="outlined-basic"
+                label="Оставить комментарий"
+                variant="outlined"
+                autoComplete={false}
+                value={text}
+                onChange={(e) => handleChangeText(e)}
+                className={classes.inp}
+              />
+              <Button
+                className={classes.formBtn}
+                onClick={addRecall}
+                variant="contained"
+                size="large"
+                color="primary"
+              >
+                Добавить
+              </Button>
+            </Box>
+          ) : (
+            ""
+          )}
         </Container>
       </Container>
     </Box>
