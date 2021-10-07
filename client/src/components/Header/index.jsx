@@ -6,29 +6,27 @@ import HeaderBottom from "./HeaderBottom";
 import logo from "../../logo2.png";
 import { Link, NavLink } from "react-router-dom";
 import { logOut } from "../../redux/features/users";
-import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
-import {makeStyles, Paper} from '@material-ui/core';
+import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import PermIdentityTwoToneIcon from "@material-ui/icons/PermIdentityTwoTone";
+import { makeStyles, Paper } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
-
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    fontSize:40,
-    color:'antiquewhite'
+    fontSize: 40,
+    color: "antiquewhite",
   },
-  text_title:{
-    display:"flex",
-    color:"#fff",
-    fontSize:30,
-      fontWeight:"bold",
-      fontStyle:"italic"
+  text_title: {
+    display: "flex",
+    color: "#fff",
+    fontSize: 30,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
-
-}))
+}));
 
 function Header(props) {
-  const classes = useStyles()
+  const classes = useStyles();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.users.token);
 
@@ -47,7 +45,11 @@ function Header(props) {
           <div className="head-top">
             <div className="row text-center align-items-center">
               <div className="col">
-                <img className="logo-company" style={style.logoCompany} src={logo} />
+                <img
+                  className="logo-company"
+                  style={style.logoCompany}
+                  src={logo}
+                />
               </div>
               <div className="col-6">
                   <div className={classes.text_title}>
@@ -58,7 +60,7 @@ function Header(props) {
                 <div className="person">
                   <div className="person-text">
                     {token ? (
-                      <NavLink  variant="body2" color="secondary" to="/personal">
+                      <NavLink variant="body2" color="secondary" to="/personal">
                         <PermIdentityTwoToneIcon className={classes.avatar} />
                       </NavLink>
                     ) : (
@@ -71,7 +73,7 @@ function Header(props) {
                     {token ? (
                       <Link to="/">
                         <div className="exitPage" onClick={handleLogOut}>
-                         <ExitToAppTwoToneIcon className={classes.avatar}/>
+                          <ExitToAppTwoToneIcon className={classes.avatar} />
                         </div>
                       </Link>
                     ) : (
