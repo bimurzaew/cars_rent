@@ -20,12 +20,21 @@ import Loading from "../cars/Loading";
 
 
 const useStyles = makeStyles({
+  boxImg:{
+    backgroundImage:
+        "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    background: "fixed",
+    paddingBottom: 15,
+  },
   title: {
     color: "#33325E",
     margin: "50px 0px 30px",
   },
   titles:{
-    marginTop:100
+    marginTop:100,
+    borderRadius:10
   },
   subTitle: {
     color: "#525F82",
@@ -63,7 +72,8 @@ const useStyles = makeStyles({
   container: {
     background: "#F6F4F5",
     marginTop: 100,
-    paddingBottom:20
+    paddingBottom:20,
+    borderRadius:10
   },
   logo: {
     width: 25,
@@ -107,8 +117,9 @@ function Reviews() {
   };
 
 
-  const addRecall = (e) => {
-    setText('')
+  // const addRecall = (e) => {
+  //   setText('')
+
   const addRecall = () => {
 
 
@@ -123,7 +134,7 @@ function Reviews() {
   const loading = useSelector(state => state.reviews.loading)
   const error = useSelector(state => state.reviews.error)
   return (
-    <>
+    <Box className={classes.boxImg}>
       <Toolbar/>
 
       <Container className={classes.container}>
@@ -137,7 +148,9 @@ function Reviews() {
         <Container>
           <Box>
 
-                  <Paper>
+
+                  <Paper >
+
                     {recall?.map((item) => {
                       return (
                     <Typography variant="subtitle1" component="p" className={classes.todoText}
@@ -151,8 +164,8 @@ function Reviews() {
 
           {token ? <Box className={classes.formInp}>
             {error ? <Typography>{error}</Typography> : ''}
-            <TextField id="outlined-basic" label="Оставить комментарий" variant="outlined"
-                       autoComplete={false}
+            <TextField id="standard-secondary" label="Оставить комментарий" variant="outlined"
+                       autoComplete={true}
                        value={text}
                        onChange={(e)=> handleChangeText(e)}
                        className={classes.inp}
@@ -165,7 +178,7 @@ function Reviews() {
 
         </Container>
       </Container>
-    </>
+    </Box>
   );
 }
 

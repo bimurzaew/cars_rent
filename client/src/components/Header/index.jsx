@@ -52,9 +52,9 @@ function Header(props) {
                 />
               </div>
               <div className="col-6">
-                <div className={classes.text_title}>
-                  Подберем для тебя автомобиль
-                </div>
+                  <div className={classes.text_title}>
+                    Аренда авто по СНГ
+                  </div>
               </div>
               <div className="col">
                 <div className="person">
