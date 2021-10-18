@@ -12,7 +12,6 @@ ReactDOM.render(
     <Provider store={store}>
         <CssBaseline/>
       <App />
-
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
