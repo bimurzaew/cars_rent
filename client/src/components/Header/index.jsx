@@ -51,7 +51,7 @@ function Header(props) {
               </div>
               <div className="col-6">
                   <div className={classes.text_title}>
-                    Ахьмадс ишт мег аьлла
+                    Подберем для вас автомобиль
                   </div>
               </div>
               <div className="col">
