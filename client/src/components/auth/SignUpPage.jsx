@@ -27,6 +27,9 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  main:{
+    backgroundImage:'inherit !important'
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -85,7 +88,7 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={classes.main} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

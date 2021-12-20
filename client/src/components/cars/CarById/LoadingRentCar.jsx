@@ -4,10 +4,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        '& > * + *': {
-            marginLeft: theme.spacing(1),
-        },
+        display: "block",
+        margin:"auto",
         padding:10
     },
 }));
@@ -17,7 +15,7 @@ export default function LoadingRentCar() {
 
     return (
         <div className={classes.root}>
-            <CircularProgress />
+            <CircularProgress color="secondary" className={classes.root} />
             {/*<CircularProgress color="secondary" />*/}
         </div>
     );

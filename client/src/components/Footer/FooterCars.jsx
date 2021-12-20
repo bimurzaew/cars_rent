@@ -1,30 +1,19 @@
-import React from "react";
-import { Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import FooterTop from "./FooterTop";
-import FooterBottom from "./FooterBottom";
+import React from 'react';
+import FooterTop from './FooterTop';
+import FooterBottom from './FooterBottom';
+import style from "./footer.module.css";
 
-const useStyles = makeStyles({
-  footer: {
-    borderBottom: "1px solid grey",
-    backgroundColor: "#11314f",
-    boxShadow: "inset  0 -10px 20px -10px lightcyan",
-    padding: "10px 0",
-  }
-});
-
-const FooterCars = () => {
-  const classes = useStyles();
+function FooterCars () {
   return (
-    <>
-      <footer className={classes.footer}>
-        <Container>
-          <FooterTop />
-          <FooterBottom />
-        </Container>
-      </footer>
-    </>
-  );
-};
+    <div className={'container-fluid '+style.footer}>
+      <div className="row">
+        <FooterTop/>
+      </div>
+      <div className="row">
+        <FooterBottom/>
+      </div>
+    </div>
+  )
+}
 
-export default FooterCars;
+export default FooterCars
