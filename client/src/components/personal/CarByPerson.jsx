@@ -14,10 +14,13 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { putCar } from '../../redux/features/users';
+import {useHistory} from "react-router-dom";
+import ClaimPerson from "./ClaimPerson";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    width:450
   },
   media: {
     height: 0,
@@ -30,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.shortest,
     }),
   },
+  btn:{
+    marginRight:5
+  },
   expandOpen: {
     transform: "rotate(180deg)",
   },
@@ -40,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CarByPerson({ user }) {
   const classes = useStyles();
+  const history = useHistory();
   const [expanded, setExpanded] = React.useState(false);
   const dispatch = useDispatch()
   const carId = user.carRent._id
@@ -49,6 +56,9 @@ export default function CarByPerson({ user }) {
   };
   const handlePutCar = (carId) => {
     dispatch(putCar(carId))
+  }
+  const handleClaim = () => {
+
   }
 
   return (
@@ -60,9 +70,10 @@ export default function CarByPerson({ user }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button onClick={() => {handlePutCar(carId)}} variant="outlined" color="primary" href="#outlined-buttons">
+        <Button className={classes.btn} onClick={() => {handlePutCar(carId)}} variant="outlined" color="primary" href="#outlined-buttons">
           Вернуть
         </Button>
+        <ClaimPerson/>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
