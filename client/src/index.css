@@ -1,5 +1,9 @@
 body{
-    background-image: url("https://barnes-newyork.com/wp-content/uploads/2021/05/NewYork-HomeBanner.jpg");
+    margin: 0;
+    padding: 0;
+}
+.container-body{
+    background-image: url("https://i.trse.ru/2020/10/tmuR.jpg") !important;
     background-size: cover;
     background-repeat: no-repeat;
     background: fixed;

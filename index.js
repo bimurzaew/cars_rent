@@ -13,9 +13,15 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
 app.use(fileUpload());
-
-
 app.use(require('./routes/index'))
+
+app.use(morgan())
+app.use(cors())
+
+app.use(express.static(path.resolve(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 mongoose
   .connect(process.env.MONGO_SERVER)

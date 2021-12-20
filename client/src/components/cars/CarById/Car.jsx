@@ -1,194 +1,106 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import "./carsById-style.css";
-import { Button, Paper } from "@material-ui/core";
-
+import CarsCarousel from "./CarsCarousel";
+import style from "./car.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, putCar, rentCar } from "../../../redux/features/users";
 import { useParams } from "react-router-dom";
-import { Carousel } from "bootstrap";
-import CarsCarousel from "./CarsCarousel";
+import { Slider } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-    marginTop: theme.spacing(5),
-    borderRadius: 10,
-  },
-  price: {
-    width: 200,
-  },
-  media: {
-    height: 100,
-    backgroundSize: 200,
-  },
-  index: {
-    width: 250,
-    color: "#9B3C51",
-  },
-  extendedIcon: {
-    width: "fit-content",
-    marginRight: theme.spacing(1),
-  },
-  margin: {
-    display: "block",
-    margin: "auto",
-  },
-
-  content: {
-    width: 335,
-    margin: "20px auto 0",
-    borderRadius: 5,
-    backgroundColor: "#11314F",
-    color: "white",
-  },
-  day: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: 190,
-    color: "#9B3C51",
-  },
-  value: {
-    textAlign: "center",
-    marginTop: 5,
-    color: "#9B3C51",
-  },
-  btmRent: {
-    display: "block",
-    margin: "0 auto 5px",
-  },
-  list: {
-    padding: 30,
-    // marginTop: 180,
-    opacity: 0.7,
-  },
-  p:{
-    color:"#000000",
-    fontWeight:"bold"
-  }
-}));
-
-function Car({ item }) {
-  const classes = useStyles();
-  const [value, setValue] = useState(1);
+function Car({ car }) {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const handleRentCar = (id) => {
-    dispatch(rentCar(id));
-  };
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  const handlePutCar = (id) => {
-    dispatch(putCar(id));
-  };
+  const { user } = useSelector((state) => state.users);
+  const [value, setValue] = useState(1);
+
   useEffect(() => {
     dispatch(getUser());
   }, []);
-  const { user } = useSelector((state) => state.users);
 
   return (
     <>
-      <Grid item xs={12}>
+      <div className="row">
         <CarsCarousel
-            img1={item.imgCar1}
-            img2={item.imgCar2}
-            img3={item.imgCar3}
-            name={item.name}
+          img1={car.imgCar1}
+          img2={car.imgCar2}
+          img3={car.imgCar3}
+          name={car.name}
         />
-      </Grid>
-      <Grid item xs={6}>
-        <Paper className={classes.list}>
-          <h1 className="title">{item.name}</h1>
-          <h2 className="rent-text">Укажите срок аренды в днях</h2>
-          <span className="rent">
-            <span className={classes.day}>
-              <p>{value * item.price} ₽</p>
-              <p>/ Сутки:{value}</p>
-            </span>
+      </div>
+      <div className="row bg-light p-md-5 ">
+        <div className="col-lg-8">
+          <h2 className={'my-2 text-lg-start text-md-start text-center'}>{car.name}</h2>
+          <h4 className={'my-2 text-lg-start text-md-start text-center'}>Укажите срок аренды в днях</h4>
+          <div className='w-75 d-flex justify-content-between mt-lg-5 mx-lg-0 mx-md-0 mx-auto'>
+            <span>{value * car.price} ₽</span>
+           <span>/ Сутки:{value}</span>
+          </div>
             <Slider
-              className={classes.index}
+              className={'text-danger w-75 d-block mx-lg-0 mx-md-0 mx-auto'}
               step={1}
               marks
               min={1}
               max={10}
-              onChange={handleChange}
+              onChange={(e, newValue) => setValue(newValue)}
             />
-          </span>
-          <p className={classes.p}>
-            {item.detailedDescription}
+          <p className={style.description + " my-5"}>
+                 {car.detailedDescription}
           </p>
-
-        </Paper>
-      </Grid>
-      <Grid item xs={3}>
-        <Card className={classes.root}>
-          <CardMedia
-            className={classes.media}
-            image={item.image}
-            title="Contemplative Reptile"
-          />
-          <CardContent className={classes.content}>
-            <Typography gutterBottom variant="h6" component="h2">
-              {item.name}
-            </Typography>
-            <Typography variant="body2" color="inherit" component="p">
-              <span>Двигатель:</span> {item.desc}
-            </Typography>
-            <Typography variant="body2" color="initial" component="p">
-              Цена: {item.price} ₽ / в сутки
-            </Typography>
-            <Typography variant="body2" color="initial" component="p">
-              Количество: {item.amount}
-            </Typography>
-          </CardContent>
-          <Typography
-            className={classes.value}
-            variant="subtitle1"
-            color="initial"
-            component="h2"
+        </div>
+        <div className="col-lg-4">
+          <div
+            key={car._id}
+            className="card mx-auto rounded-3 px-2"
+            style={{ width: "18rem" }}
           >
-            Итого: {item.price * value} ₽
-          </Typography>
-          {user?.carRent?._id === id ? (
-            <Button
-              onClick={() => {
-                handlePutCar(id);
-              }}
-              className={classes.btmRent}
-              variant="contained"
-              color="secondary"
-            >
-              вернуть
-            </Button>
-          ) : (
-            <Button
-              onClick={() => {
-                handleRentCar(id);
-              }}
-              className={classes.btmRent}
-              variant="contained"
-              color="secondary"
-              disabled={item.amount === 0 || user?.carRent || !user}
-            >
-              {item.amount === 0
-                ? "нет свободных машин"
-                : user?.carRent
-                ? "у вас есть машина"
-                : !user
-                ? "вы не авторизованы"
-                : "арендовать"}
-            </Button>
-          )}
-        </Card>
-      </Grid>
+            <h4 className="text-center p-2">Мой заказ</h4>
+            <div className="h-100 d-inline-block text-center">
+              <img
+                src={car.image}
+                className={style.car_img}
+                alt=""
+                style={{ height: 170 }}
+              />
+            </div>
+            <div className={"card-body rounded-3 p-2"}>
+              <h6 className="card-title">{car.name}</h6>
+              <div className="card-title">
+                <b>Год выпуска</b>:{car.year}₽
+              </div>
+              <div className="card-title">
+                <b>Двигатель</b>:{car.desc}
+              </div>
+              <div className="card-title">
+                <b>{car.price}</b>/в сутки
+              </div>
+              <h4>
+                <span className={"text-danger"}>Итого:</span>
+                {car.price * value} ₽
+              </h4>
+            </div>
+            {user?.carRent?._id === id ?
+              <button
+                className="btn btn-secondary mb-2"
+                onClick={() => dispatch(putCar(car._id))}
+              >
+                вернуть
+              </button> :
+              <button
+                className="btn btn-primary mb-2"
+                onClick={() => dispatch(rentCar(car._id))}
+                disabled={!car.amount || user?.carRent || !user}
+              >
+                {car.amount === 0
+                  ? "нет свободных машин"
+                  : user?.carRent
+                  ? "у вас есть машина"
+                  : !user
+                  ? "вы не авторизованы"
+                  : "арендовать"}
+              </button>}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

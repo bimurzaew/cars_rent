@@ -26,7 +26,7 @@ export const loadBrands = () => {
         dispatch({type:"load/brands/pending"})
         const response = await fetch("/brands");
         const json = await response.json();
-        console.log(json);
+
         dispatch({type:"load/brands/fulfilled",payload:json})
     }
 }

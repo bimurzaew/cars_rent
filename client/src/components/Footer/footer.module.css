@@ -1,0 +1,33 @@
+.footer{
+    background-color:#11314f;
+}
+.image{
+    width: 35px;
+    margin: 0 2.5px;
+}
+
+.copyright{
+    color: white;
+    font-size: 15px;
+}
+.about {
+    font-size: 25px;
+    color: white;
+    text-decoration:none;
+    transition: .2s;
+}
+.about:hover{
+    color:#7f2626;
+    text-decoration:none;
+    transition:.2s;
+}
+.aboutActive{
+    color:#7f2626
+}
+
+@media (max-width: 500px) {
+    .image{
+        display: none;
+    }
+
+}

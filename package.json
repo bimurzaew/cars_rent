@@ -7,7 +7,12 @@
     "server": "nodemon index.js",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+<<<<<<< HEAD
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+=======
     "postinstall": "cd client && npm install"
+>>>>>>> 0948ece13c7e847a2f4e283c919836fc3b6d88c0
   },
   "keywords": [],
   "author": "",
