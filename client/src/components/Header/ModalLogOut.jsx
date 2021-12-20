@@ -25,32 +25,32 @@ export default function ModalLogOut() {
     }
 
     return (
-      <div>
-              <BiLogIn
+        <div>
+            <BiLogIn
                 title={"Выход"}
                 className={style.exitPage}
                 onClick={()=> setOpen(true)}
-              />
-          <Dialog
-            // fullScreen={fullScreen}
-            open={open}
-            onClose={()=> setOpen(false)}
-            aria-labelledby="responsive-dialog-title"
-          >
-              <DialogContent>
-                  <DialogContentText>
-                     Выйти из аккаунта?
-                  </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                  <Button onClick={handleLodOUt}>
-                      Выйти
-                  </Button>
-                  <Button onClick={()=> setOpen(false)}>
-                      Отмена
-                  </Button>
-              </DialogActions>
-          </Dialog>
-      </div>
+            />
+            <Dialog
+                // fullScreen={fullScreen}
+                open={open}
+                onClose={()=> setOpen(false)}
+                aria-labelledby="responsive-dialog-title"
+            >
+                <DialogContent>
+                    <DialogContentText>
+                        Выйти из аккаунта?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleLodOUt}>
+                        Выйти
+                    </Button>
+                    <Button onClick={()=> setOpen(false)}>
+                        Отмена
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
     );
 }
