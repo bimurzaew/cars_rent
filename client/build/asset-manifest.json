@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0cb27797.chunk.css",
+    "main.js": "/static/js/main.dd054132.chunk.js",
+    "main.js.map": "/static/js/main.dd054132.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a9f80a17.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a9f80a17.js.map",
+    "static/css/2.94d102f3.chunk.css": "/static/css/2.94d102f3.chunk.css",
+    "static/js/2.8f391d11.chunk.js": "/static/js/2.8f391d11.chunk.js",
+    "static/js/2.8f391d11.chunk.js.map": "/static/js/2.8f391d11.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.94d102f3.chunk.css.map": "/static/css/2.94d102f3.chunk.css.map",
+    "static/css/main.0cb27797.chunk.css.map": "/static/css/main.0cb27797.chunk.css.map",
+    "static/js/2.8f391d11.chunk.js.LICENSE.txt": "/static/js/2.8f391d11.chunk.js.LICENSE.txt",
+    "static/media/100+.a47712dd.svg": "/static/media/100+.a47712dd.svg",
+    "static/media/clin.5d3870d4.svg": "/static/media/clin.5d3870d4.svg",
+    "static/media/clock.3d78203c.svg": "/static/media/clock.3d78203c.svg",
+    "static/media/logo2.c33fa8ac.png": "/static/media/logo2.c33fa8ac.png",
+    "static/media/piggy_bank.026300d2.svg": "/static/media/piggy_bank.026300d2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9f80a17.js",
+    "static/css/2.94d102f3.chunk.css",
+    "static/js/2.8f391d11.chunk.js",
+    "static/css/main.0cb27797.chunk.css",
+    "static/js/main.dd054132.chunk.js"
+  ]
+}

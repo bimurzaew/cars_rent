@@ -1,133 +1,72 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { useDispatch, useSelector } from "react-redux";
-import { Box, Container, Grid, Toolbar } from "@material-ui/core";
-import { deleteAccount, getUser } from "../../redux/features/users";
-import CarByPerson from "./CarByPerson";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Button from "@material-ui/core/Button";
-import { useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteAccount, getUser } from '../../redux/features/users'
+import CarByPerson from './CarByPerson'
+import { MdDelete } from '@react-icons/all-files/md/MdDelete'
+import { useHistory } from 'react-router-dom'
 
-
-const useStyles = makeStyles(theme => ({
-  boxImg:{
-    backgroundImage:
-        "URL(https://i.trse.ru/2020/10/tmuR.jpg)",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    background: "fixed",
-    height:"100vh",
-    paddingBottom: 15,
-  },
-
-  root: {
-    marginTop: 150,
-    justifyContent: "space-evenly",
-  },
-  card:{
-    width:400
-  },
-  media: {
-    height: 360,
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  person:{
-    color:"white"
-  }
-}));
-function PersonalPage() {
+function PersonalPage () {
   const dispatch = useDispatch();
-  const history = useHistory()
-  useEffect(() => {
-    dispatch(getUser());
-  }, []);
+  const history = useHistory();
+  const { user } = useSelector((state) => state.users);
+
+  useEffect(()=>{
+    dispatch(getUser())
+  },[]);
 
   const handleDelete = () => {
     dispatch(deleteAccount());
-    history.push('/')
-  };
-  const { user } = useSelector((state) => state.users);
-  const token = useSelector((state) => state.users.token);
-  const classes = useStyles();
+    history.push('/');
+  }
+
   return (
-
-    <Box className={classes.boxImg}>
-      <Container >
-        <Toolbar />
-        <Box >
-          <Grid container xs={20} className={classes.root}>
-            <Grid item xs={3}>
-              <CardMedia
-                  className={classes.media}
-                  image="https://seeding.com.ua/wp-content/uploads/2017/04/%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%D0%BE%D0%B2.jpg"
-                  title="Contemplative Reptile"
-
-              />
-            </Grid>
-            <Grid />
-            <Grid item xs={3}>
-
-              <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="p"
-                  className={classes.person}
-              >
-                <b>Фамилия</b>: {user?.lastName}
-              </Typography>
-              <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="p"
-                  className={classes.person}
-              >
-                <b>Имя</b>: {user?.name}
-              </Typography>
-              <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="p"
-                  className={classes.person}
-              >
-                <b>Почта</b>:{user?.mail}
-              </Typography>
-              <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="p"
-                  className={classes.person}
-              >
-
+    <div className={'container my-2 min-vh-100'}>
+      <div className="row">
+        <div className="col-xxl col-sm-12 col-md-6 col-lg-4 my-2">
+          <div className="card">
+            <img
+              className="card-img-top w-50 mx-auto"
+              src={'https://seeding.com.ua/wp-content/uploads/2017/04/%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%D0%BE%D0%B2.jpg'}
+              alt="Card image cap"
+            />
+              <div className="card-body">
+                <button className="btn btn-primary w-100">
+                  редактировать
+                </button>
+              </div>
+          </div>
+        </div>
+        <div className="col-xxl col-sm-12 col-md-6 col-lg-8 my-2">
+            <div className="card p-3">
+              <h1>
+                {user?.name} {user?.lastName}
+              </h1>
+              <div className='my-3'>
                 <b>Контакты</b>:{user?.number}
-              </Typography>
-              <Typography>
-                <Button
-
-                    variant="contained"
-                    color="secondary"
-                    className={classes.button}
-                    startIcon={<DeleteIcon />}
-                    onClick={handleDelete}
-
-                >
-                  Delete account
-                </Button>
-              </Typography>
-            </Grid>
-
-            {user?.carRent? <Grid item xs={2}>
-              <CarByPerson user={user}/>
-            </Grid> : ''}
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
-
-  );
+              </div>
+              <div className='my-3'>
+                <b>Почта</b>:{user?.mail}
+              </div>
+              <button
+                onClick={handleDelete}
+                className={"btn btn-danger  d-block w-auto w-50 align-self-lg-end"}>
+                  Удалить Аккаунт
+                <MdDelete/>
+              </button>
+              <hr/>
+              {
+                user?.carRent
+                ? <>
+                    <h4>Арендованная машина</h4>
+                    <CarByPerson user={user}/>
+                  </>
+                  : <h4>Арендованных машин нет</h4>
+              }
+            </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
-export default PersonalPage;
+export default PersonalPage

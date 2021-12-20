@@ -222,6 +222,7 @@ export const logOut = () => {
   return async (dispatch) => {
     dispatch({ type: "user/logout/fulfilled" });
     localStorage.clear();
+    window.location.reload();
   };
 };
 

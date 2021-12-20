@@ -1,16 +1,16 @@
 import {Carousel} from "react-bootstrap";
-import "./carsById-style.css"
+import style from "./car.module.css"
 
 function CarsCarousel({img1, img2, img3, name}) {
   return (
       <Carousel
-          className={"carousel-block"}
+          className={style.carousel_block}
       >
         <Carousel.Item
-            className="block_imgCar"
+            className={style.block_imgCar}
         >
           <img
-              className="imgCar"
+              className={style.imgCar}
               src={img1}
               alt="First slide"
           />
@@ -20,10 +20,10 @@ function CarsCarousel({img1, img2, img3, name}) {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item
-            className="block_imgCar"
+          className={style.block_imgCar}
         >
           <img
-              className="imgCar"
+            className={style.imgCar}
               src={img2}
               alt="Second slide"
           />
@@ -34,10 +34,10 @@ function CarsCarousel({img1, img2, img3, name}) {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item
-            className="block_imgCar"
+          className={style.block_imgCar}
         >
           <img
-              className="imgCar"
+            className={style.imgCar}
               src={img3}
               alt="Third slide"
           />
