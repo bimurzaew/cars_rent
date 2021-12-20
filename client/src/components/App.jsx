@@ -16,45 +16,47 @@ import Reviews from "./reviews/Reviews";
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Header />
-          <Cars />
-          <FooterCars />
-        </Route>
-        <Route path="/about-us">
-          <Header />
-          <AboutUs />
-          <FooterCars/>
-        </Route>
-        <Route path="/contacts">
-          <Header/>
-          <Contacts />
-          <FooterCars/>
-        </Route>
-        <Route path="/review">
-          <Header/>
-          <Reviews />
-          <FooterCars/>
-        </Route>
-        <Route path="/cars/category/:id">
-          <Header />
-          <CarsByCategory />
-          <FooterCars />
-        </Route>
-        <Route path="/cars/brand/:id">
-          <Header />
-          <CarsByBrands />
-        </Route>
-        <Route path="/cars/:id">
-          <Header />
-          <CarsById />
-        </Route>
-        <Route path="/personal">
-          <Header />
-          <PersonalPage />
-        </Route>
-      </Switch>
+      <div className="container-body">
+        <Switch>
+          <Route exact path="/">
+            <Header />
+            <Cars />
+            <FooterCars />
+          </Route>
+          <Route path="/about-us">
+            <Header />
+            <AboutUs />
+            <FooterCars/>
+          </Route>
+          <Route path="/contacts">
+            <Header/>
+            <Contacts />
+            <FooterCars/>
+          </Route>
+          <Route path="/review">
+            <Header/>
+            <Reviews />
+            <FooterCars/>
+          </Route>
+          <Route path="/cars/category/:id">
+            <Header />
+            <CarsByCategory />
+            <FooterCars />
+          </Route>
+          <Route path="/cars/brand/:id">
+            <Header />
+            <CarsByBrands />
+          </Route>
+          <Route path="/cars/:id">
+            <Header />
+            <CarsById />
+          </Route>
+          <Route path="/personal">
+            <Header />
+            <PersonalPage />
+          </Route>
+        </Switch>
+      </div>
       <Route path="/signIn">
         <SignInPage />
       </Route>

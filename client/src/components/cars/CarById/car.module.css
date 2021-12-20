@@ -1,0 +1,34 @@
+.imgCar{
+    width: 60%;
+    height: 400px;
+}
+.block_imgCar{
+    text-align: center;
+}
+.carousel_block{
+    margin: 25px 0 !important;
+    z-index: 0;
+}
+.description{
+    color: var(--myColor);
+    font-size: 18px;
+    font-weight: 500;
+}
+:root{
+    --myColor:#33325E;
+}
+
+.car_img{
+    width: 100%;
+}
+@media (max-width: 900px) {
+    .carousel_block{
+        display: none;
+    }
+    .car_img{
+        display: none;
+    }
+    .description{
+        display: none;
+    }
+}
